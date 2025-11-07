@@ -20,49 +20,111 @@ const AnimatedBackground = () => {
           </filter>
         </defs>
         
-        {/* Main network lines */}
-        <g className="animate-pulse" style={{ animationDuration: '4s' }}>
-          <line x1="10%" y1="20%" x2="40%" y2="60%" stroke="url(#line-gradient)" strokeWidth="2" />
-          <line x1="40%" y1="60%" x2="70%" y2="30%" stroke="url(#line-gradient)" strokeWidth="2" />
-          <line x1="70%" y1="30%" x2="90%" y2="70%" stroke="url(#line-gradient)" strokeWidth="2" />
-          <line x1="20%" y1="80%" x2="60%" y2="40%" stroke="url(#line-gradient-amber)" strokeWidth="2" />
-          <line x1="60%" y1="40%" x2="85%" y2="20%" stroke="url(#line-gradient)" strokeWidth="2" />
-          <line x1="30%" y1="15%" x2="50%" y2="45%" stroke="url(#line-gradient)" strokeWidth="1.5" />
-          <line x1="80%" y1="50%" x2="55%" y2="75%" stroke="url(#line-gradient-amber)" strokeWidth="1.5" />
-        </g>
+        {/* Animated network lines */}
+        <line stroke="url(#line-gradient)" strokeWidth="2">
+          <animate attributeName="x1" values="10%;12%;10%" dur="8s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="20%;18%;20%" dur="8s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="40%;42%;40%" dur="8s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="60%;58%;60%" dur="8s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" />
+        </line>
+        <line stroke="url(#line-gradient)" strokeWidth="2">
+          <animate attributeName="x1" values="40%;42%;40%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="60%;58%;60%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="70%;68%;70%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="30%;32%;30%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="5s" repeatCount="indefinite" />
+        </line>
+        <line stroke="url(#line-gradient)" strokeWidth="2">
+          <animate attributeName="x1" values="70%;68%;70%" dur="9s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="30%;32%;30%" dur="9s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="90%;92%;90%" dur="9s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="70%;68%;70%" dur="9s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;0.9;0.5" dur="4.5s" repeatCount="indefinite" />
+        </line>
+        <line stroke="url(#line-gradient-amber)" strokeWidth="2">
+          <animate attributeName="x1" values="20%;18%;20%" dur="11s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="80%;82%;80%" dur="11s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="60%;62%;60%" dur="11s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="40%;38%;40%" dur="11s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="5.5s" repeatCount="indefinite" />
+        </line>
+        <line stroke="url(#line-gradient)" strokeWidth="2">
+          <animate attributeName="x1" values="60%;62%;60%" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="40%;38%;40%" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="85%;87%;85%" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="20%;22%;20%" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" />
+        </line>
+        <line stroke="url(#line-gradient)" strokeWidth="1.5">
+          <animate attributeName="x1" values="30%;32%;30%" dur="12s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="15%;17%;15%" dur="12s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="50%;48%;50%" dur="12s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="45%;43%;45%" dur="12s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="6s" repeatCount="indefinite" />
+        </line>
+        <line stroke="url(#line-gradient-amber)" strokeWidth="1.5">
+          <animate attributeName="x1" values="80%;78%;80%" dur="13s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="50%;52%;50%" dur="13s" repeatCount="indefinite" />
+          <animate attributeName="x2" values="55%;57%;55%" dur="13s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="75%;73%;75%" dur="13s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0.9;0.4" dur="5s" repeatCount="indefinite" />
+        </line>
 
-        {/* Node points with glow */}
-        <circle cx="10%" cy="20%" r="4" fill="hsl(200, 80%, 55%)" opacity="0.8" filter="url(#glow)">
+        {/* Animated node points with motion */}
+        <circle r="4" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="10%;12%;10%" dur="8s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="20%;18%;20%" dur="8s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
         </circle>
-        <circle cx="40%" cy="60%" r="4" fill="hsl(200, 80%, 55%)" opacity="0.8" filter="url(#glow)">
+        <circle r="4" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="40%;42%;40%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="60%;58%;60%" dur="10s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite" />
         </circle>
-        <circle cx="70%" cy="30%" r="4" fill="hsl(200, 80%, 55%)" opacity="0.8" filter="url(#glow)">
+        <circle r="4" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="70%;68%;70%" dur="9s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="30%;32%;30%" dur="9s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3.5s" repeatCount="indefinite" />
         </circle>
-        <circle cx="90%" cy="70%" r="5" fill="hsl(35, 85%, 60%)" opacity="0.8" filter="url(#glow)">
+        <circle r="5" fill="hsl(35, 85%, 60%)" filter="url(#glow)">
+          <animate attributeName="cx" values="90%;92%;90%" dur="9s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="70%;68%;70%" dur="9s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite" />
         </circle>
-        <circle cx="20%" cy="80%" r="4" fill="hsl(35, 85%, 60%)" opacity="0.8" filter="url(#glow)">
+        <circle r="4" fill="hsl(35, 85%, 60%)" filter="url(#glow)">
+          <animate attributeName="cx" values="20%;18%;20%" dur="11s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="80%;82%;80%" dur="11s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.6;1;0.6" dur="3.8s" repeatCount="indefinite" />
         </circle>
-        <circle cx="60%" cy="40%" r="4" fill="hsl(200, 80%, 55%)" opacity="0.8" filter="url(#glow)">
+        <circle r="4" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="60%;62%;60%" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="40%;38%;40%" dur="7s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.6;1;0.6" dur="3.3s" repeatCount="indefinite" />
         </circle>
-        <circle cx="85%" cy="20%" r="4" fill="hsl(35, 85%, 60%)" opacity="0.8" filter="url(#glow)">
+        <circle r="4" fill="hsl(35, 85%, 60%)" filter="url(#glow)">
+          <animate attributeName="cx" values="85%;87%;85%" dur="7s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="20%;22%;20%" dur="7s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.5;0.9;0.5" dur="4.2s" repeatCount="indefinite" />
         </circle>
-        <circle cx="30%" cy="15%" r="3" fill="hsl(200, 80%, 55%)" opacity="0.7" filter="url(#glow)">
+        <circle r="3" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="30%;32%;30%" dur="12s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="15%;17%;15%" dur="12s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3.7s" repeatCount="indefinite" />
         </circle>
-        <circle cx="50%" cy="45%" r="3" fill="hsl(200, 80%, 55%)" opacity="0.7" filter="url(#glow)">
+        <circle r="3" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="50%;48%;50%" dur="12s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="45%;43%;45%" dur="12s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3.9s" repeatCount="indefinite" />
         </circle>
-        <circle cx="80%" cy="50%" r="3" fill="hsl(35, 85%, 60%)" opacity="0.7" filter="url(#glow)">
+        <circle r="3" fill="hsl(35, 85%, 60%)" filter="url(#glow)">
+          <animate attributeName="cx" values="80%;78%;80%" dur="13s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="50%;52%;50%" dur="13s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4.1s" repeatCount="indefinite" />
         </circle>
-        <circle cx="55%" cy="75%" r="3" fill="hsl(200, 80%, 55%)" opacity="0.7" filter="url(#glow)">
+        <circle r="3" fill="hsl(200, 80%, 55%)" filter="url(#glow)">
+          <animate attributeName="cx" values="55%;57%;55%" dur="13s" repeatCount="indefinite" />
+          <animate attributeName="cy" values="75%;73%;75%" dur="13s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3.4s" repeatCount="indefinite" />
         </circle>
       </svg>
