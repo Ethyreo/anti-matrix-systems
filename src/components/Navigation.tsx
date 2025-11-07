@@ -32,7 +32,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in ${
         isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
       }`}
     >
@@ -40,25 +40,28 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection("hero")}
-            className="text-xl font-semibold tracking-tight hover:text-primary transition-colors"
+            className="text-xl font-semibold tracking-tight hover:text-primary transition-all duration-300 hover:scale-105"
           >
             The Anti Matrix Project
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110 relative group animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-110 transition-all duration-300 animate-fade-in"
+              style={{ animationDelay: "0.5s" }}
             >
               Get Started
             </Button>
@@ -67,7 +70,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground transition-transform duration-300 hover:scale-110"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -75,19 +78,21 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4">
-            {navItems.map((item) => (
+          <div className="md:hidden mt-4 pb-4 space-y-4 animate-fade-in">
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+                className="block w-full text-left text-muted-foreground hover:text-foreground transition-all duration-300 py-2 hover:translate-x-2 animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {item.label}
               </button>
             ))}
             <Button
               onClick={() => scrollToSection("contact")}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-105 transition-all duration-300 animate-fade-in"
+              style={{ animationDelay: "0.3s" }}
             >
               Get Started
             </Button>

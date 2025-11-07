@@ -16,12 +16,13 @@ const CaseStudyCard = ({ title, preview, challenge, approach, system, impact }: 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="bg-card border-border card-hover cursor-pointer group">
-          <CardHeader>
-            <CardTitle className="text-xl group-hover:text-primary transition-colors">{title}</CardTitle>
+        <Card className="bg-card border-border card-hover cursor-pointer group overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <CardHeader className="relative z-10">
+            <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{title}</CardTitle>
             <CardDescription className="text-muted-foreground">{preview}</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative z-10">
             <Button variant="ghost" className="group/btn p-0 h-auto text-primary hover:text-primary/80">
               Read Full Story
               <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -29,7 +30,7 @@ const CaseStudyCard = ({ title, preview, challenge, approach, system, impact }: 
           </CardContent>
         </Card>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl bg-card border-border max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl bg-card border-border max-h-[80vh] overflow-y-auto animate-scale-in">
         <DialogHeader>
           <DialogTitle className="text-2xl mb-4">{title}</DialogTitle>
         </DialogHeader>
