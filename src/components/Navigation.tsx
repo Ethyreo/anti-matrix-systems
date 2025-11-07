@@ -39,13 +39,11 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in relative ${
-        isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in relative bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
     >
       {/* Scroll Progress Bar */}
       <div 
-        className="absolute bottom-0 left-0 h-full bg-primary/20 transition-all duration-200 ease-out"
+        className="absolute bottom-0 left-0 h-1 bg-primary transition-all duration-200 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
       
