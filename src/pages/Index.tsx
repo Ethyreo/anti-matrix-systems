@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import DiagonalFlowBackground from "@/components/DiagonalFlowBackground";
 import { useParallax } from "@/hooks/use-parallax";
 import ServiceCard from "@/components/ServiceCard";
 import ProcessStep from "@/components/ProcessStep";
@@ -55,8 +56,9 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section id="services" className="py-24 bg-muted/30 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               From Funding to Function — We Build What Founders Need to Grow
@@ -124,8 +126,9 @@ const Index = () => {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-24">
-        <div className="container mx-auto px-6">
+      <section id="process" className="py-24 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Process: Clarity in Every Layer</h2>
           </div>
@@ -171,8 +174,9 @@ const Index = () => {
       </section>
 
       {/* Case Studies Section */}
-      <section id="stories" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section id="stories" className="py-24 bg-muted/30 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Stories of Systems That Scaled</h2>
           </div>
@@ -222,8 +226,9 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24">
-        <div className="container mx-auto px-6">
+      <section id="about" className="py-24 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">The Mind Behind the Systems</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -237,8 +242,9 @@ const Index = () => {
       </section>
 
       {/* Clients Section */}
-      <section id="clients" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section id="clients" className="py-24 bg-muted/30 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Who We Work With</h2>
             <p className="text-xl text-muted-foreground">
@@ -260,8 +266,9 @@ const Index = () => {
       </section>
 
       {/* Resources Section */}
-      <section id="resources" className="py-24">
-        <div className="container mx-auto px-6">
+      <section id="resources" className="py-24 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Frameworks, Systems & Playbooks</h2>
             <p className="text-xl text-muted-foreground">
@@ -283,8 +290,9 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section id="contact" className="py-24 bg-muted/30 relative">
+        <DiagonalFlowBackground />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Design Your Growth System</h2>
             <p className="text-xl text-muted-foreground">
