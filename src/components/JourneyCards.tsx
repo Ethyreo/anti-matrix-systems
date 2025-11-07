@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
-import { Briefcase, Lightbulb, Rocket, Target, TrendingUp, Users } from "lucide-react";
+import { Briefcase, Lightbulb, Rocket, Target, TrendingUp, Users, Shirt, Building2, Video } from "lucide-react";
 
 const journeyData = [
   {
@@ -8,6 +8,24 @@ const journeyData = [
     title: "The Beginning",
     description: "Started as a founder exploring the chaos of building systems from scratch — learning that structure is the foundation of sustainable growth.",
     year: "Early Days"
+  },
+  {
+    icon: <Shirt className="w-8 h-8" />,
+    title: "Rogue Liberation",
+    description: "Founded a clothing brand, navigating the challenges of design, production, and brand identity — learning the fundamentals of building from zero.",
+    year: "Founder"
+  },
+  {
+    icon: <Building2 className="w-8 h-8" />,
+    title: "Pine and Thatch Hotels and Homestays",
+    description: "Built an end-to-end service for hotels in the tourism industry — from marketing and analytics to growth strategies and booking systems.",
+    year: "Founder"
+  },
+  {
+    icon: <Video className="w-8 h-8" />,
+    title: "Influcreate",
+    description: "Founded a creator marketing firm, connecting brands with content creators and building systems for influencer collaboration at scale.",
+    year: "Founder"
   },
   {
     icon: <Briefcase className="w-8 h-8" />,
