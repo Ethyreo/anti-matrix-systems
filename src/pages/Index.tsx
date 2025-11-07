@@ -5,6 +5,7 @@ import ProcessStep from "@/components/ProcessStep";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ResourceCard from "@/components/ResourceCard";
 import ContactForm from "@/components/ContactForm";
+import JourneyCards from "@/components/JourneyCards";
 import { Target, TrendingUp, Users, Briefcase, Zap, Brain, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -212,24 +213,14 @@ const Index = () => {
       {/* About Section */}
       <section id="about" className="py-24">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">The Mind Behind the Systems</h2>
-            </div>
-            <div className="prose prose-invert max-w-none space-y-6 text-lg text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <p>
-                Gurman Singh is a founder and business operations strategist who has spent years inside founder's offices, building clarity from chaos.
-              </p>
-              <p>
-                Formerly part of the CEO's team at Zelto (AdPushup), Gurman has helped startups design scalable systems across business operations, data, hiring, and strategy.
-              </p>
-              <p>
-                Today, through The Anti Matrix Project Startup Consultant, he works with founders worldwide — helping them bridge the gap between ideas, investment, and intelligent execution.
-              </p>
-              <p>
-                As an AI evangelist, Gurman explores how human creativity and artificial intelligence can co-build smarter companies — not by replacing people, but by empowering them with systems that think alongside them.
-              </p>
-            </div>
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">The Mind Behind the Systems</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A journey from chaos to clarity — building systems that empower founders to scale with intelligence.
+            </p>
+          </div>
+          <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <JourneyCards />
           </div>
         </div>
       </section>
