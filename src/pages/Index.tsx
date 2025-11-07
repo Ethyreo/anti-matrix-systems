@@ -1,5 +1,4 @@
 import Navigation from "@/components/Navigation";
-import ScrollProgress from "@/components/ScrollProgress";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { useParallax } from "@/hooks/use-parallax";
 import ServiceCard from "@/components/ServiceCard";
@@ -23,7 +22,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <ScrollProgress />
       <Navigation />
 
       {/* Hero Section */}

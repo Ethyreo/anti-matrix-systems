@@ -5,12 +5,19 @@ import { Button } from "@/components/ui/button";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / scrollHeight) * 100;
+      setScrollProgress(progress);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -32,11 +39,17 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in relative ${
         isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      {/* Scroll Progress Bar */}
+      <div 
+        className="absolute bottom-0 left-0 h-full bg-primary/20 transition-all duration-200 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
+      
+      <div className="container mx-auto px-6 py-4 relative z-10">
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection("hero")}
