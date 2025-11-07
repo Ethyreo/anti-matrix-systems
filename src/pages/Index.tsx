@@ -127,7 +127,7 @@ const Index = () => {
 
       {/* Process Section */}
       <section id="process" className="py-24 relative">
-        <DiagonalFlowBackground />
+        <DiagonalFlowBackground reverse />
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Process: Clarity in Every Layer</h2>
@@ -227,7 +227,7 @@ const Index = () => {
 
       {/* About Section */}
       <section id="about" className="py-24 relative">
-        <DiagonalFlowBackground />
+        <DiagonalFlowBackground reverse />
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">The Mind Behind the Systems</h2>
@@ -267,7 +267,7 @@ const Index = () => {
 
       {/* Resources Section */}
       <section id="resources" className="py-24 relative">
-        <DiagonalFlowBackground />
+        <DiagonalFlowBackground reverse />
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Frameworks, Systems & Playbooks</h2>

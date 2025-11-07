@@ -129,12 +129,61 @@ All colors MUST be HSL.
     animation: diagonal-flow 8s linear infinite;
   }
 
+  .diagonal-flow-pattern-reverse {
+    background:
+      linear-gradient(
+        45deg,
+        transparent 30%,
+        hsla(200, 80%, 55%, 0.12) 30%,
+        hsla(200, 80%, 55%, 0.12) 35%,
+        transparent 35%,
+        transparent 65%,
+        hsla(200, 80%, 55%, 0.12) 65%,
+        hsla(200, 80%, 55%, 0.12) 70%,
+        transparent 70%
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 25%,
+        hsla(200, 75%, 40%, 0.08) 25%,
+        hsla(200, 75%, 40%, 0.08) 28%,
+        transparent 28%,
+        transparent 72%,
+        hsla(200, 75%, 40%, 0.08) 72%,
+        hsla(200, 75%, 40%, 0.08) 75%,
+        transparent 75%
+      ),
+      linear-gradient(
+        135deg,
+        transparent 40%,
+        hsla(35, 85%, 60%, 0.06) 40%,
+        hsla(35, 85%, 60%, 0.06) 42%,
+        transparent 42%,
+        transparent 58%,
+        hsla(35, 85%, 60%, 0.06) 58%,
+        hsla(35, 85%, 60%, 0.06) 60%,
+        transparent 60%
+      ),
+      hsla(0, 0%, 100%, 0.02);
+    background-size: 20px 20px, 15px 15px, 25px 25px, 100% 100%;
+    animation: diagonal-flow-reverse 8s linear infinite;
+  }
+
   @keyframes diagonal-flow {
     0% {
       background-position: 0px 0px, 0px 0px, 0px 0px, 0 0;
     }
     100% {
       background-position: 40px 40px, -30px -30px, 50px 50px, 0 0;
+    }
+  }
+
+  @keyframes diagonal-flow-reverse {
+    0% {
+      background-position: 40px 40px, -30px -30px, 50px 50px, 0 0;
+    }
+    100% {
+      background-position: 0px 0px, 0px 0px, 0px 0px, 0 0;
     }
   }
 }
