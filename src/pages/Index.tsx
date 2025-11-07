@@ -1,5 +1,7 @@
 import Navigation from "@/components/Navigation";
+import ScrollProgress from "@/components/ScrollProgress";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import { useParallax } from "@/hooks/use-parallax";
 import ServiceCard from "@/components/ServiceCard";
 import ProcessStep from "@/components/ProcessStep";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -10,6 +12,8 @@ import { Target, TrendingUp, Users, Briefcase, Zap, Brain, Shield, Sparkles } fr
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
+  const parallaxOffset = useParallax(0.3);
+  
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -19,11 +23,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
       <Navigation />
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <AnimatedBackground />
+        <div 
+          className="absolute inset-0"
+          style={{ 
+            transform: `translateY(${parallaxOffset}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
+          <AnimatedBackground />
+        </div>
         <div className="container mx-auto px-6 text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
             We build systems that help startups
