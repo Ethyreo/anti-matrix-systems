@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DiagonalFlowBackground from "./DiagonalFlowBackground";
-import ampLogo from "@/assets/amp-logo.png";
+import ampLogo from "@/assets/amp-logo-white.png";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -67,8 +67,8 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             </defs>
           </svg>
           
-          {/* Logo in Center */}
-          <div className="absolute inset-0 flex items-center justify-center p-12">
+          {/* Logo in Center - fills the entire circle */}
+          <div className="absolute inset-0 flex items-center justify-center p-8">
             <img 
               src={ampLogo} 
               alt="AMP Logo" 
