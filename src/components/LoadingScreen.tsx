@@ -69,13 +69,11 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           
           {/* Logo in Center */}
           <div className="absolute inset-0 flex items-center justify-center p-12">
-            <div className="bg-foreground/95 rounded-full p-6 flex items-center justify-center">
-              <img 
-                src={ampLogo} 
-                alt="AMP Logo" 
-                className="w-24 h-24 object-contain"
-              />
-            </div>
+            <img 
+              src={ampLogo} 
+              alt="AMP Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
 
