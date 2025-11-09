@@ -27,7 +27,7 @@ const App = () => {
   }
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-in fade-in duration-700">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />

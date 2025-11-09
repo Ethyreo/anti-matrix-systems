@@ -8,6 +8,7 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     const duration = 3000; // 3 seconds
@@ -20,7 +21,8 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         const next = prev + increment;
         if (next >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 100);
+          setIsFadingOut(true);
+          setTimeout(onComplete, 750); // Half of 1.5s for fade out
           return 100;
         }
         return next;
@@ -31,7 +33,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-background">
+    <div className={`fixed inset-0 z-[9999] bg-background transition-opacity duration-700 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
       <DiagonalFlowBackground />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-8">
         {/* Circular Progress with Logo */}
