@@ -42,7 +42,7 @@ const Index = () => {
             <span className="text-gradient-cyber"> scale with clarity</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            The Anti Matrix Project Startup Consultant helps founders bring order to growth — combining strategy, structure, and intelligent automation.
+            We help founders bring order to growth — combining strategy, structure, and intelligent automation.
           </p>
           <Button
             onClick={scrollToContact}
