@@ -64,57 +64,57 @@ const Index = () => {
               From Funding to Function — We Build What Founders Need to Grow
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.1s" }}>
               <ServiceCard
                 icon={<Target size={40} />}
                 title="Startup Growth Systems"
                 description="Designing internal processes, documentation, and team flows that scale sustainably."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.2s" }}>
               <ServiceCard
                 icon={<TrendingUp size={40} />}
                 title="Investor Strategy & Fundraising"
                 description="Building pitch decks, financial models, and investor reporting systems."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.3s" }}>
               <ServiceCard
                 icon={<Briefcase size={40} />}
                 title="Business & Revenue Operations"
                 description="Structuring performance dashboards, pricing models, and revenue logic."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.4s" }}>
               <ServiceCard
                 icon={<Users size={40} />}
                 title="Hiring & Team Expansion"
                 description="Building org plans, hiring pipelines, onboarding documentation, and OKR systems."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.5s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.5s" }}>
               <ServiceCard
                 icon={<Zap size={40} />}
                 title="Product & Process Alignment"
                 description="Converting strategy into actionable systems across product, ops, and growth teams."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.6s" }}>
               <ServiceCard
                 icon={<Brain size={40} />}
                 title="Automation & AI Stack Integration"
                 description="Embedding no-code and AI-driven tools to simplify recurring workflows."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.7s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.7s" }}>
               <ServiceCard
                 icon={<Shield size={40} />}
                 title="Post-Investment Scaling"
                 description="Helping startups structure departments, board reporting, and efficiency metrics."
               />
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.8s" }}>
+            <div className="animate-fade-in flex" style={{ animationDelay: "0.8s" }}>
               <ServiceCard
                 icon={<Sparkles size={40} />}
                 title="AI Evangelism & Intelligence"
@@ -255,10 +255,10 @@ const Index = () => {
             {["SaaS", "Cybersecurity", "Creator Economy", "D2C & E-commerce", "Hospitality", "Lifestyle"].map((industry, index) => (
               <div
                 key={industry}
-                className="bg-card border border-border rounded-lg p-6 text-center hover:border-primary hover:scale-105 transition-all duration-300 animate-fade-in"
+                className="bg-card border border-border rounded-lg p-6 flex items-center justify-center min-h-[100px] hover:border-primary hover:scale-105 transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <p className="font-medium text-foreground">{industry}</p>
+                <p className="font-medium text-foreground text-center">{industry}</p>
               </div>
             ))}
           </div>
