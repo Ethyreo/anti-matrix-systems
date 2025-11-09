@@ -44,9 +44,9 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
                 <stop offset="100%" stopColor="hsl(var(--secondary))" />
               </linearGradient>
             </defs>
-            {Array.from({ length: 20 }).map((_, index) => {
-              const segmentAngle = 360 / 20; // 20 segments
-              const gapAngle = 4; // Gap between segments
+            {Array.from({ length: 15 }).map((_, index) => {
+              const segmentAngle = 360 / 15; // 15 segments
+              const gapAngle = 8; // Gap between segments
               const arcAngle = segmentAngle - gapAngle;
               const startAngle = index * segmentAngle;
               const endAngle = startAngle + arcAngle;
@@ -55,7 +55,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
               const centerY = 96;
               
               // Calculate if this segment should be filled
-              const segmentProgress = ((index + 1) / 20) * 100;
+              const segmentProgress = ((index + 1) / 15) * 100;
               const isFilled = progress >= segmentProgress;
               
               // Convert angles to radians and calculate arc path
@@ -72,7 +72,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
                   key={index}
                   d={`M ${x1} ${y1} A ${radius} ${radius} 0 0 1 ${x2} ${y2}`}
                   fill="none"
-                  stroke={isFilled ? "url(#loading-gradient)" : "hsl(var(--border))"}
+                  stroke={isFilled ? "hsl(var(--primary))" : "hsl(var(--border))"}
                   strokeWidth="8"
                   strokeLinecap="round"
                   className="transition-all duration-200"
