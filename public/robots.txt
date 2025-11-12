@@ -1,3 +1,4 @@
+# robots.txt for The Anti Matrix Project
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +13,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemaps
+Sitemap: https://preview--anti-matrix-systems.lovable.app/sitemap.xml

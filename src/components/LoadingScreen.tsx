@@ -87,7 +87,9 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           <div className="absolute inset-0 flex items-center justify-center p-8">
             <img 
               src={ampLogo} 
-              alt="AMP Logo" 
+              alt="The Anti Matrix Project logo - startup consulting services" 
+              width="128"
+              height="128"
               className="w-full h-full object-contain"
             />
           </div>
