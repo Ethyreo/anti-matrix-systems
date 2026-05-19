@@ -25,6 +25,10 @@ import {
   Server,
   Network,
   Activity,
+  Brain,
+  Wand2,
+  Hammer,
+  Monitor,
 } from "lucide-react";
 
 // Track metadata for the blogs/articles
@@ -255,8 +259,21 @@ const techStack = {
 const ControlDeck = () => {
   const [activeTab, setActiveTab] = useState("blogs");
   
-  // Active operational pipeline state
-  const [activePipeline, setActivePipeline] = useState("growth");
+  // Retro 8-bit cognitive pipeline phase state
+  const [retroPhase, setRetroPhase] = useState<"thinking" | "vibing" | "building">("thinking");
+  const [isAutoCycle, setIsAutoCycle] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoCycle) return;
+    const phases: ("thinking" | "vibing" | "building")[] = ["thinking", "vibing", "building"];
+    const interval = setInterval(() => {
+      setRetroPhase((current) => {
+        const nextIndex = (phases.indexOf(current) + 1) % phases.length;
+        return phases[nextIndex];
+      });
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isAutoCycle]);
 
   // Music Player Simulation
   const [isPlaying, setIsPlaying] = useState(false);
@@ -665,19 +682,41 @@ const ControlDeck = () => {
 
           {activeTab === "stack" && (
             <div className="space-y-8 max-w-6xl mx-auto w-full">
-              {/* Strategic Intro Banner */}
+              {/* Retro Style Block for custom 8-bit animations */}
+              <style>{`
+                @keyframes pixel-pulse {
+                  0%, 100% { opacity: 0.7; transform: scale(0.98); }
+                  50% { opacity: 1; transform: scale(1.02); }
+                }
+                @keyframes scanline-anim {
+                  0% { transform: translateY(-100%); }
+                  100% { transform: translateY(100%); }
+                }
+                @keyframes rain-fall {
+                  0% { transform: translateY(-10px); opacity: 0; }
+                  50% { opacity: 1; }
+                  100% { transform: translateY(80px); opacity: 0; }
+                }
+                .animate-pixel-pulse { animation: pixel-pulse 2s infinite ease-in-out; }
+                .animate-scanline { animation: scanline-anim 6s infinite linear; }
+                .animate-rain-1 { animation: rain-fall 1.5s infinite linear; }
+                .animate-rain-2 { animation: rain-fall 2s infinite linear; animation-delay: 0.5s; }
+                .animate-rain-3 { animation: rain-fall 1.8s infinite linear; animation-delay: 1s; }
+              `}</style>
+
+              {/* Strategic Intro Banner about Gurman */}
               <div className="border border-border/60 bg-card/40 p-6 md:p-8 rounded-sm panel-edge relative overflow-hidden backdrop-blur-sm">
                 <div className="absolute inset-0 scanline-mask opacity-10 pointer-events-none" />
                 <div className="relative z-10 max-w-3xl animate-in fade-in duration-500">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary animate-ping" />
-                    <span className="font-mono text-xs text-primary uppercase tracking-widest">// Operational Strategy</span>
+                    <span className="font-mono text-xs text-primary uppercase tracking-widest">// Cognitive Workspace</span>
                   </div>
                   <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-3">
-                    Deploying the Sovereign AI Stack
+                    Gurman's Sovereign AI Stack
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    Anti Matrix is built on a modular ecosystem of foundation models, stateful agent networks, and autonomous execution pipelines. Rather than relying on rigid, monolithic software suites, we coordinate these tools dynamically to orchestrate zero-touch client acquisitions, autonomous product development labs, and brand scaling content factories.
+                    This is my day-to-day stack. I operate across three cognitive tiers—Thinking deeply with reasoning models, Vibe Coding rapid fullstack compilers, and Building robust production systems with strict integrity controls.
                   </p>
                 </div>
               </div>
@@ -685,361 +724,360 @@ const ControlDeck = () => {
               {/* Two-Column Core Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                {/* Left Column: Interactive Operations & Pipelines (Saves 7 columns for deep showcase) */}
+                {/* Left Column: 8-Bit Emulator Monitor */}
                 <div className="lg:col-span-7 space-y-6">
                   <div className="border border-border bg-card/60 backdrop-blur-sm p-6 rounded-sm panel-edge">
                     {/* Pipeline Navigation Header */}
                     <div className="border-b border-border pb-4 mb-6">
                       <div className="flex items-center gap-2 mb-2">
-                        <Network className="h-4.5 w-4.5 text-primary" />
+                        <Monitor className="h-4.5 w-4.5 text-primary" />
                         <h3 className="font-mono text-xs font-semibold tracking-wider uppercase text-foreground">
-                          // ACTIVE OPERATIONAL PIPELINES
+                          // COGNITIVE PIPELINE EMULATOR
                         </h3>
                       </div>
                       <p className="text-xs text-muted-foreground">
-                        Select a pipeline to visualize how Anti Matrix coordinates model reasoning and automated orchestrators to run critical systems.
+                        Select a phase to override auto-cycling and explore my cognitive lifecycle from conceptual thought to prompt speed down to hard production builds.
                       </p>
                     </div>
 
-                    {/* Pipeline Selector Tabs */}
-                    <div className="grid grid-cols-3 gap-2 mb-6">
+                    {/* Retro 8-bit CRT monitor block */}
+                    <div className={`relative w-full aspect-[16/10] border-8 bg-neutral-950 p-4 rounded-md shadow-2xl flex flex-col justify-between overflow-hidden select-none transition-colors duration-500 ${
+                      retroPhase === "thinking" ? "border-amber-900/60 shadow-[inset_0_0_30px_rgba(245,158,11,0.25)]" : 
+                      retroPhase === "vibing" ? "border-purple-900/60 shadow-[inset_0_0_30px_rgba(168,85,247,0.25)]" : 
+                      "border-emerald-900/60 shadow-[inset_0_0_30px_rgba(16,185,129,0.25)]"
+                    }`}>
+                      {/* CRT Curve Mask overlay */}
+                      <div className="absolute inset-0 bg-transparent pointer-events-none z-20 shadow-[inset_0_0_80px_rgba(0,0,0,0.85)]" />
+                      
+                      {/* Scanline Sweep overlay */}
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-white/10 pointer-events-none z-20 animate-scanline" />
+                      
+                      {/* Glass Reflection effect */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-20" />
+
+                      {/* Active CRT Visual Layout */}
+                      <div className="flex-1 flex flex-col justify-between relative z-10 font-mono text-[10px]">
+                        {/* CRT Header */}
+                        <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className={`h-2 w-2 rounded-full animate-pulse ${
+                              retroPhase === "thinking" ? "bg-amber-500" : retroPhase === "vibing" ? "bg-purple-500" : "bg-emerald-500"
+                            }`} />
+                            <span className="uppercase text-[9px] font-bold text-neutral-400 tracking-wider">
+                              GURMAN-CRT-V1 // COGNITIVE_STATE
+                            </span>
+                          </div>
+                          <span className={`text-[8px] px-1 border rounded-sm font-bold uppercase ${
+                            retroPhase === "thinking" ? "bg-amber-500/10 border-amber-500/30 text-amber-500" : 
+                            retroPhase === "vibing" ? "bg-purple-500/10 border-purple-500/30 text-purple-400" : 
+                            "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                          }`}>
+                            {retroPhase === "thinking" ? "THINKING" : retroPhase === "vibing" ? "VIBE CODING" : "BUILDING"}
+                          </span>
+                        </div>
+
+                        {/* Center 8-Bit Pixel Animation Graphic */}
+                        <div className="flex-1 flex items-center justify-center py-2">
+                          {retroPhase === "thinking" && (
+                            <div className="flex flex-col items-center justify-center space-y-2 animate-pixel-pulse">
+                              <svg viewBox="0 0 16 16" className="w-20 h-20 text-amber-500">
+                                <rect x="5" y="2" width="6" height="1" fill="currentColor" />
+                                <rect x="3" y="3" width="10" height="1" fill="currentColor" />
+                                <rect x="2" y="4" width="12" height="1" fill="currentColor" />
+                                <rect x="1" y="5" width="14" height="1" fill="currentColor" />
+                                <rect x="1" y="6" width="6" height="3" fill="currentColor" />
+                                <rect x="9" y="6" width="6" height="3" fill="currentColor" />
+                                <rect x="2" y="9" width="12" height="1" fill="currentColor" />
+                                <rect x="3" y="10" width="10" height="1" fill="currentColor" />
+                                <rect x="4" y="11" width="8" height="1" fill="currentColor" />
+                                <rect x="6" y="12" width="4" height="2" fill="currentColor" />
+                                <rect x="5" y="5" width="2" height="2" fill="#fff" className="animate-pulse" />
+                                <rect x="9" y="5" width="2" height="2" fill="#fff" className="animate-pulse" />
+                              </svg>
+                              <div className="text-[9px] text-amber-400/90 font-bold uppercase tracking-widest text-center mt-1">
+                                * DEEP REASONING CYCLES ACTIVE *
+                              </div>
+                            </div>
+                          )}
+
+                          {retroPhase === "vibing" && (
+                            <div className="flex flex-col items-center justify-center space-y-2 relative">
+                              <div className="absolute left-[-30px] top-0 text-purple-500/40 text-[8px] animate-rain-1">1010</div>
+                              <div className="absolute right-[-30px] top-4 text-purple-500/40 text-[8px] animate-rain-2">0101</div>
+                              <div className="absolute left-0 top-6 text-purple-500/30 text-[8px] animate-rain-3">VIBE</div>
+                              
+                              <svg viewBox="0 0 16 16" className="w-20 h-20 text-purple-400 animate-bounce">
+                                <rect x="13" y="2" width="1" height="1" fill="#fff" />
+                                <rect x="12" y="3" width="1" height="1" fill="#fff" />
+                                <rect x="11" y="4" width="1" height="1" fill="#c084fc" />
+                                <rect x="10" y="5" width="1" height="1" fill="#c084fc" />
+                                <rect x="9" y="6" width="1" height="1" fill="#a855f7" />
+                                <rect x="8" y="7" width="1" height="1" fill="#a855f7" />
+                                <rect x="7" y="8" width="1" height="1" fill="#7c3aed" />
+                                <rect x="6" y="9" width="1" height="1" fill="#7c3aed" />
+                                <rect x="5" y="10" width="1" height="1" fill="#6d28d9" />
+                                <rect x="4" y="11" width="1" height="1" fill="#6d28d9" />
+                                <rect x="3" y="12" width="1" height="1" fill="#4c1d95" />
+                                <rect x="2" y="13" width="1" height="1" fill="#4c1d95" />
+                                <rect x="14" y="1" width="1" height="1" fill="#fbcfe8" className="animate-pulse" />
+                                <rect x="11" y="1" width="1" height="1" fill="#fbcfe8" className="animate-ping" />
+                                <rect x="14" y="4" width="1" height="1" fill="#fbcfe8" className="animate-ping" />
+                              </svg>
+                              <div className="text-[9px] text-purple-400 font-bold uppercase tracking-widest text-center mt-1">
+                                * STREAMING INTEGRATIONS AT 1000 WPM *
+                              </div>
+                            </div>
+                          )}
+
+                          {retroPhase === "building" && (
+                            <div className="flex flex-col items-center justify-center space-y-2">
+                              <svg viewBox="0 0 16 16" className="w-20 h-20 text-emerald-400">
+                                <rect x="2" y="10" width="12" height="4" fill="currentColor" />
+                                <rect x="3" y="5" width="10" height="4" fill="currentColor" opacity="0.8" />
+                                <rect x="5" y="1" width="6" height="3" fill="currentColor" opacity="0.6" />
+                                <rect x="4" y="11" width="1" height="1" fill="#fff" className="animate-pulse" />
+                                <rect x="6" y="11" width="1" height="1" fill="#22c55e" />
+                                <rect x="5" y="6" width="1" height="1" fill="#fff" className="animate-pulse" />
+                                <rect x="7" y="6" width="1" height="1" fill="#22c55e" />
+                                <rect x="7" y="2" width="1" height="1" fill="#22c55e" className="animate-pulse" />
+                              </svg>
+                              <div className="text-[9px] text-emerald-400 font-bold uppercase tracking-widest text-center mt-1">
+                                * HARD SECURED COMPILATION *
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Console Output Terminal */}
+                        <div className="bg-black/60 border border-white/5 p-2 rounded font-mono text-[9px] text-neutral-400 mt-2 select-text">
+                          {retroPhase === "thinking" && (
+                            <div className="space-y-1">
+                              <p className="text-amber-500 font-semibold">&gt; GURMAN@THINK: ~ reasoning_paths --r1 --claude</p>
+                              <p className="text-[8px] text-amber-500/75 animate-pulse">Running complex algorithmic logic paths & graph synthesis...</p>
+                              <p className="text-[8px] text-neutral-500">&gt; Status: 147 cognitive vectors cached. Reasoning nodes locked.</p>
+                            </div>
+                          )}
+
+                          {retroPhase === "vibing" && (
+                            <div className="space-y-1">
+                              <p className="text-purple-400 font-semibold">&gt; GURMAN@VIBE: ~ fullstack_prompter --lovable --v0</p>
+                              <p className="text-[8px] text-purple-400/75 animate-pulse">Streaming components & interactive frontend structures...</p>
+                              <p className="text-[8px] text-neutral-500">&gt; Status: Assembly velocity clocked at 100% capacity.</p>
+                            </div>
+                          )}
+
+                          {retroPhase === "building" && (
+                            <div className="space-y-1">
+                              <p className="text-emerald-400 font-semibold">&gt; GURMAN@BUILD: ~ static_compilation --cursor --integrity</p>
+                              <p className="text-[8px] text-emerald-400/75 animate-pulse">Securing schema locks and deploying server components...</p>
+                              <p className="text-[8px] text-neutral-500">&gt; Status: Integrity verified by static checks. All systems green.</p>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Progress Bar / Velocity Dial */}
+                        <div className="mt-2.5">
+                          <div className="flex justify-between text-[8px] text-neutral-400 uppercase mb-1">
+                            <span>Processing Velocity</span>
+                            <span className={
+                              retroPhase === "thinking" ? "text-amber-500" : retroPhase === "vibing" ? "text-purple-400" : "text-emerald-400"
+                            }>
+                              {retroPhase === "thinking" ? "30% (REASONING)" : retroPhase === "vibing" ? "100% (MAX SPEED)" : "65% (LOCKDOWN)"}
+                            </span>
+                          </div>
+                          <div className="w-full h-2 bg-neutral-900 border border-neutral-800 rounded-sm overflow-hidden flex p-0.5">
+                            {retroPhase === "thinking" && (
+                              <div className="w-[30%] h-full bg-amber-500" />
+                            )}
+                            {retroPhase === "vibing" && (
+                              <div className="w-full h-full bg-purple-500 animate-pulse" />
+                            )}
+                            {retroPhase === "building" && (
+                              <div className="w-[65%] h-full bg-emerald-500" />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Override Selectors Under CRT */}
+                    <div className="grid grid-cols-3 gap-2 mt-4">
                       <button
-                        onClick={() => setActivePipeline("growth")}
+                        onClick={() => {
+                          setRetroPhase("thinking");
+                          setIsAutoCycle(false);
+                        }}
                         className={`font-mono text-[10px] md:text-xs py-2 px-3 border transition-all duration-300 flex flex-col items-center justify-center gap-1 uppercase rounded-sm text-center ${
-                          activePipeline === "growth"
-                            ? "border-primary bg-primary-soft text-primary font-semibold shadow-[0_0_12px_rgba(var(--primary-rgb),0.15)]"
+                          retroPhase === "thinking"
+                            ? "border-amber-500 bg-amber-500/10 text-amber-500 font-semibold shadow-[0_0_12px_rgba(245,158,11,0.15)]"
                             : "border-border/60 bg-background/40 hover:bg-background/80 text-muted-foreground hover:text-foreground"
                         }`}
                       >
-                        <span>Growth & SDR</span>
-                        <span className="text-[8px] opacity-75 font-normal">Acquisition</span>
+                        <Brain size={14} className="mb-0.5" />
+                        <span>Thinking</span>
+                        <span className="text-[8px] opacity-75 font-normal">Deep R1 / Claude</span>
                       </button>
                       <button
-                        onClick={() => setActivePipeline("engineering")}
+                        onClick={() => {
+                          setRetroPhase("vibing");
+                          setIsAutoCycle(false);
+                        }}
                         className={`font-mono text-[10px] md:text-xs py-2 px-3 border transition-all duration-300 flex flex-col items-center justify-center gap-1 uppercase rounded-sm text-center ${
-                          activePipeline === "engineering"
-                            ? "border-primary bg-primary-soft text-primary font-semibold shadow-[0_0_12px_rgba(var(--primary-rgb),0.15)]"
+                          retroPhase === "vibing"
+                            ? "border-purple-500 bg-purple-500/10 text-purple-400 font-semibold shadow-[0_0_12px_rgba(168,85,247,0.15)]"
                             : "border-border/60 bg-background/40 hover:bg-background/80 text-muted-foreground hover:text-foreground"
                         }`}
                       >
-                        <span>Engineering Lab</span>
-                        <span className="text-[8px] opacity-75 font-normal">Builds</span>
+                        <Wand2 size={14} className="mb-0.5" />
+                        <span>Vibe Coding</span>
+                        <span className="text-[8px] opacity-75 font-normal">Lovable / v0</span>
                       </button>
                       <button
-                        onClick={() => setActivePipeline("media")}
+                        onClick={() => {
+                          setRetroPhase("building");
+                          setIsAutoCycle(false);
+                        }}
                         className={`font-mono text-[10px] md:text-xs py-2 px-3 border transition-all duration-300 flex flex-col items-center justify-center gap-1 uppercase rounded-sm text-center ${
-                          activePipeline === "media"
-                            ? "border-primary bg-primary-soft text-primary font-semibold shadow-[0_0_12px_rgba(var(--primary-rgb),0.15)]"
+                          retroPhase === "building"
+                            ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 font-semibold shadow-[0_0_12px_rgba(16,185,129,0.15)]"
                             : "border-border/60 bg-background/40 hover:bg-background/80 text-muted-foreground hover:text-foreground"
                         }`}
                       >
-                        <span>Content Engine</span>
-                        <span className="text-[8px] opacity-75 font-normal">Brand Synthesis</span>
+                        <Hammer size={14} className="mb-0.5" />
+                        <span>Building</span>
+                        <span className="text-[8px] opacity-75 font-normal">Cursor / db_api</span>
                       </button>
                     </div>
 
-                    {/* Render Active Pipeline Content */}
-                    {activePipeline === "growth" && (
-                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                        {/* Summary */}
-                        <div className="bg-background/60 border border-border/40 p-4 rounded-sm">
-                          <h4 className="font-display text-sm font-semibold text-foreground mb-1">
-                            The Client Acquisition Growth Engine
+                    {/* Explanatory phase summary card */}
+                    <div className="mt-6 bg-background/60 border border-border/40 p-4 rounded-sm transition-all duration-500">
+                      {retroPhase === "thinking" && (
+                        <div className="animate-in fade-in duration-300">
+                          <h4 className="font-display text-sm font-semibold text-amber-500 mb-1 flex items-center gap-1.5">
+                            <Brain size={14} /> Tier 1: Deep Reasoning & Thinking
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Integrates targeted lead discovery with dynamic system auditing and contextual outreach pipelines, running autonomously to find high-fit B2B partners.
+                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. Claude 3.5 Sonnet defines strict boundaries while DeepSeek R1 explores algorithmic scaling vectors to guarantee bug-free design foundations.
                           </p>
                         </div>
-
-                        {/* Flowchart Steps */}
-                        <div className="relative pl-6 border-l border-border/80 space-y-6">
-                          {/* Step 1 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">1</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Target Intake & Discovery</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-muted-foreground uppercase bg-card/60">Exa AI</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Queries semantic indexes to identify high-growth B2B startups compliant with specialized technical protocols.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 2 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">2</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Contextual System Auditing</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-primary uppercase bg-primary-soft">Claude 3.5 Sonnet</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Evaluates target site codebases and APIs to identify structural architectural bottlenecks and optimization rooms.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 3 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">3</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Personalized Cadence Dispatch</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-muted-foreground uppercase bg-card/60">n8n.io / Loops</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Triggers webhooks to assemble custom, highly specific value reports and dispatches tailored outreach cadences.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 4 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">4</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Memory Persistence Loop</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-amber-500 uppercase bg-amber-500/10">Mem0 / Tavily</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Retains outreach logs and target parameters to maintain client context across all future pipeline iterations.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {activePipeline === "engineering" && (
-                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                        {/* Summary */}
-                        <div className="bg-background/60 border border-border/40 p-4 rounded-sm">
-                          <h4 className="font-display text-sm font-semibold text-foreground mb-1">
-                            The Autonomous Software Engineering Lab
+                      )}
+                      {retroPhase === "vibing" && (
+                        <div className="animate-in fade-in duration-300">
+                          <h4 className="font-display text-sm font-semibold text-purple-400 mb-1 flex items-center gap-1.5">
+                            <Wand2 size={14} /> Tier 2: Prompt-Powered Vibe Coding
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Bridges full-stack UI compiler frontends with agent-in-the-loop developer reasoning tools, ensuring fast feature cycles with static integrity controls.
+                            Once logic is set, velocity is key. Using full-stack prompt sandboxes like Lovable.dev, Bolt.new, and v0.dev, I spin up polished, high-fidelity landing pages and operational modules in minutes, styling with pixel-perfect modern design tokens.
                           </p>
                         </div>
-
-                        {/* Flowchart Steps */}
-                        <div className="relative pl-6 border-l border-border/80 space-y-6">
-                          {/* Step 1 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">1</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Interactive Mockups & UI Layouts</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-muted-foreground uppercase bg-card/60">v0 / Lovable</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Generates clean, aesthetic UI layouts and web modules based on curated Design Aesthetic tokens.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 2 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">2</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Business Logic & Hooks</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-primary uppercase bg-primary-soft">Cursor / Windsurf</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Compiles system handlers, asynchronous logic controllers, and custom hooks directly inside the workspace.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 3 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">3</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Relational Schema & Semantic RAG</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-muted-foreground uppercase bg-card/60">Supabase Vector</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Indexes technical documentation and libraries, embedding them into Postgres vector tables for rapid semantic RAG retrieval.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 4 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">4</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">API Schema Integrity Audit</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-amber-500 uppercase bg-amber-500/10">db_api_integrity</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Asserts static validation locks on data objects and checks API payloads to block schema leaks or routing regressions.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {activePipeline === "media" && (
-                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                        {/* Summary */}
-                        <div className="bg-background/60 border border-border/40 p-4 rounded-sm">
-                          <h4 className="font-display text-sm font-semibold text-foreground mb-1">
-                            The Generative Content & Brand Engine
+                      )}
+                      {retroPhase === "building" && (
+                        <div className="animate-in fade-in duration-300">
+                          <h4 className="font-display text-sm font-semibold text-emerald-400 mb-1 flex items-center gap-1.5">
+                            <Hammer size={14} /> Tier 3: Production Compiling & Building
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Converts long-form insights into multi-format, rich creative assets to scale brand authority automatically across professional channels.
+                            Where vibes meet engineering. I bridge layout prototypes into Cursor and Windsurf to compile clean code hooks, database schemas inside Supabase, and apply static validation barriers like db_api_integrity for absolute production durability.
                           </p>
                         </div>
-
-                        {/* Flowchart Steps */}
-                        <div className="relative pl-6 border-l border-border/80 space-y-6">
-                          {/* Step 1 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">1</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Value Extraction Parsing</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-muted-foreground uppercase bg-card/60">GPT-4o</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Extracts architectural frameworks, strategic timelines, and core topics from longform audio scripts and client notes.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 2 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">2</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">High-Fidelity Vocal Synthesis</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-primary uppercase bg-primary-soft">ElevenLabs</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Transcribes strategic articles into lifelike professional voiceovers, maintaining clear narrative authority.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 3 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">3</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Visual Asset Concepts</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-muted-foreground uppercase bg-card/60">Midjourney v6</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Compiles gorgeous, dark-mode glassmorphic visual assets matching the signature design system.
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Step 4 */}
-                          <div className="relative">
-                            <span className="absolute -left-[31px] top-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-primary text-primary-foreground font-mono text-[9px] font-bold">4</span>
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Dynamic Motion Loops</span>
-                                <span className="font-mono text-[8px] border border-border px-1 text-amber-500 uppercase bg-amber-500/10">Runway Gen-3</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground">
-                                Assembles abstract atmospheric motion loops and cinematic B-rolls to back key narrative clips.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                {/* Right Column: Dynamic Tool Directory (A clean, elegant directory of what tools make it up) */}
+                {/* Right Column: Gurman's Tool Arsenal */}
                 <div className="lg:col-span-5 space-y-6">
-                  {/* Category Filter Selector or Direct Accordion List */}
                   <div className="border border-border bg-card/60 backdrop-blur-sm p-6 rounded-sm panel-edge">
                     <div className="border-b border-border pb-4 mb-5 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Cpu className="h-4.5 w-4.5 text-primary" />
                         <h3 className="font-mono text-xs font-semibold tracking-wider uppercase text-foreground">
-                          // SOVEREIGN MODEL STACK
+                          // GURMAN'S COGNITIVE ARSENAL
                         </h3>
                       </div>
-                      <span className="font-mono text-[10px] text-muted-foreground uppercase">20 ONLINE</span>
+                      <span className="font-mono text-[10px] text-muted-foreground uppercase">12 CORE TOOLS</span>
                     </div>
 
                     <p className="text-xs text-muted-foreground leading-relaxed mb-6">
-                      The core architecture of verified models, libraries, and generative runtimes integrated within our pipelines.
+                      My personal everyday tool deck, categorized by cognitive layer. Gated with active pinging indicators.
                     </p>
 
                     <div className="space-y-4">
-                      {/* Brain Category */}
+                      {/* Thinking Category */}
                       <div>
                         <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
-                          <span className="font-mono text-[10px] uppercase text-foreground font-bold">1. Neural Processing (The Brain)</span>
-                          <span className="font-mono text-[8px] text-primary bg-primary-soft px-1 rounded-sm">REASONING</span>
+                          <span className="font-mono text-[10px] uppercase text-amber-500 font-bold">1. Thinking Core</span>
+                          <span className="font-mono text-[8px] text-amber-500 bg-amber-500/10 px-1 rounded-sm">REASONING</span>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
-                          {techStack.brain.slice(0, 4).map((t, idx) => (
-                            <div key={idx} className="bg-background/40 border border-border/40 hover:border-primary/20 p-2 rounded-sm transition-colors duration-300">
-                              <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">{t.name}</p>
-                              <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{t.role}</p>
-                            </div>
-                          ))}
+                          <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Claude 3.5 Sonnet</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Primary Logic Builder</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">DeepSeek R1</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Algorithmic Strategy</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">GPT-4o</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Structural Parsing</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Gemini 1.5 Pro</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">2M Context Directory</p>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Spine Category */}
+                      {/* Vibe Coding Category */}
                       <div>
                         <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
-                          <span className="font-mono text-[10px] uppercase text-foreground font-bold">2. Agentic Matrix (The Spine)</span>
-                          <span className="font-mono text-[8px] text-green-500 bg-green-500/10 px-1 rounded-sm">MEM & RAG</span>
+                          <span className="font-mono text-[10px] uppercase text-purple-400 font-bold">2. Vibe Coding Layer</span>
+                          <span className="font-mono text-[8px] text-purple-400 bg-purple-500/10 px-1 rounded-sm">VELOCITY</span>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
-                          {techStack.spine.slice(0, 4).map((t, idx) => (
-                            <div key={idx} className="bg-background/40 border border-border/40 hover:border-primary/20 p-2 rounded-sm transition-colors duration-300">
-                              <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">{t.name}</p>
-                              <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{t.role}</p>
-                            </div>
-                          ))}
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Lovable.dev</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Rapid App Assembly</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Bolt.new</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">In-Browser Sandbox</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">v0.dev</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">UI Component Layouts</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Midjourney v6</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Modern Visual Concepts</p>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Workshop Category */}
+                      {/* Building Category */}
                       <div>
                         <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
-                          <span className="font-mono text-[10px] uppercase text-foreground font-bold">3. Engineering Labs (The Workshop)</span>
-                          <span className="font-mono text-[8px] text-primary bg-primary-soft px-1 rounded-sm">COMPILERS</span>
+                          <span className="font-mono text-[10px] uppercase text-emerald-400 font-bold">3. Building & Deployment</span>
+                          <span className="font-mono text-[8px] text-emerald-400 bg-emerald-500/10 px-1 rounded-sm">COMPILERS</span>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
-                          {techStack.workshop.slice(0, 4).map((t, idx) => (
-                            <div key={idx} className="bg-background/40 border border-border/40 hover:border-primary/20 p-2 rounded-sm transition-colors duration-300">
-                              <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">{t.name}</p>
-                              <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{t.role}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Studio Category */}
-                      <div>
-                        <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
-                          <span className="font-mono text-[10px] uppercase text-foreground font-bold">4. Generative Studio (The Studio)</span>
-                          <span className="font-mono text-[8px] text-amber-500 bg-amber-500/10 px-1 rounded-sm">CREATIVE</span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2 text-xs">
-                          {techStack.studio.slice(0, 4).map((t, idx) => (
-                            <div key={idx} className="bg-background/40 border border-border/40 hover:border-primary/20 p-2 rounded-sm transition-colors duration-300">
-                              <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">{t.name}</p>
-                              <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{t.role}</p>
-                            </div>
-                          ))}
+                          <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Cursor IDE</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Agent-in-Loop Builder</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Supabase Vector</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">RAG Memory Indexer</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">n8n.io</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Model Webhook Router</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">db_api_integrity</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Static Migration Audits</p>
+                          </div>
                         </div>
                       </div>
                     </div>
