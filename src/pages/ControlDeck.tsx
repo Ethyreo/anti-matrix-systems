@@ -260,12 +260,12 @@ const ControlDeck = () => {
   const [activeTab, setActiveTab] = useState("blogs");
   
   // Retro 8-bit cognitive pipeline phase state
-  const [retroPhase, setRetroPhase] = useState<"thinking" | "vibing" | "building">("thinking");
+  const [retroPhase, setRetroPhase] = useState<"thinking" | "building" | "orchestrating">("thinking");
   const [isAutoCycle, setIsAutoCycle] = useState(true);
 
   useEffect(() => {
     if (!isAutoCycle) return;
-    const phases: ("thinking" | "vibing" | "building")[] = ["thinking", "vibing", "building"];
+    const phases: ("thinking" | "building" | "orchestrating")[] = ["thinking", "building", "orchestrating"];
     const interval = setInterval(() => {
       setRetroPhase((current) => {
         const nextIndex = (phases.indexOf(current) + 1) % phases.length;
@@ -716,7 +716,7 @@ const ControlDeck = () => {
                     Gurman's Sovereign AI Stack
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    This is my day-to-day stack. I operate across three cognitive tiers—Thinking deeply with reasoning models, Vibe Coding rapid fullstack compilers, and Building robust production systems with strict integrity controls.
+                    This is my day-to-day stack. I operate across three cognitive tiers—Thinking deeply with reasoning models, Building agentic pipelines, and Orchestrating robust systems at scale.
                   </p>
                 </div>
               </div>
@@ -743,7 +743,7 @@ const ControlDeck = () => {
                     {/* Retro 8-bit CRT monitor block */}
                     <div className={`relative w-full aspect-[16/10] border-8 bg-neutral-950 p-4 rounded-md shadow-2xl flex flex-col justify-between overflow-hidden select-none transition-colors duration-500 ${
                       retroPhase === "thinking" ? "border-amber-900/60 shadow-[inset_0_0_30px_rgba(245,158,11,0.25)]" : 
-                      retroPhase === "vibing" ? "border-purple-900/60 shadow-[inset_0_0_30px_rgba(168,85,247,0.25)]" : 
+                      retroPhase === "building" ? "border-purple-900/60 shadow-[inset_0_0_30px_rgba(168,85,247,0.25)]" : 
                       "border-emerald-900/60 shadow-[inset_0_0_30px_rgba(16,185,129,0.25)]"
                     }`}>
                       {/* CRT Curve Mask overlay */}
@@ -761,7 +761,7 @@ const ControlDeck = () => {
                         <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
                           <div className="flex items-center gap-1.5">
                             <span className={`h-2 w-2 rounded-full animate-pulse ${
-                              retroPhase === "thinking" ? "bg-amber-500" : retroPhase === "vibing" ? "bg-purple-500" : "bg-emerald-500"
+                              retroPhase === "thinking" ? "bg-amber-500" : retroPhase === "building" ? "bg-purple-500" : "bg-emerald-500"
                             }`} />
                             <span className="uppercase text-[9px] font-bold text-neutral-400 tracking-wider">
                               GURMAN-CRT-V1 // COGNITIVE_STATE
@@ -769,10 +769,10 @@ const ControlDeck = () => {
                           </div>
                           <span className={`text-[8px] px-1 border rounded-sm font-bold uppercase ${
                             retroPhase === "thinking" ? "bg-amber-500/10 border-amber-500/30 text-amber-500" : 
-                            retroPhase === "vibing" ? "bg-purple-500/10 border-purple-500/30 text-purple-400" : 
+                            retroPhase === "building" ? "bg-purple-500/10 border-purple-500/30 text-purple-400" : 
                             "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
                           }`}>
-                            {retroPhase === "thinking" ? "THINKING" : retroPhase === "vibing" ? "VIBE CODING" : "BUILDING"}
+                            {retroPhase === "thinking" ? "THINKING" : retroPhase === "building" ? "BUILDING" : "ORCHESTRATING"}
                           </span>
                         </div>
 
@@ -800,36 +800,32 @@ const ControlDeck = () => {
                             </div>
                           )}
 
-                          {retroPhase === "vibing" && (
+                          {retroPhase === "building" && (
                             <div className="flex flex-col items-center justify-center space-y-2 relative">
                               <div className="absolute left-[-30px] top-0 text-purple-500/40 text-[8px] animate-rain-1">1010</div>
                               <div className="absolute right-[-30px] top-4 text-purple-500/40 text-[8px] animate-rain-2">0101</div>
-                              <div className="absolute left-0 top-6 text-purple-500/30 text-[8px] animate-rain-3">VIBE</div>
+                              <div className="absolute left-0 top-6 text-purple-500/30 text-[8px] animate-rain-3">BUILD</div>
                               
                               <svg viewBox="0 0 16 16" className="w-20 h-20 text-purple-400 animate-bounce">
-                                <rect x="13" y="2" width="1" height="1" fill="#fff" />
-                                <rect x="12" y="3" width="1" height="1" fill="#fff" />
-                                <rect x="11" y="4" width="1" height="1" fill="#c084fc" />
-                                <rect x="10" y="5" width="1" height="1" fill="#c084fc" />
-                                <rect x="9" y="6" width="1" height="1" fill="#a855f7" />
-                                <rect x="8" y="7" width="1" height="1" fill="#a855f7" />
-                                <rect x="7" y="8" width="1" height="1" fill="#7c3aed" />
-                                <rect x="6" y="9" width="1" height="1" fill="#7c3aed" />
-                                <rect x="5" y="10" width="1" height="1" fill="#6d28d9" />
-                                <rect x="4" y="11" width="1" height="1" fill="#6d28d9" />
-                                <rect x="3" y="12" width="1" height="1" fill="#4c1d95" />
-                                <rect x="2" y="13" width="1" height="1" fill="#4c1d95" />
-                                <rect x="14" y="1" width="1" height="1" fill="#fbcfe8" className="animate-pulse" />
-                                <rect x="11" y="1" width="1" height="1" fill="#fbcfe8" className="animate-ping" />
-                                <rect x="14" y="4" width="1" height="1" fill="#fbcfe8" className="animate-ping" />
+                                <rect x="2" y="2" width="2" height="12" fill="currentColor" />
+                                <rect x="4" y="2" width="2" height="2" fill="currentColor" />
+                                <rect x="4" y="12" width="2" height="2" fill="currentColor" />
+                                <rect x="12" y="2" width="2" height="12" fill="currentColor" />
+                                <rect x="10" y="2" width="2" height="2" fill="currentColor" />
+                                <rect x="10" y="12" width="2" height="2" fill="currentColor" />
+                                <rect x="5" y="5" width="6" height="2" fill="#fff" className="animate-pulse" />
+                                <rect x="5" y="8" width="4" height="2" fill="currentColor" />
+                                <rect x="5" y="11" width="3" height="1" fill="#fff" />
+                                <rect x="1" y="5" width="1" height="1" fill="#c084fc" className="animate-ping" />
+                                <rect x="14" y="9" width="1" height="1" fill="#c084fc" className="animate-ping" />
                               </svg>
                               <div className="text-[9px] text-purple-400 font-bold uppercase tracking-widest text-center mt-1">
-                                * STREAMING INTEGRATIONS AT 1000 WPM *
+                                * ACTIVE AGENT COMPILATION ONLINE *
                               </div>
                             </div>
                           )}
 
-                          {retroPhase === "building" && (
+                          {retroPhase === "orchestrating" && (
                             <div className="flex flex-col items-center justify-center space-y-2">
                               <svg viewBox="0 0 16 16" className="w-20 h-20 text-emerald-400">
                                 <rect x="2" y="10" width="12" height="4" fill="currentColor" />
@@ -842,7 +838,7 @@ const ControlDeck = () => {
                                 <rect x="7" y="2" width="1" height="1" fill="#22c55e" className="animate-pulse" />
                               </svg>
                               <div className="text-[9px] text-emerald-400 font-bold uppercase tracking-widest text-center mt-1">
-                                * HARD SECURED COMPILATION *
+                                * ORCHESTRATION PIPELINES ONLINE *
                               </div>
                             </div>
                           )}
@@ -852,25 +848,25 @@ const ControlDeck = () => {
                         <div className="bg-black/60 border border-white/5 p-2 rounded font-mono text-[9px] text-neutral-400 mt-2 select-text">
                           {retroPhase === "thinking" && (
                             <div className="space-y-1">
-                              <p className="text-amber-500 font-semibold">&gt; GURMAN@THINK: ~ reasoning_paths --r1 --claude</p>
-                              <p className="text-[8px] text-amber-500/75 animate-pulse">Running complex algorithmic logic paths & graph synthesis...</p>
-                              <p className="text-[8px] text-neutral-500">&gt; Status: 147 cognitive vectors cached. Reasoning nodes locked.</p>
-                            </div>
-                          )}
-
-                          {retroPhase === "vibing" && (
-                            <div className="space-y-1">
-                              <p className="text-purple-400 font-semibold">&gt; GURMAN@VIBE: ~ fullstack_prompter --lovable --v0</p>
-                              <p className="text-[8px] text-purple-400/75 animate-pulse">Streaming components & interactive frontend structures...</p>
-                              <p className="text-[8px] text-neutral-500">&gt; Status: Assembly velocity clocked at 100% capacity.</p>
+                              <p className="text-amber-500 font-semibold">&gt; GURMAN@THINK: ~ reasoning_paths --cloud --local</p>
+                              <p className="text-[8px] text-amber-500/75 animate-pulse">Consulting OpenAI, Anthropic, Gemini & local swarms...</p>
+                              <p className="text-[8px] text-neutral-500">&gt; Status: 247 logic nodes simulated. GTM strategy ready.</p>
                             </div>
                           )}
 
                           {retroPhase === "building" && (
                             <div className="space-y-1">
-                              <p className="text-emerald-400 font-semibold">&gt; GURMAN@BUILD: ~ static_compilation --cursor --integrity</p>
-                              <p className="text-[8px] text-emerald-400/75 animate-pulse">Securing schema locks and deploying server components...</p>
-                              <p className="text-[8px] text-neutral-500">&gt; Status: Integrity verified by static checks. All systems green.</p>
+                              <p className="text-purple-400 font-semibold">&gt; GURMAN@BUILD: ~ agentic_stack --antigravity --codex</p>
+                              <p className="text-[8px] text-purple-400/75 animate-pulse">Antigravity & Codex writing layout templates and tests...</p>
+                              <p className="text-[8px] text-neutral-500">&gt; Status: 12 subagent workers active. Write cycles solid.</p>
+                            </div>
+                          )}
+
+                          {retroPhase === "orchestrating" && (
+                            <div className="space-y-1">
+                              <p className="text-emerald-400 font-semibold">&gt; GURMAN@ORCHESTRATE: ~ maos_router --supabase --n8n</p>
+                              <p className="text-[8px] text-emerald-400/75 animate-pulse">Routing token complexities & database locks...</p>
+                              <p className="text-[8px] text-neutral-500">&gt; Status: Syncing Obsidian second brain. 0 failures detected.</p>
                             </div>
                           )}
                         </div>
@@ -880,20 +876,20 @@ const ControlDeck = () => {
                           <div className="flex justify-between text-[8px] text-neutral-400 uppercase mb-1">
                             <span>Processing Velocity</span>
                             <span className={
-                              retroPhase === "thinking" ? "text-amber-500" : retroPhase === "vibing" ? "text-purple-400" : "text-emerald-400"
+                              retroPhase === "thinking" ? "text-amber-500" : retroPhase === "building" ? "text-purple-400" : "text-emerald-400"
                             }>
-                              {retroPhase === "thinking" ? "30% (REASONING)" : retroPhase === "vibing" ? "100% (MAX SPEED)" : "65% (LOCKDOWN)"}
+                              {retroPhase === "thinking" ? "35% (THINKING)" : retroPhase === "building" ? "100% (AGENT VELOCITY)" : "75% (SYSTEM SCALE)"}
                             </span>
                           </div>
                           <div className="w-full h-2 bg-neutral-900 border border-neutral-800 rounded-sm overflow-hidden flex p-0.5">
                             {retroPhase === "thinking" && (
-                              <div className="w-[30%] h-full bg-amber-500" />
-                            )}
-                            {retroPhase === "vibing" && (
-                              <div className="w-full h-full bg-purple-500 animate-pulse" />
+                              <div className="w-[35%] h-full bg-amber-500" />
                             )}
                             {retroPhase === "building" && (
-                              <div className="w-[65%] h-full bg-emerald-500" />
+                              <div className="w-full h-full bg-purple-500 animate-pulse" />
+                            )}
+                            {retroPhase === "orchestrating" && (
+                              <div className="w-[75%] h-full bg-emerald-500" />
                             )}
                           </div>
                         </div>
@@ -915,22 +911,7 @@ const ControlDeck = () => {
                       >
                         <Brain size={14} className="mb-0.5" />
                         <span>Thinking</span>
-                        <span className="text-[8px] opacity-75 font-normal">Deep R1 / Claude</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          setRetroPhase("vibing");
-                          setIsAutoCycle(false);
-                        }}
-                        className={`font-mono text-[10px] md:text-xs py-2 px-3 border transition-all duration-300 flex flex-col items-center justify-center gap-1 uppercase rounded-sm text-center ${
-                          retroPhase === "vibing"
-                            ? "border-purple-500 bg-purple-500/10 text-purple-400 font-semibold shadow-[0_0_12px_rgba(168,85,247,0.15)]"
-                            : "border-border/60 bg-background/40 hover:bg-background/80 text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        <Wand2 size={14} className="mb-0.5" />
-                        <span>Vibe Coding</span>
-                        <span className="text-[8px] opacity-75 font-normal">Lovable / v0</span>
+                        <span className="text-[8px] opacity-75 font-normal">OpenAI / Gemini / Anthropic</span>
                       </button>
                       <button
                         onClick={() => {
@@ -939,13 +920,28 @@ const ControlDeck = () => {
                         }}
                         className={`font-mono text-[10px] md:text-xs py-2 px-3 border transition-all duration-300 flex flex-col items-center justify-center gap-1 uppercase rounded-sm text-center ${
                           retroPhase === "building"
-                            ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 font-semibold shadow-[0_0_12px_rgba(16,185,129,0.15)]"
+                            ? "border-purple-500 bg-purple-500/10 text-purple-400 font-semibold shadow-[0_0_12px_rgba(168,85,247,0.15)]"
                             : "border-border/60 bg-background/40 hover:bg-background/80 text-muted-foreground hover:text-foreground"
                         }`}
                       >
                         <Hammer size={14} className="mb-0.5" />
                         <span>Building</span>
-                        <span className="text-[8px] opacity-75 font-normal">Cursor / db_api</span>
+                        <span className="text-[8px] opacity-75 font-normal">Antigravity / Codex / Claude</span>
+                      </button>
+                      <button
+                        onClick={() => {
+                          setRetroPhase("orchestrating");
+                          setIsAutoCycle(false);
+                        }}
+                        className={`font-mono text-[10px] md:text-xs py-2 px-3 border transition-all duration-300 flex flex-col items-center justify-center gap-1 uppercase rounded-sm text-center ${
+                          retroPhase === "orchestrating"
+                            ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 font-semibold shadow-[0_0_12px_rgba(16,185,129,0.15)]"
+                            : "border-border/60 bg-background/40 hover:bg-background/80 text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        <Network size={14} className="mb-0.5" />
+                        <span>Orchestrating</span>
+                        <span className="text-[8px] opacity-75 font-normal">MAOS / Supabase / n8n</span>
                       </button>
                     </div>
 
@@ -954,30 +950,30 @@ const ControlDeck = () => {
                       {retroPhase === "thinking" && (
                         <div className="animate-in fade-in duration-300">
                           <h4 className="font-display text-sm font-semibold text-amber-500 mb-1 flex items-center gap-1.5">
-                            <Brain size={14} /> Tier 1: Deep Reasoning & Thinking
+                            <Brain size={14} /> Tier 1: Deep Thinking & Reasoning
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. Claude 3.5 Sonnet defines strict boundaries while DeepSeek R1 explores algorithmic scaling vectors to guarantee bug-free design foundations.
-                          </p>
-                        </div>
-                      )}
-                      {retroPhase === "vibing" && (
-                        <div className="animate-in fade-in duration-300">
-                          <h4 className="font-display text-sm font-semibold text-purple-400 mb-1 flex items-center gap-1.5">
-                            <Wand2 size={14} /> Tier 2: Prompt-Powered Vibe Coding
-                          </h4>
-                          <p className="text-xs text-muted-foreground leading-relaxed">
-                            Once logic is set, velocity is key. Using full-stack prompt sandboxes like Lovable.dev, Bolt.new, and v0.dev, I spin up polished, high-fidelity landing pages and operational modules in minutes, styling with pixel-perfect modern design tokens.
+                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. OpenAI (o1/o3-mini), Anthropic Claude 3.5, and Gemini 1.5 Pro analyze context windows and structure complete, bug-free specifications, assisted by local swarms.
                           </p>
                         </div>
                       )}
                       {retroPhase === "building" && (
                         <div className="animate-in fade-in duration-300">
-                          <h4 className="font-display text-sm font-semibold text-emerald-400 mb-1 flex items-center gap-1.5">
-                            <Hammer size={14} /> Tier 3: Production Compiling & Building
+                          <h4 className="font-display text-sm font-semibold text-purple-400 mb-1 flex items-center gap-1.5">
+                            <Hammer size={14} /> Tier 2: Agentic Coding & Building
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Where vibes meet engineering. I bridge layout prototypes into Cursor and Windsurf to compile clean code hooks, database schemas inside Supabase, and apply static validation barriers like db_api_integrity for absolute production durability.
+                            Where thoughts become executable code. I operate top-tier developer agents including Antigravity, Codex, and Anthropic's Claude Code CLI to command files, compile apps, and build clean structures at hyper-speed.
+                          </p>
+                        </div>
+                      )}
+                      {retroPhase === "orchestrating" && (
+                        <div className="animate-in fade-in duration-300">
+                          <h4 className="font-display text-sm font-semibold text-emerald-400 mb-1 flex items-center gap-1.5">
+                            <Network size={14} /> Tier 3: Multi-Agent Orchestration & Scale
+                          </h4>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            Where systems scale. Using my custom Multi-Agent Operating System (MAOS), I route tasks dynamically between local and cloud layers, maintain vector records and transactional ledgers in Supabase, hook up n8n webhook automation, and audit migrations.
                           </p>
                         </div>
                       )}
@@ -1011,46 +1007,20 @@ const ControlDeck = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Claude 3.5 Sonnet</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Primary Logic Builder</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">OpenAI o1 / o3-pro</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">GTM & Strategic Logic</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">DeepSeek R1</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Algorithmic Strategy</p>
-                          </div>
-                          <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">GPT-4o</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Structural Parsing</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Anthropic Claude</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Complex Prompt Design</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
                             <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Gemini 1.5 Pro</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">2M Context Directory</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">2M Context Ingestion</p>
                           </div>
-                        </div>
-                      </div>
-
-                      {/* Vibe Coding Category */}
-                      <div>
-                        <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
-                          <span className="font-mono text-[10px] uppercase text-purple-400 font-bold">2. Vibe Coding Layer</span>
-                          <span className="font-mono text-[8px] text-purple-400 bg-purple-500/10 px-1 rounded-sm">VELOCITY</span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2 text-xs">
-                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Lovable.dev</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Rapid App Assembly</p>
-                          </div>
-                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Bolt.new</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">In-Browser Sandbox</p>
-                          </div>
-                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">v0.dev</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">UI Component Layouts</p>
-                          </div>
-                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Midjourney v6</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Modern Visual Concepts</p>
+                          <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">DeepSeek R1 (Local)</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Offline Logic Cycles</p>
                           </div>
                         </div>
                       </div>
@@ -1058,25 +1028,51 @@ const ControlDeck = () => {
                       {/* Building Category */}
                       <div>
                         <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
-                          <span className="font-mono text-[10px] uppercase text-emerald-400 font-bold">3. Building & Deployment</span>
-                          <span className="font-mono text-[8px] text-emerald-400 bg-emerald-500/10 px-1 rounded-sm">COMPILERS</span>
+                          <span className="font-mono text-[10px] uppercase text-purple-400 font-bold">2. Building Tools</span>
+                          <span className="font-mono text-[8px] text-purple-400 bg-purple-500/10 px-1 rounded-sm">AGENTS</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 text-xs">
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Antigravity CLI</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Pair-Programming Coder</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Codex CLI</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Workspace Orchestrator</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Claude Code</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Command Line Agent</p>
+                          </div>
+                          <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Cursor / Windsurf</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Agent-in-Loop IDEs</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Orchestration Category */}
+                      <div>
+                        <div className="flex items-center justify-between border-b border-border/40 pb-1 mb-2">
+                          <span className="font-mono text-[10px] uppercase text-emerald-400 font-bold">3. Orchestration & Scale</span>
+                          <span className="font-mono text-[8px] text-emerald-400 bg-emerald-500/10 px-1 rounded-sm">SYSTEMS</span>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Cursor IDE</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Agent-in-Loop Builder</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">MAOS Router</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Asymmetric Token Proxy</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Supabase Vector</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">RAG Memory Indexer</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Supabase Cloud</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Database & Vector Ledger</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
                             <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">n8n.io</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Model Webhook Router</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Webhook Operations</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-emerald-500/20 p-2 rounded-sm transition-colors duration-300">
                             <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">db_api_integrity</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Static Migration Audits</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Static Migration Locks</p>
                           </div>
                         </div>
                       </div>
