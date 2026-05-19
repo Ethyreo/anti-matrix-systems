@@ -1,6 +1,12 @@
 const AnimatedBackground = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+    <div 
+      className="absolute inset-0 overflow-hidden pointer-events-none opacity-40"
+      style={{
+        maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)'
+      }}
+    >
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">

@@ -123,6 +123,14 @@ const Index = () => {
           <AnimatedBackground />
         </div>
         <div className="absolute inset-0 scanline-mask opacity-30" aria-hidden="true" />
+        
+        {/* Ambient bottom transition glow */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[var(--bg-void)]/45 to-[var(--bg-void)] pointer-events-none z-10" />
+        
+        {/* Glow Divider (anti-matter theme transition seam) */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent z-20 pointer-events-none" />
+        <div className="absolute bottom-0 left-[20%] right-[20%] h-[3px] bg-gradient-to-r from-transparent via-[var(--data)] to-transparent opacity-20 blur-[2px] z-20 pointer-events-none" />
+        <div className="absolute bottom-0 left-[30%] right-[30%] h-[5px] bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-30 blur-[4px] z-20 pointer-events-none" />
         <div className="container relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] items-center gap-12 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="max-w-4xl animate-fade-in text-left">
             <div className="mb-8 inline-flex items-center gap-3 border border-border bg-card/70 px-4 py-3 backdrop-blur-md panel-edge">
