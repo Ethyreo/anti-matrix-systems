@@ -220,25 +220,107 @@ const appsData: AppSpec[] = [
   },
 ];
 
-// Expanded AI Tech Stack data
+// Expanded AI Tech Stack data - Organized for futuristic high-fidelity neural visualizer
 const techStack = {
-  foundation: ["Claude 3.5 Sonnet (Core Reasoning)", "Gemini 1.5 Pro (Deep Context)", "GPT-4o (GTM Strategy)", "DeepSeek R1 (Logical Orchestrations)", "Llama 3.1 (Local Inference)"],
-  mcp: ["GitHub MCP (Branch & Issue Control)", "Postman MCP (API Schema Tests)", "SQLite & PostgreSQL MCP", "Filesystem MCP (Offline Control)", "Memory Bank MCP (Structured State)"],
-  build: ["Cursor IDE", "Antigravity Agent", "Lovable AI (UI Assembly)", "Replit Agent", "v0.dev", "Supabase DB"],
-  skills: [
-    "db_api_integrity skill (Database safety)",
-    "infra_guard skill (Security & AWS Audits)",
-    "premium_ui_audit skill (Aesthetics & Tokens)",
-    "Context7 skill (SDK documentation loader)",
-    "Exa Search skill (High-signal technical search)",
+  brain: [
+    { name: "Claude 3.5 Sonnet", role: "Agentic reasoning & multi-step coding", status: "PRIMARY" },
+    { name: "DeepSeek R1", role: "Deep logic & complex reasoning swarms", status: "ONLINE" },
+    { name: "Gemini 1.5 Pro", role: "2M Context ingestion & complete audits", status: "ONLINE" },
+    { name: "OpenAI o1-pro", role: "Strategic GTM & enterprise logic maps", status: "STANDBY" },
+    { name: "Qwen 2.5 Coder", role: "Local offline autocomplete & inference", status: "ONLINE" },
   ],
-  automation: ["n8n.io loops (Automated SDR pipelines)", "Local FastAPI Prompts Router", "Stripe API & Accounting Webhooks", "Git Workspace Hook Automations"],
-  creative: ["Canva Pro API", "Leonardo.ai (Concept asset generation)", "OpenAI Sora & Kling AI", "Google VEO Video Synthesis", "Beehiiv Newsletter Automation"],
+  spine: [
+    { name: "LangGraph", role: "Stateful swarms & cyclical agent loops", status: "ACTIVE" },
+    { name: "Exa & Tavily AI", role: "High-signal real-time web searches", status: "ACTIVE" },
+    { name: "CrewAI", role: "Role-playing multi-agent task execution", status: "ACTIVE" },
+    { name: "Mem0", role: "Persistent profile memory across sessions", status: "ACTIVE" },
+    { name: "Phidata", role: "Semantic tool & server function calling", status: "STANDBY" },
+  ],
+  workshop: [
+    { name: "Cursor & Windsurf", role: "Agent-in-the-loop developer workspaces", status: "SYNCED" },
+    { name: "Lovable & Bolt", role: "Fullstack rapid web app compilers", status: "SYNCED" },
+    { name: "v0.dev", role: "Component UI layouts & web frameworks", status: "SYNCED" },
+    { name: "Supabase Vector", role: "PGVector retrieval embeddings & RAG", status: "SYNCED" },
+    { name: "Copilot Workspace", role: "Large-scale codebase refactoring", status: "STANDBY" },
+  ],
+  studio: [
+    { name: "ElevenLabs", role: "High-fidelity neural voice synthesis", status: "ACTIVE" },
+    { name: "Midjourney v6", role: "Cinematic concept asset creation", status: "ONLINE" },
+    { name: "HeyGen Avatars", role: "AI-driven professional avatar video", status: "STANDBY" },
+    { name: "Runway Gen-3", role: "Generative motion B-roll videography", status: "ACTIVE" },
+    { name: "Udio & Suno", role: "Focus soundtrack soundwave synthesis", status: "ONLINE" },
+  ],
 };
 
 const ControlDeck = () => {
   const [activeTab, setActiveTab] = useState("blogs");
   
+  // Simulated logs state for futuristic AI stack visualizer
+  const [logs, setLogs] = useState<string[]>([
+    "SYS/INIT // NEURAL CORE ROUTER ONLINE",
+    "PORT/8080 // LOCALHOST LISTENING SENSOR STABLE",
+    "MEM/BANK // STRUCTURAL DIRECTORY ALIGNMENT VERIFIED",
+  ]);
+  const [isScanning, setIsScanning] = useState(false);
+  const logContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Live simulated telemetry logs
+  useEffect(() => {
+    const logTemplates = [
+      "CLAUDE-3.5-SONNET // Agentic logic path lock initialized on thread-09.",
+      "DEEPSEEK-R1 // Reasoning graph completed successfully in 12.4s.",
+      "GEMINI-1.5-PRO // Multi-modal intake buffer mapped: 1.4M tokens cached.",
+      "N8N-OUTREACH // Automated cold loop SDR-02 activated: 4 outbound pings sent.",
+      "EXA-ROUTER // High-signal index query: 'OpenRTB standard compliant prebid configurations'.",
+      "STRIPE-API // Webhook listener validated accounting matrix ledger sync.",
+      "ANTIGRAVITY // Memory Bank synchronized with centralized Obsidian vault map.",
+      "ELEVENLABS // Custom speech generation buffer allocated for voice responses.",
+      "SUPABASE-DB // PGVector embeddings similarity matching complete: confidence 0.96.",
+      "SYSTEM-CORE // Optimization sweep finished: 99.1% core capacity efficiency."
+    ];
+
+    const interval = setInterval(() => {
+      const randomTemplate = logTemplates[Math.floor(Math.random() * logTemplates.length)];
+      const timestamp = new Date().toLocaleTimeString();
+      setLogs((prev) => {
+        const updated = [...prev, `[${timestamp}] ${randomTemplate}`];
+        return updated.slice(-20); // Maintain last 20 logs
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-scroll logs to bottom
+  useEffect(() => {
+    if (logContainerRef.current) {
+      logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
+    }
+  }, [logs]);
+
+  const triggerDiagnosticScan = () => {
+    setIsScanning(true);
+    const scanLogs = [
+      "DIAGNOSTIC // SYSTEM SCAN INITIATED",
+      "CHECKING // Claude-3.5-Sonnet API endpoints... [SECURE]",
+      "CHECKING // Gemini-1.5-Pro context boundaries... [OK]",
+      "CHECKING // DeepSeek R1 reasoning parameters... [OPTIMAL]",
+      "CHECKING // Supabase vector DB health... [STABLE]",
+      "CHECKING // Lovable AI visual compiler status... [READY]",
+      "DIAGNOSTIC // 100% NEURAL EFFICIENCY CONFIRMED"
+    ];
+
+    scanLogs.forEach((log, index) => {
+      setTimeout(() => {
+        const timestamp = new Date().toLocaleTimeString();
+        setLogs((prev) => [...prev, `[${timestamp}] ${log}`]);
+        if (index === scanLogs.length - 1) {
+          setIsScanning(false);
+        }
+      }, (index + 1) * 600);
+    });
+  };
+
   // Music Player Simulation
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
@@ -645,103 +727,226 @@ const ControlDeck = () => {
           )}
 
           {activeTab === "stack" && (
-            <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
-              {/* Left Column */}
-              <div className="space-y-6">
-                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30">
-                  <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
-                    <Sparkles className="h-5 w-5 text-primary" />
-                    <h3 className="font-display text-lg font-semibold text-foreground">Foundational AI Models</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-6xl mx-auto w-full items-start">
+              {/* Left Column: Neural Core Operations Telemetry */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 overflow-hidden relative">
+                  <div className="absolute inset-0 scanline-mask opacity-15 pointer-events-none" />
+                  
+                  {/* Telemetry Header */}
+                  <div className="flex items-center justify-between border-b border-border pb-3 mb-5">
+                    <div className="flex items-center gap-2">
+                      <Terminal className="h-5 w-5 text-primary animate-pulse" />
+                      <h3 className="font-mono text-sm font-semibold tracking-wider text-foreground">
+                        // NEURAL CORE OPERATIONS
+                      </h3>
+                    </div>
+                    <span className="flex h-2 w-2 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
                   </div>
-                  <p className="text-xs text-muted-foreground mb-4 font-mono uppercase tracking-wider">High-Reasoning & Multi-Modal Engines</p>
-                  <div className="grid gap-2">
-                    {techStack.foundation.map((t, idx) => (
-                      <div key={idx} className="border border-border bg-background/50 p-2.5 rounded flex items-center gap-2 group hover:border-[var(--data)] transition-all duration-300">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                        <span className="font-mono text-xs text-foreground/80">{t}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
-                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30">
-                  <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
-                    <Cpu className="h-5 w-5 text-primary" />
-                    <h3 className="font-display text-lg font-semibold text-foreground">Model Context Protocol (MCP) Servers</h3>
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-4 font-mono uppercase tracking-wider">Data Connectors & Offline Tool Integrations</p>
-                  <div className="grid gap-2">
-                    {techStack.mcp.map((t, idx) => (
-                      <div key={idx} className="border border-border bg-background/50 p-2.5 rounded flex items-center gap-2 group hover:border-[var(--data)] transition-all duration-300">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                        <span className="font-mono text-xs text-foreground/80">{t}</span>
+                  {/* Telemetry metrics bar */}
+                  <div className="space-y-4 font-mono mb-6">
+                    <div>
+                      <div className="flex justify-between text-[10px] text-muted-foreground mb-1">
+                        <span>CONTEXT MEMORY ALLOCATION</span>
+                        <span className="text-primary font-bold">72.4%</span>
                       </div>
-                    ))}
-                  </div>
-                </div>
+                      <div className="h-1.5 w-full bg-background border border-border/60 rounded-sm overflow-hidden">
+                        <div className="h-full bg-primary rounded-sm transition-all duration-500" style={{ width: "72.4%" }} />
+                      </div>
+                    </div>
 
-                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30">
-                  <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
-                    <Layers className="h-5 w-5 text-primary" />
-                    <h3 className="font-display text-lg font-semibold text-foreground">Autonomous Skill Assets</h3>
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-4 font-mono uppercase tracking-wider">Custom Agent Skills & Auditing Scripts</p>
-                  <div className="grid gap-2">
-                    {techStack.skills.map((t, idx) => (
-                      <div key={idx} className="border border-border bg-background/50 p-2.5 rounded flex items-center gap-2 group hover:border-[var(--data)] transition-all duration-300">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                        <span className="font-mono text-xs text-foreground/80">{t}</span>
+                    <div>
+                      <div className="flex justify-between text-[10px] text-muted-foreground mb-1">
+                        <span>GPU REASONING CAPACITY</span>
+                        <span className="text-[var(--data)] font-bold">41.8%</span>
                       </div>
-                    ))}
+                      <div className="h-1.5 w-full bg-background border border-border/60 rounded-sm overflow-hidden">
+                        <div className="h-full bg-gradient-amber rounded-sm transition-all duration-500" style={{ width: "41.8%" }} />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 pt-2 border-t border-border/50 text-[10px]">
+                      <div>
+                        <span className="text-muted-foreground block">AVG LATENCY:</span>
+                        <span className="text-foreground font-bold">840ms</span>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground block">ROUTING TEMP:</span>
+                        <span className="text-primary font-bold">0.12 (STABLE)</span>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* Simulated Terminal log streams */}
+                  <div className="border border-border/80 bg-background/90 p-4 rounded-sm mb-6">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground border-b border-border/40 pb-1.5 mb-2 flex items-center justify-between">
+                      <span>Neural Telemetry Log System:</span>
+                      <span className="text-[var(--data)]">Active Stream</span>
+                    </p>
+                    <div 
+                      ref={logContainerRef}
+                      className="h-48 overflow-y-auto font-mono text-[10px] text-[var(--data)] space-y-1.5 scrollbar-none pr-1 select-none"
+                    >
+                      {logs.map((log, index) => (
+                        <div key={index} className="leading-tight break-all select-none">
+                          <span className="text-muted-foreground select-none">&gt;</span> {log}
+                        </div>
+                      ))}
+                      <div className="inline-block h-3 w-1.5 bg-[var(--data)] animate-pulse ml-0.5" />
+                    </div>
+                  </div>
+
+                  {/* Operational diagnostics controller */}
+                  <Button
+                    onClick={triggerDiagnosticScan}
+                    disabled={isScanning}
+                    className={`w-full font-mono text-xs uppercase tracking-wider h-11 border transition-all duration-300 ${
+                      isScanning 
+                        ? "border-primary bg-primary-soft text-primary" 
+                        : "border-primary/50 bg-primary-soft hover:bg-primary text-foreground hover:text-primary-foreground"
+                    }`}
+                  >
+                    {isScanning ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <Activity className="h-4 w-4 animate-pulse text-primary" />
+                        Scanning Matrix...
+                      </span>
+                    ) : (
+                      "Run Diagnostic Sweep"
+                    )}
+                  </Button>
                 </div>
               </div>
 
-              {/* Right Column */}
-              <div className="space-y-6">
-                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30">
+              {/* Right Column: AI Stack Matrix */}
+              <div className="lg:col-span-7 grid gap-6 md:grid-cols-2">
+                {/* 1. The Brain */}
+                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:border-primary/30">
                   <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
-                    <Terminal className="h-5 w-5 text-primary" />
-                    <h3 className="font-display text-lg font-semibold text-foreground">AI-Native Development Suites</h3>
+                    <Cpu className="h-5 w-5 text-primary" />
+                    <div>
+                      <h4 className="font-display text-base font-semibold text-foreground leading-tight">Neural Processing</h4>
+                      <p className="font-mono text-[9px] text-muted-foreground uppercase tracking-widest mt-0.5">Primary Foundation Models</p>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mb-4 font-mono uppercase tracking-wider">Vibe Coding Workspaces & IDE Engines</p>
-                  <div className="grid gap-2">
-                    {techStack.build.map((t, idx) => (
-                      <div key={idx} className="border border-border bg-background/50 p-2.5 rounded flex items-center gap-2 group hover:border-[var(--data)] transition-all duration-300">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                        <span className="font-mono text-xs text-foreground/80">{t}</span>
+                  <div className="space-y-2">
+                    {techStack.brain.map((t, idx) => (
+                      <div key={idx} className="border border-border/40 bg-background/40 hover:bg-background/60 p-2.5 rounded-sm flex items-start gap-3 transition-colors duration-300">
+                        <span className="flex h-1.5 w-1.5 rounded-full mt-1.5 relative">
+                          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                            t.status === "PRIMARY" ? "bg-primary" : t.status === "ONLINE" ? "bg-green-400" : "bg-amber-400"
+                          }`}></span>
+                          <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
+                            t.status === "PRIMARY" ? "bg-primary" : t.status === "ONLINE" ? "bg-green-500" : "bg-amber-500"
+                          }`}></span>
+                        </span>
+                        <div className="flex-grow">
+                          <div className="flex justify-between items-center mb-0.5">
+                            <span className="font-display text-sm font-semibold text-foreground/90">{t.name}</span>
+                            <span className="font-mono text-[9px] text-muted-foreground border border-border/60 bg-card px-1 rounded-sm uppercase tracking-wider">{t.status}</span>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-snug">{t.role}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30">
+                {/* 2. The Spine */}
+                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:border-primary/30">
                   <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
-                    <Activity className="h-5 w-5 text-primary" />
-                    <h3 className="font-display text-lg font-semibold text-foreground">Orchestrators & Automation Hooks</h3>
+                    <Network className="h-5 w-5 text-primary" />
+                    <div>
+                      <h4 className="font-display text-base font-semibold text-foreground leading-tight">Agentic Matrix</h4>
+                      <p className="font-mono text-[9px] text-muted-foreground uppercase tracking-widest mt-0.5">Autonomous State & RAG Layers</p>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mb-4 font-mono uppercase tracking-wider">Process Pipelines & Custom Routing Proxies</p>
-                  <div className="grid gap-2">
-                    {techStack.automation.map((t, idx) => (
-                      <div key={idx} className="border border-border bg-background/50 p-2.5 rounded flex items-center gap-2 group hover:border-[var(--data)] transition-all duration-300">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                        <span className="font-mono text-xs text-foreground/80">{t}</span>
+                  <div className="space-y-2">
+                    {techStack.spine.map((t, idx) => (
+                      <div key={idx} className="border border-border/40 bg-background/40 hover:bg-background/60 p-2.5 rounded-sm flex items-start gap-3 transition-colors duration-300">
+                        <span className="flex h-1.5 w-1.5 rounded-full mt-1.5 relative">
+                          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                            t.status === "ACTIVE" ? "bg-green-400" : "bg-amber-400"
+                          }`}></span>
+                          <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
+                            t.status === "ACTIVE" ? "bg-green-500" : "bg-amber-500"
+                          }`}></span>
+                        </span>
+                        <div className="flex-grow">
+                          <div className="flex justify-between items-center mb-0.5">
+                            <span className="font-display text-sm font-semibold text-foreground/90">{t.name}</span>
+                            <span className="font-mono text-[9px] text-muted-foreground border border-border/60 bg-card px-1 rounded-sm uppercase tracking-wider">{t.status}</span>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-snug">{t.role}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30">
+                {/* 3. The Workshop */}
+                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:border-primary/30">
+                  <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
+                    <Database className="h-5 w-5 text-primary" />
+                    <div>
+                      <h4 className="font-display text-base font-semibold text-foreground leading-tight">Engineering Labs</h4>
+                      <p className="font-mono text-[9px] text-muted-foreground uppercase tracking-widest mt-0.5">AI-Native Building Spaces</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    {techStack.workshop.map((t, idx) => (
+                      <div key={idx} className="border border-border/40 bg-background/40 hover:bg-background/60 p-2.5 rounded-sm flex items-start gap-3 transition-colors duration-300">
+                        <span className="flex h-1.5 w-1.5 rounded-full mt-1.5 relative">
+                          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                            t.status === "SYNCED" ? "bg-primary" : "bg-amber-400"
+                          }`}></span>
+                          <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
+                            t.status === "SYNCED" ? "bg-primary animate-pulse" : "bg-amber-500"
+                          }`}></span>
+                        </span>
+                        <div className="flex-grow">
+                          <div className="flex justify-between items-center mb-0.5">
+                            <span className="font-display text-sm font-semibold text-foreground/90">{t.name}</span>
+                            <span className="font-mono text-[9px] text-muted-foreground border border-border/60 bg-card px-1 rounded-sm uppercase tracking-wider">{t.status}</span>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-snug">{t.role}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 4. The Studio */}
+                <div className="panel-edge border border-border bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:border-primary/30">
                   <div className="flex items-center gap-3 border-b border-border pb-3 mb-4">
                     <Sparkles className="h-5 w-5 text-primary" />
-                    <h3 className="font-display text-lg font-semibold text-foreground">Media Synthesizers & Channels</h3>
+                    <div>
+                      <h4 className="font-display text-base font-semibold text-foreground leading-tight">Generative Studio</h4>
+                      <p className="font-mono text-[9px] text-muted-foreground uppercase tracking-widest mt-0.5">Creative Synthesis Pipelines</p>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mb-4 font-mono uppercase tracking-wider">Creative Generative Pipelines & Newsletters</p>
-                  <div className="grid gap-2">
-                    {techStack.creative.map((t, idx) => (
-                      <div key={idx} className="border border-border bg-background/50 p-2.5 rounded flex items-center gap-2 group hover:border-[var(--data)] transition-all duration-300">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                        <span className="font-mono text-xs text-foreground/80">{t}</span>
+                  <div className="space-y-2">
+                    {techStack.studio.map((t, idx) => (
+                      <div key={idx} className="border border-border/40 bg-background/40 hover:bg-background/60 p-2.5 rounded-sm flex items-start gap-3 transition-colors duration-300">
+                        <span className="flex h-1.5 w-1.5 rounded-full mt-1.5 relative">
+                          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                            t.status === "ONLINE" || t.status === "ACTIVE" ? "bg-green-400" : "bg-amber-400"
+                          }`}></span>
+                          <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
+                            t.status === "ONLINE" || t.status === "ACTIVE" ? "bg-green-500" : "bg-amber-500"
+                          }`}></span>
+                        </span>
+                        <div className="flex-grow">
+                          <div className="flex justify-between items-center mb-0.5">
+                            <span className="font-display text-sm font-semibold text-foreground/90">{t.name}</span>
+                            <span className="font-mono text-[9px] text-muted-foreground border border-border/60 bg-card px-1 rounded-sm uppercase tracking-wider">{t.status}</span>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-snug">{t.role}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
