@@ -1,0 +1,20 @@
+<svg style="color:#F4EFE6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" fill="none" role="img" aria-label="ANTI/MATRIX PROJECT stacked">
+  
+  <g transform="translate(70,10)">
+    <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="1.25"></circle>
+    <circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.4"></circle>
+    <line x1="30" y1="0" x2="30" y2="5" stroke="currentColor" stroke-width="1.25"></line>
+    <line x1="30" y1="55" x2="30" y2="60" stroke="currentColor" stroke-width="1.25"></line>
+    <line x1="0" y1="30" x2="5" y2="30" stroke="currentColor" stroke-width="1.25"></line>
+    <line x1="55" y1="30" x2="60" y2="30" stroke="currentColor" stroke-width="1.25"></line>
+    <path d="M 18 42 L 24 16 L 30 42 M 20.5 34 L 27.5 34" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"></path>
+    <path d="M 32 42 L 32 16 L 37 24 L 42 16 L 42 42" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"></path>
+  </g>
+  
+  <text x="100" y="115" text-anchor="middle" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="600" letter-spacing="0.16em" fill="currentColor">ANTI / MATRIX</text>
+  
+  <line x1="50" y1="138" x2="150" y2="138" stroke="currentColor" stroke-width="1" stroke-opacity="0.3"></line>
+  <text x="100" y="158" text-anchor="middle" font-family="&#39;IBM Plex Mono&#39;, monospace" font-size="9" letter-spacing="0.32em" fill="currentColor" opacity="0.7">OPERATE BEYOND THE NOISE</text>
+  
+  <text x="100" y="200" text-anchor="middle" font-family="&#39;IBM Plex Mono&#39;, monospace" font-size="8" letter-spacing="0.2em" fill="currentColor" opacity="0.4">EST. 2024 / SECTOR · B-07</text>
+</svg>

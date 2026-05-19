@@ -10,17 +10,19 @@ const ProcessStep = ({ number, title, description, isLast }: ProcessStepProps) =
     <div className="relative group">
       <div className="flex items-start gap-6">
         <div className="flex-shrink-0">
-          <div className="w-12 h-12 rounded-full bg-muted border-2 border-primary flex items-center justify-center text-primary font-bold group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-300">
+          <div className="flex h-12 w-12 items-center justify-center border border-primary bg-card font-mono text-sm font-semibold text-primary transition-all duration-300 group-hover:bg-[var(--signal-soft)] group-hover:shadow-lg group-hover:shadow-primary/20">
             {number}
           </div>
         </div>
         <div className="flex-1 pb-12">
-          <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">{title}</h3>
-          <p className="text-muted-foreground leading-relaxed">{description}</p>
+          <h3 className="mb-2 font-display text-2xl font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">
+            {title}
+          </h3>
+          <p className="leading-relaxed text-muted-foreground">{description}</p>
         </div>
       </div>
       {!isLast && (
-        <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-border group-hover:bg-primary/50 transition-colors duration-300" />
+        <div className="absolute bottom-0 left-6 top-12 w-px bg-border transition-colors duration-300 group-hover:bg-primary/60" />
       )}
     </div>
   );

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "summary": "The Anti Matrix Project startup consultant service website. Directly synced and compiled via Lovable, connected to the custom domain TheAntiMatrixProject.com. Visuals are premium dark-themed cyber/amber styles. Lighthouse audits completed for Phase 1-4 optimizations (performance, accessibility, SEO).",
+  "decisions": [
+    {
+      "id": "obsidian-independent-sync",
+      "title": "Independent Obsidian Vault Mirroring",
+      "description": "Mirrored anti-matrix-systems repo files under '05 Mirror/Anti Matrix Mirror' in Ken's Vault to prevent overwriting 'The Ad Project' documents, while maintaining centralized chronological daily logs under '70 Logs/Live Progress'.",
+      "date": "2026-05-17"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "workspace-pull",
+      "title": "Independent Workspace Pull",
+      "description": "Successfully cloned the anti-matrix-systems repository to the local environment and completed initial npm package installations.",
+      "date": "2026-05-17"
+    },
+    {
+      "id": "context-initialization",
+      "title": "Onboarding & Context Guides Initialized",
+      "description": "Created comprehensive AI_AGENT_CONTEXT.md and MISSION_CONTROL.md mapping the site design system and operations.",
+      "date": "2026-05-17"
+    },
+    {
+      "id": "obsidian-integration",
+      "title": "Obsidian Vault Bidirectional Integration",
+      "description": "Created redirect nodes in Ken's Vault root, updated Vault Map navigation, and successfully automated document sync.",
+      "date": "2026-05-17"
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "contact-form-endpoint",
+      "question": "Should we integrate the currently static ContactForm with a serverless email or database handler?",
+      "status": "OPEN"
+    }
+  ],
+  "recent_changes": [
+    {
+      "description": "Created sync-obsidian-vault.mjs and added obsidian:sync and obsidian:log scripts in package.json.",
+      "date": "2026-05-17"
+    },
+    {
+      "description": "Created AI_AGENT_CONTEXT.md and MISSION_CONTROL.md onboarding documents.",
+      "date": "2026-05-17"
+    }
+  ],
+  "workspace_root": "D:\\Coding Projects\\Projects\\anti-matrix-systems",
+  "updated_at": "2026-05-17T08:47:44+00:00"
+}

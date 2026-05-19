@@ -15,4 +15,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://preview--anti-matrix-systems.lovable.app/sitemap.xml
+Sitemap: https://theantimatrixproject.com/sitemap.xml

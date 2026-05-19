@@ -1,70 +1,71 @@
 import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
-import { Briefcase, Lightbulb, Rocket, Target, TrendingUp, Users, Shirt, Building2, Video } from "lucide-react";
+import { Briefcase, Building2, Lightbulb, Rocket, Shirt, Target, TrendingUp, Users, Video } from "lucide-react";
 
 const journeyData = [
   {
-    icon: <Lightbulb className="w-8 h-8" />,
+    icon: <Lightbulb className="h-8 w-8" />,
     title: "The Beginning",
-    description: "Started as a founder exploring the chaos of building systems from scratch — learning that structure is the foundation of sustainable growth.",
-    year: "Early Days"
+    description: "Started as a founder exploring the chaos of building systems from scratch, learning that structure is the foundation of sustainable growth.",
+    year: "Early Days",
   },
   {
-    icon: <Shirt className="w-8 h-8" />,
+    icon: <Shirt className="h-8 w-8" />,
     title: "Rogue Liberation",
-    description: "Founded a clothing brand, navigating the challenges of design, production, and brand identity — learning the fundamentals of building from zero.",
-    year: "Founder"
+    description: "Founded a clothing brand, navigating design, production, and brand identity while learning the fundamentals of building from zero.",
+    year: "Founder",
   },
   {
-    icon: <Building2 className="w-8 h-8" />,
+    icon: <Building2 className="h-8 w-8" />,
     title: "Pine and Thatch Hotels and Homestays",
-    description: "Built an end-to-end service for hotels in the tourism industry — from marketing and analytics to growth strategies and booking systems.",
-    year: "Founder"
+    description: "Built an end-to-end service for hotels in tourism, from marketing and analytics to growth strategies and booking systems.",
+    year: "Founder",
   },
   {
-    icon: <Video className="w-8 h-8" />,
+    icon: <Video className="h-8 w-8" />,
     title: "Influcreate",
-    description: "Founded a creator marketing firm, connecting brands with content creators and building systems for influencer collaboration at scale.",
-    year: "Founder"
+    description: "Founded a creator marketing firm, connecting brands with creators and building systems for influencer collaboration at scale.",
+    year: "Founder",
   },
   {
-    icon: <Briefcase className="w-8 h-8" />,
+    icon: <Briefcase className="h-8 w-8" />,
     title: "Zelto (AdPushup)",
     description: "Joined the CEO's team at Zelto, designing scalable business operations, data systems, and strategic frameworks for a growing tech company.",
-    year: "Growth Phase"
+    year: "Growth Phase",
   },
   {
-    icon: <Users className="w-8 h-8" />,
+    icon: <Users className="h-8 w-8" />,
     title: "Operations Strategist",
-    description: "Helped startups build hiring systems, internal knowledge bases, and team alignment frameworks — turning confusion into clarity.",
-    year: "Scaling"
+    description: "Helped startups build hiring systems, internal knowledge bases, and team alignment frameworks that turn confusion into clarity.",
+    year: "Scaling",
   },
   {
-    icon: <TrendingUp className="w-8 h-8" />,
+    icon: <TrendingUp className="h-8 w-8" />,
     title: "Investor Relations",
-    description: "Designed automated reporting dashboards and investor communication systems that transformed how startups present their progress.",
-    year: "Fundraising"
+    description: "Designed automated reporting dashboards and investor communication systems that transformed how startups present progress.",
+    year: "Fundraising",
   },
   {
-    icon: <Rocket className="w-8 h-8" />,
+    icon: <Rocket className="h-8 w-8" />,
     title: "AI Evangelist",
-    description: "Exploring the intersection of human creativity and artificial intelligence — building systems that think alongside people, not replace them.",
-    year: "Innovation"
+    description: "Exploring the intersection of human creativity and artificial intelligence by building systems that think alongside people.",
+    year: "Innovation",
   },
   {
-    icon: <Target className="w-8 h-8" />,
+    icon: <Target className="h-8 w-8" />,
     title: "The Anti Matrix Project",
-    description: "Founded a consulting practice helping startups worldwide bridge the gap between ideas, investment, and intelligent execution.",
-    year: "Present"
-  }
+    description: "Founded a consulting practice helping startups bridge the gap between ideas, investment, and intelligent execution.",
+    year: "Present",
+  },
 ];
 
 const JourneyCards = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let animationFrameId: number;
     let scrollPosition = 0;
@@ -72,7 +73,7 @@ const JourneyCards = () => {
 
     const animate = () => {
       scrollPosition += scrollSpeed;
-      
+
       if (scrollContainer.scrollWidth > 0) {
         const maxScroll = scrollContainer.scrollWidth / 2;
         if (scrollPosition >= maxScroll) {
@@ -80,7 +81,7 @@ const JourneyCards = () => {
         }
         scrollContainer.scrollLeft = scrollPosition;
       }
-      
+
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -94,13 +95,13 @@ const JourneyCards = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+    scrollContainer.addEventListener("mouseenter", handleMouseEnter);
+    scrollContainer.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+      scrollContainer.removeEventListener("mouseenter", handleMouseEnter);
+      scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -110,37 +111,32 @@ const JourneyCards = () => {
     <div className="relative w-full overflow-hidden">
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-hidden pb-4"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="flex gap-5 overflow-x-hidden pb-4"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {doubledData.map((item, index) => (
           <Card
-            key={index}
-            className="flex-shrink-0 w-[380px] h-[280px] bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:shadow-elegant group"
+            key={`${item.title}-${index}`}
+            className="panel-edge h-[300px] w-[min(380px,82vw)] flex-shrink-0 border-border/70 bg-card/75 backdrop-blur-sm transition-all duration-500 hover:border-primary/70 group"
           >
-            <div className="p-8 h-full flex flex-col">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="text-primary group-hover:text-primary-glow transition-colors duration-300 group-hover:rotate-12 transform transition-transform">
-                  {item.icon}
-                </div>
-                <span className="text-sm font-medium text-primary/70 group-hover:text-primary transition-colors duration-300">
+            <div className="flex h-full flex-col p-7">
+              <div className="mb-4 flex items-center gap-4">
+                <div className="text-primary transition-colors duration-300 group-hover:text-[var(--data)]">{item.icon}</div>
+                <span className="font-mono text-xs uppercase tracking-[0.14em] text-primary/80 transition-colors duration-300 group-hover:text-primary">
                   {item.year}
                 </span>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+              <h3 className="mb-3 font-display text-2xl font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-primary">
                 {item.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed flex-grow">
-                {item.description}
-              </p>
+              <p className="flex-grow text-sm leading-relaxed text-muted-foreground">{item.description}</p>
             </div>
           </Card>
         ))}
       </div>
-      
-      {/* Gradient Overlays */}
-      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+
+      <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-background to-transparent pointer-events-none md:w-32" />
+      <div className="absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-background to-transparent pointer-events-none md:w-32" />
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import DiagonalFlowBackground from "@/components/DiagonalFlowBackground";
@@ -8,12 +10,97 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import ResourceCard from "@/components/ResourceCard";
 import ContactForm from "@/components/ContactForm";
 import JourneyCards from "@/components/JourneyCards";
-import { Target, TrendingUp, Users, Briefcase, Zap, Brain, Shield, Sparkles } from "lucide-react";
+import BlogModal from "@/components/BlogModal";
+import ampLogo from "@/assets/amp-logo-white.png";
+import {
+  Activity,
+  ArrowRight,
+  Brain,
+  Briefcase,
+  CheckCircle2,
+  CircuitBoard,
+  Shield,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const services = [
+  {
+    icon: <Target size={36} />,
+    title: "Startup Growth Systems",
+    description: "Internal processes, documentation, operating rhythms, and team flows built to scale sustainably.",
+  },
+  {
+    icon: <TrendingUp size={36} />,
+    title: "Investor Strategy & Fundraising",
+    description: "Pitch decks, financial models, investor dashboards, and reporting systems founders can trust.",
+  },
+  {
+    icon: <Briefcase size={36} />,
+    title: "Business & Revenue Operations",
+    description: "Performance dashboards, pricing models, revenue logic, and decision systems for clearer execution.",
+  },
+  {
+    icon: <Users size={36} />,
+    title: "Hiring & Team Expansion",
+    description: "Org plans, hiring pipelines, onboarding documentation, and OKR systems for growing teams.",
+  },
+  {
+    icon: <Zap size={36} />,
+    title: "Product & Process Alignment",
+    description: "A practical bridge between strategy, product, operations, and growth so work moves cleanly.",
+  },
+  {
+    icon: <Brain size={36} />,
+    title: "Automation & AI Stack Integration",
+    description: "No-code and AI-assisted workflows that remove repeated manual work without adding complexity.",
+  },
+  {
+    icon: <Shield size={36} />,
+    title: "Post-Investment Scaling",
+    description: "Department structure, board reporting, operating metrics, and efficiency systems after funding.",
+  },
+  {
+    icon: <Sparkles size={36} />,
+    title: "AI Evangelism & Intelligence",
+    description: "Strategic AI adoption across operational, creative, and decision-making layers.",
+  },
+];
+
+const processSteps = [
+  ["01", "Discovery & Diagnosis", "Map the team, tools, bottlenecks, investor expectations, and recurring decisions."],
+  ["02", "System Design", "Create the operating blueprint for workflows, automation, ownership, and data flow."],
+  ["03", "Implementation", "Build the dashboards, docs, cadences, and handoffs with your team in the loop."],
+  ["04", "Integration & Training", "Equip the team to run the system independently instead of depending on constant founder intervention."],
+  ["05", "Review & Scale", "Tune the system as the company grows, new departments form, and priorities change."],
+];
+
+const industries = ["SaaS", "Cybersecurity", "Creator Economy", "D2C & E-commerce", "Hospitality", "Lifestyle"];
 
 const Index = () => {
   const parallaxOffset = useParallax(0.3);
-  
+  const location = useLocation();
+
+  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
+  const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [location]);
+
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -22,316 +109,316 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Navigation />
 
-      {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <div 
+      <section id="hero" className="relative min-h-screen overflow-hidden pt-24">
+        <div
           className="absolute inset-0"
-          style={{ 
+          style={{
             transform: `translateY(${parallaxOffset}px)`,
-            transition: 'transform 0.1s ease-out'
+            transition: "transform 0.1s ease-out",
           }}
         >
           <AnimatedBackground />
         </div>
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
-            We build systems that help startups
-            <span className="text-gradient-cyber"> scale with clarity</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            We help founders bring order to growth — combining strategy, structure, and intelligent automation.
-          </p>
-          <Button
-            onClick={scrollToContact}
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 glow-cyber animate-fade-in hover:scale-105 transition-all duration-300"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Let's Build Your System
-          </Button>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-24 bg-muted/30 relative">
-        <DiagonalFlowBackground />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              From Funding to Function — We Build What Founders Need to Grow
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.1s" }}>
-              <ServiceCard
-                icon={<Target size={40} />}
-                title="Startup Growth Systems"
-                description="Designing internal processes, documentation, and team flows that scale sustainably."
-              />
+        <div className="absolute inset-0 scanline-mask opacity-30" aria-hidden="true" />
+        <div className="container relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] items-center gap-12 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="max-w-4xl animate-fade-in text-left">
+            <div className="mb-8 inline-flex items-center gap-3 border border-border bg-card/70 px-4 py-3 backdrop-blur-md panel-edge">
+              <img src={ampLogo} alt="" className="h-9 w-9 object-contain" aria-hidden="true" />
+              <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                Founder operating systems
+              </span>
             </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.2s" }}>
-              <ServiceCard
-                icon={<TrendingUp size={40} />}
-                title="Investor Strategy & Fundraising"
-                description="Building pitch decks, financial models, and investor reporting systems."
-              />
-            </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.3s" }}>
-              <ServiceCard
-                icon={<Briefcase size={40} />}
-                title="Business & Revenue Operations"
-                description="Structuring performance dashboards, pricing models, and revenue logic."
-              />
-            </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.4s" }}>
-              <ServiceCard
-                icon={<Users size={40} />}
-                title="Hiring & Team Expansion"
-                description="Building org plans, hiring pipelines, onboarding documentation, and OKR systems."
-              />
-            </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.5s" }}>
-              <ServiceCard
-                icon={<Zap size={40} />}
-                title="Product & Process Alignment"
-                description="Converting strategy into actionable systems across product, ops, and growth teams."
-              />
-            </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.6s" }}>
-              <ServiceCard
-                icon={<Brain size={40} />}
-                title="Automation & AI Stack Integration"
-                description="Embedding no-code and AI-driven tools to simplify recurring workflows."
-              />
-            </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.7s" }}>
-              <ServiceCard
-                icon={<Shield size={40} />}
-                title="Post-Investment Scaling"
-                description="Helping startups structure departments, board reporting, and efficiency metrics."
-              />
-            </div>
-            <div className="animate-fade-in flex" style={{ animationDelay: "0.8s" }}>
-              <ServiceCard
-                icon={<Sparkles size={40} />}
-                title="AI Evangelism & Intelligence"
-                description="Exploring how startups can integrate AI in strategic, operational, and creative layers."
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section id="process" className="py-24 relative">
-        <DiagonalFlowBackground reverse />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Process: Clarity in Every Layer</h2>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              <ProcessStep
-                number="01"
-                title="Discovery & Diagnosis"
-                description="Understanding your team, systems, and bottlenecks."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <ProcessStep
-                number="02"
-                title="System Design"
-                description="Building a blueprint for operations, automation, and data flow."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <ProcessStep
-                number="03"
-                title="Implementation"
-                description="Executing with your team and creating an internal knowledge base."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <ProcessStep
-                number="04"
-                title="Integration & Training"
-                description="Equipping your team to run independently with clarity."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.5s" }}>
-              <ProcessStep
-                number="05"
-                title="Review & Scale"
-                description="Continuous optimization to evolve your startup systems as you grow."
-                isLast
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
-      <section id="stories" className="py-24 bg-muted/30 relative">
-        <DiagonalFlowBackground />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Stories of Systems That Scaled</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              <CaseStudyCard
-                title="SaaS Startup"
-                preview="A fast-growing SaaS company was struggling to connect operations with investor updates. We built automated reporting dashboards and structured internal alignment tools, reducing weekly chaos by 70%."
-                challenge="The company had rapid growth but lacked structured communication between operations teams and investors. Weekly reports were manual, time-consuming, and inconsistent, leading to confusion and missed opportunities."
-                approach="We conducted a comprehensive audit of their data sources, stakeholder needs, and reporting requirements. Then designed an automated dashboard system that pulled real-time metrics and formatted them for both internal and investor consumption."
-                system="Implemented a centralized reporting dashboard with automated data pipelines, standardized KPI definitions, weekly investor update templates, and internal alignment tools that connected product, sales, and operations metrics."
-                impact="Reduced report preparation time by 70%, improved data accuracy, increased investor confidence, and enabled the leadership team to make faster, more informed decisions."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <CaseStudyCard
-                title="Cybersecurity Startup"
-                preview="A cybersecurity firm entering a growth phase needed structure across hiring and operations. We designed an end-to-end system — from job pipelines to OKRs and cross-department onboarding."
-                challenge="The company was scaling rapidly but had no formal hiring process, inconsistent onboarding, and unclear performance metrics. This led to mis-hires, slow ramp-up times, and team misalignment."
-                approach="We created a comprehensive talent operations framework that covered the entire employee lifecycle — from job description templates to structured interview processes, department-specific onboarding paths, and OKR frameworks."
-                system="Built complete hiring pipelines with role definitions, interview scorecards, automated workflows, comprehensive onboarding documentation, and OKR systems aligned to company objectives across all departments."
-                impact="Successfully doubled team size while maintaining quality, reduced time-to-productivity by 40%, improved employee retention, and created clarity in performance expectations across the organization."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <CaseStudyCard
-                title="Lifestyle Brand"
-                preview="A D2C brand post-funding was losing track of operations and creative alignment. We introduced a tiered operations framework and reporting rhythm — improving decision turnaround by 40%."
-                challenge="Post-funding growth created operational chaos — creative, operations, and leadership teams were misaligned, decisions took weeks, and there was no clear accountability or process documentation."
-                approach="We designed a tiered operations framework that separated strategic, tactical, and operational decisions, implemented regular review cadences, and created clear decision-making authorities and communication channels."
-                system="Established weekly operational reviews, monthly strategic planning sessions, decision-making frameworks, process documentation, and cross-functional alignment tools that connected creative vision with operational execution."
-                impact="Improved decision turnaround time by 40%, reduced creative-operations conflicts by 60%, increased team satisfaction, and created a scalable foundation for continued growth."
-              />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <CaseStudyCard
-                title="Consumer Platform"
-                preview="A digital platform scaling across regions faced data fragmentation and unclear performance metrics. We built a unified data wheel and operational structure that aligned leadership."
-                challenge="The platform was expanding into new markets but had fragmented data across regions, inconsistent metrics, and no centralized view of performance. Leadership struggled to make strategic decisions with confidence."
-                approach="We created a unified data architecture that standardized metrics across regions, built centralized dashboards for multi-market visibility, and established operational processes that worked across different geographies and teams."
-                system="Implemented a unified data platform with standardized KPIs, regional performance dashboards, automated reporting systems, and operational playbooks that ensured consistency while allowing for local adaptation."
-                impact="Achieved complete visibility across all markets, standardized performance measurement, improved strategic decision-making, and created a foundation for sustainable multi-market expansion."
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 relative">
-        <DiagonalFlowBackground reverse />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">The Mind Behind the Systems</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A journey from chaos to clarity — building systems that empower founders to scale with intelligence.
+            <h1 className="font-display text-5xl font-semibold leading-[1.02] text-foreground md:text-7xl">
+              The Anti Matrix Project
+            </h1>
+            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+              Startup consulting for founders who need the operating system behind growth: strategy, structure,
+              investor readiness, automation, and team clarity.
             </p>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <JourneyCards />
-          </div>
-        </div>
-      </section>
-
-      {/* Clients Section */}
-      <section id="clients" className="py-24 bg-muted/30 relative">
-        <DiagonalFlowBackground />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Who We Work With</h2>
-            <p className="text-xl text-muted-foreground">
-              Startups and businesses across industries that believe in building systems before scaling.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl mx-auto">
-            {["SaaS", "Cybersecurity", "Creator Economy", "D2C & E-commerce", "Hospitality", "Lifestyle"].map((industry, index) => (
-              <div
-                key={industry}
-                className="bg-card border border-border rounded-lg p-6 flex items-center justify-center min-h-[100px] hover:border-primary hover:scale-105 transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Button
+                onClick={scrollToContact}
+                size="lg"
+                className="h-14 bg-primary px-7 text-base text-primary-foreground glow-cyber hover:bg-primary/90"
               >
-                <p className="font-medium text-foreground text-center">{industry}</p>
+                Build Your Growth System
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+              <Button
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                size="lg"
+                variant="outline"
+                className="h-14 border-border bg-card/70 px-7 text-base text-foreground hover:bg-secondary"
+              >
+                Explore Systems
+              </Button>
+            </div>
+            <div className="mt-10 grid max-w-2xl grid-cols-3 border border-border bg-card/50 backdrop-blur-sm">
+              {["Ops", "Capital", "AI Stack"].map((item) => (
+                <div key={item} className="border-r border-border px-4 py-4 last:border-r-0">
+                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--data)]">{item}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">System layer</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside className="animate-fade-in panel-edge surface-grid border border-border p-5 shadow-2xl lg:p-6" style={{ animationDelay: "0.18s" }}>
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">Anti Matrix scan</p>
+                <h2 className="mt-2 text-2xl font-semibold text-foreground">Turn founder chaos into an operating system.</h2>
+              </div>
+              <CircuitBoard className="h-9 w-9 text-primary" aria-hidden="true" />
+            </div>
+            <div className="space-y-4 py-6">
+              {[
+                ["Founder bottleneck", "Decisions, approvals, and context still live in your head."],
+                ["Investor signal", "Progress exists, but the story is not packaged for confidence."],
+                ["Team drift", "People are moving, but ownership, cadence, and visibility are blurry."],
+              ].map(([label, description]) => (
+                <div key={label} className="border border-border bg-background/55 p-4">
+                  <div className="mb-2 flex items-center gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-primary" aria-hidden="true" />
+                    <span className="font-mono text-xs uppercase tracking-[0.12em] text-primary">{label}</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="border-t border-border pt-5">
+              <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">What gets built</p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {["Operating map", "Automation backlog", "90-day execution rhythm"].map((item) => (
+                  <div key={item} className="border border-border bg-card/70 p-3">
+                    <Activity className="mb-3 h-4 w-4 text-[var(--data)]" aria-hidden="true" />
+                    <p className="text-sm font-medium leading-snug text-foreground">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="services" className="relative bg-muted/30 py-24">
+        <DiagonalFlowBackground />
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="System modules"
+            title="From funding to function, build what founders need to grow."
+            copy="Each engagement turns messy growth into visible workflows, measurable ownership, and repeatable execution."
+          />
+          <div className="grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, index) => (
+              <div key={service.title} className="animate-fade-in flex" style={{ animationDelay: `${index * 0.08}s` }}>
+                <ServiceCard {...service} />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Resources Section */}
-      <section id="resources" className="py-24 relative">
+      <section id="process" className="relative py-24">
         <DiagonalFlowBackground reverse />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Frameworks, Systems & Playbooks</h2>
-            <p className="text-xl text-muted-foreground">
-              From startup dashboards to investor-ready checklists — insights from our work, published openly.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              <ResourceCard title="The 4 Frameworks Every Startup Should Build Before Hiring" />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <ResourceCard title="How Post-Investment Founders Can Build Reporting Systems Investors Love" />
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <ResourceCard title="Why Every Startup Needs an Internal Knowledge Base Before Scaling" />
-            </div>
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="Operating protocol"
+            title="Clarity in every layer."
+            copy="A practical sequence from diagnosis to implementation, designed so the system survives after the project ends."
+          />
+          <div className="mx-auto max-w-3xl">
+            {processSteps.map(([number, title, description], index) => (
+              <div key={number} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 0.08}s` }}>
+                <ProcessStep number={number} title={title} description={description} isLast={index === processSteps.length - 1} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 bg-muted/30 relative">
+      <section id="about" className="relative bg-muted/30 py-24">
         <DiagonalFlowBackground />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Design Your Growth System</h2>
-            <p className="text-xl text-muted-foreground">
-              Every startup deserves clarity. Let's build yours.
-            </p>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <ContactForm />
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="Founder pattern"
+            title="The mind behind the systems."
+            copy="Gurman Singh's path across brands, hospitality, creator operations, and high-growth tech shapes how Anti Matrix designs practical systems."
+          />
+          <JourneyCards />
+          <div className="mt-12 flex justify-center animate-fade-in">
+            <Link to="/control-deck">
+              <Button
+                size="lg"
+                className="h-14 border border-primary bg-primary-soft hover:bg-primary/95 text-foreground hover:text-primary-foreground font-mono text-xs uppercase tracking-[0.16em] px-8 glow-cyber transition-all duration-300 gap-2"
+              >
+                Access Operator Console // SYS-DECK
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-12 animate-fade-in">
-        <div className="container mx-auto px-6">
-          <div className="text-center space-y-4">
-            <p className="text-lg font-semibold">The Anti Matrix Project Startup Consultant</p>
-            <p className="text-sm text-muted-foreground">© Gurman Singh — All Rights Reserved</p>
-            <div className="flex justify-center gap-6 pt-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
+      <section id="clients" className="relative py-24">
+        <DiagonalFlowBackground reverse />
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="Sector signals"
+            title="Industries we have worked with."
+            copy="Practical operating systems shaped across startup, consumer, creator, and service-led business environments."
+          />
+          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {industries.map((industry, index) => (
+              <div
+                key={industry}
+                className="panel-edge group relative flex min-h-[118px] items-center justify-center overflow-hidden border border-border bg-card/75 p-5 text-center transition-all duration-300 hover:border-primary hover:bg-secondary"
+                style={{ animationDelay: `${index * 0.08}s` }}
               >
-                LinkedIn
-              </a>
-              <a
-                href="mailto:contact@antimatrixproject.com"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
-              >
-                Email
-              </a>
-            </div>
+                <div className="absolute inset-0 scanline-mask opacity-0 transition-opacity duration-500 group-hover:opacity-40" aria-hidden="true" />
+                <div className="absolute left-3 top-3 flex gap-1" aria-hidden="true">
+                  <span className="h-1.5 w-1.5 bg-primary opacity-70 group-hover:animate-pulse" />
+                  <span className="h-1.5 w-5 bg-[var(--data)] opacity-40" />
+                </div>
+                <div className="absolute bottom-3 right-3 h-px w-10 bg-gradient-cyber opacity-40 transition-all duration-500 group-hover:w-14 group-hover:opacity-90" aria-hidden="true" />
+                <p className="relative z-10 font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+                  {industry}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="stories" className="relative bg-muted/30 py-24">
+        <DiagonalFlowBackground />
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="Field reports"
+            title="Stories of systems that scaled."
+            copy="Representative transformations across reporting, hiring, data visibility, and operating cadence."
+          />
+          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
+            <CaseStudyCard
+              title="SaaS Startup"
+              preview="A fast-growing SaaS company needed to connect operations with investor updates. Automated reporting dashboards reduced weekly chaos by 70%."
+              challenge="The company had rapid growth but lacked structured communication between operations teams and investors. Weekly reports were manual, time-consuming, and inconsistent."
+              approach="We audited the data sources, stakeholder needs, and reporting requirements, then designed an automated dashboard system for internal and investor use."
+              system="A centralized reporting dashboard with automated data pipelines, standardized KPI definitions, weekly investor update templates, and internal alignment tools."
+              impact="Reduced report preparation time by 70%, improved data accuracy, increased investor confidence, and helped leadership make faster decisions."
+            />
+            <CaseStudyCard
+              title="Cybersecurity Startup"
+              preview="A cybersecurity firm entering a growth phase needed structure across hiring and operations. We built pipelines, OKRs, and onboarding."
+              challenge="The company was scaling rapidly with no formal hiring process, inconsistent onboarding, and unclear performance metrics."
+              approach="We created a talent operations framework covering role definitions, interview scorecards, onboarding paths, and OKR alignment."
+              system="Complete hiring pipelines, automated workflows, onboarding documentation, and OKR systems aligned across departments."
+              impact="Doubled team size while maintaining quality, reduced time-to-productivity by 40%, and clarified performance expectations."
+            />
+            <CaseStudyCard
+              title="Lifestyle Brand"
+              preview="A D2C brand post-funding was losing operational and creative alignment. A tiered operations framework improved decision turnaround by 40%."
+              challenge="Post-funding growth created operational chaos, slow decisions, and unclear accountability across creative and operations teams."
+              approach="We separated strategic, tactical, and operational decisions, then created review cadences and decision authorities."
+              system="Weekly operational reviews, monthly strategic planning, decision frameworks, process docs, and cross-functional alignment tools."
+              impact="Improved decision turnaround by 40%, reduced creative-operations conflict, and created a scalable foundation for growth."
+            />
+            <CaseStudyCard
+              title="Consumer Platform"
+              preview="A regional platform faced fragmented data and unclear metrics. We built a unified data wheel and operating structure."
+              challenge="Expansion created fragmented data, inconsistent metrics, and no centralized view of performance across markets."
+              approach="We standardized metrics across regions, built centralized dashboards, and established operational processes for multi-market teams."
+              system="A unified data platform with standardized KPIs, regional dashboards, automated reporting, and operational playbooks."
+              impact="Created market-wide visibility, improved strategic decisions, and built a foundation for sustainable expansion."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" className="relative py-24">
+        <DiagonalFlowBackground reverse />
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="Open source thinking"
+            title="Frameworks, systems, and playbooks."
+            copy="Founder-ready writing on dashboards, investor reporting, knowledge bases, and practical operating design."
+          />
+          <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <ResourceCard 
+              title="The 4 Frameworks Every Startup Should Build Before Hiring" 
+              onClick={() => {
+                setSelectedArticleId("hiring-frameworks");
+                setIsBlogModalOpen(true);
+              }}
+            />
+            <ResourceCard 
+              title="How Post-Investment Founders Can Build Reporting Systems Investors Love" 
+              onClick={() => {
+                setSelectedArticleId("reporting-systems");
+                setIsBlogModalOpen(true);
+              }}
+            />
+            <ResourceCard 
+              title="Why Every Startup Needs an Internal Knowledge Base Before Scaling" 
+              onClick={() => {
+                setSelectedArticleId("knowledge-bases");
+                setIsBlogModalOpen(true);
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative bg-muted/30 py-24">
+        <DiagonalFlowBackground />
+        <div className="container relative z-10 mx-auto px-6">
+          <SectionHeader
+            eyebrow="Initiate diagnostic"
+            title="Design your growth system."
+            copy="Share where the chaos is showing up. The first step is mapping what needs structure."
+          />
+          <ContactForm />
+        </div>
+      </section>
+
+      <BlogModal
+        articleId={selectedArticleId}
+        isOpen={isBlogModalOpen}
+        onClose={() => {
+          setIsBlogModalOpen(false);
+          setSelectedArticleId(null);
+        }}
+      />
+
+      <footer className="border-t border-border py-10">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
+          <div>
+            <p className="font-display text-lg font-semibold text-foreground">The Anti Matrix Project</p>
+            <p className="mt-1 text-sm text-muted-foreground">Startup consulting by Gurman Singh. All rights reserved.</p>
+          </div>
+          <div className="flex gap-6">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+              LinkedIn
+            </a>
+            <a href="mailto:contact@antimatrixproject.com" className="text-muted-foreground hover:text-primary">
+              Email
+            </a>
           </div>
         </div>
       </footer>
     </div>
   );
 };
+
+const SectionHeader = ({ eyebrow, title, copy }: { eyebrow: string; title: string; copy: string }) => (
+  <div className="mx-auto mb-14 max-w-3xl text-center animate-fade-in">
+    <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-primary">{eyebrow}</p>
+    <h2 className="font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl">{title}</h2>
+    <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">{copy}</p>
+  </div>
+);
 
 export default Index;
