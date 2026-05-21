@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
@@ -11,20 +11,13 @@ import {
   BookOpen,
   Briefcase,
   Cpu,
-  ExternalLink,
   Layers,
   Music,
-  Play,
-  Pause,
-  SkipForward,
   Sparkles,
   Terminal,
-  Volume2,
   X,
   Database,
-  Server,
   Network,
-  Activity,
   Brain,
   Wand2,
   Hammer,
@@ -74,11 +67,223 @@ const blogs = [
   },
 ];
 
-// Music playlist
-const tracks = [
-  { title: "Operator Frequencies (Ambient Deep)", bpm: "110 BPM", type: "Focus Soundscape" },
-  { title: "Shimla Dusk (Lo-Fi Hums)", bpm: "88 BPM", type: "Chilled Mountain Beats" },
-  { title: "Asymmetric Orchestration (Cyber Synth)", bpm: "128 BPM", type: "Late Night Build Beats" },
+interface AiMusicTrack {
+  title: string;
+  period: string;
+  duration: string;
+  model: string;
+  genre: string;
+  language: string;
+  slug: string;
+  evolution: string;
+  summary: string;
+  motif: string;
+  files: {
+    label: string;
+    fileName: string;
+    note: string;
+  }[];
+  lyrics: string[];
+}
+
+const originalCompositionNote = {
+  title: "Original Compositions",
+  status: "Reserved",
+  copy:
+    "This shelf stays intentionally empty for live-played instrument work and fully non-AI recordings. When those pieces are ready, they can live here as a separate body of work.",
+};
+
+const aiMusicTracks: AiMusicTrack[] = [
+  {
+    title: "Pahaadon Ki Yaadein",
+    period: "1 year, 8 months ago",
+    duration: "2:59 / 2:40 variants",
+    model: "v3.5",
+    genre: "Acoustic Hindi / Himachali folk",
+    language: "Hinglish",
+    slug: "pahaadon-ki-yaadein",
+    evolution:
+      "An early AI music milestone where the nostalgia and regional emotionality already landed, even if the generation style was simpler and more fragile.",
+    summary:
+      "A memory-soaked return to mountain roads, childhood rituals, village scent, and the ache of distance from home.",
+    motif: "Mountain memory, village roads, childhood rituals.",
+    files: [
+      {
+        label: "Primary",
+        fileName: "pahaadon-ki-yaadein.mp3",
+        note: "Original Suno export",
+      },
+      {
+        label: "Alternate",
+        fileName: "pahaadon-ki-yaadein-alt.mp3",
+        note: "Alternate render",
+      },
+    ],
+    lyrics: [
+      "[Verse]",
+      "Kaanon mein baaji woh purani dhune",
+      "Phir se yaad aayein woh bachpan ke sapne",
+      "Gaon ke raste, woh mitti ki khushboo",
+      "Aankhen nam ho jaayein, kasme thi jo sach yahin",
+      "",
+      "[Verse 2]",
+      "Woh baaghaan ke phool dhoop mein chamakte",
+      "Ghar ke aangan mein hansiyon se bharte",
+      "Woh purane peepal jismein lakeerein thi likhi",
+      "Unn palon ko yaad kar man mein kasak si uthi",
+      "",
+      "[Chorus]",
+      "Wapas le chal mujhe apne gaon ke raastein",
+      "Jahan sukoon mile yaadon ke saath se",
+      "Jahan jeewan ki har dor dosti ke rang mein",
+      "Wahin dil hai mera pahaadon ke ang mein",
+    ],
+  },
+  {
+    title: "The Light",
+    period: "6 months ago",
+    duration: "2:32",
+    model: "v4.5-all",
+    genre: "Nu metal / rap / soft chorus rock",
+    language: "English",
+    slug: "the-light",
+    evolution:
+      "A clear jump in emotional control and genre fusion. The newer model held introspective rap writing, tension, and chorus payoff with much more confidence.",
+    summary:
+      "A confrontation with self-sabotage, self-worth, and the brutal distance between survival mode and becoming who you are meant to be.",
+    motif: "Self-conflict, survival mode, unreachable light.",
+    files: [
+      {
+        label: "Primary",
+        fileName: "the-light.mp3",
+        note: "Suno export",
+      },
+    ],
+    lyrics: [
+      "[Verse]",
+      "It's a mystery how we get through this life",
+      "Trapped in the corner, you either do or you die",
+      "We fight the good fight, all hands on deck",
+      "It's your own fate, it's you versus you",
+      "",
+      "[Verse 2]",
+      "It's the greatest fight you'll ever fight",
+      "When you're looking at yourself trying to see what's wrong",
+      "Trying to see what's right, trying to see if you can ever love yourself",
+      "How you gonna get to the light?",
+      "",
+      "[Chorus]",
+      "The light is far",
+      "So far away",
+      "From here",
+    ],
+  },
+  {
+    title: "Chhota Sa Tan",
+    period: "3 months, 3 weeks ago",
+    duration: "4:50",
+    model: "v4.5-all",
+    genre: "Heavy metal with Indian classical vocals",
+    language: "Hinglish",
+    slug: "chhota-sa-tan",
+    evolution:
+      "This phase proved the models could handle aggressive instrumentation while preserving a soft, classically inflected Indian vocal line without collapsing the contrast.",
+    summary:
+      "A defiant underdog anthem about surviving violent currents, finding internal force, and becoming ruler of the water instead of its victim.",
+    motif: "Small body, violent current, impossible resilience.",
+    files: [
+      {
+        label: "Primary",
+        fileName: "chhota-sa-tan.mp3",
+        note: "Suno export",
+      },
+    ],
+    lyrics: [
+      "[Intro]",
+      "Chhota sa tan, saara samandar saamne",
+      "Upar se lehrein, neeche andhera gehra",
+      "",
+      "[Verse]",
+      "Dhaar ke aage tinke sa main",
+      "Aankhon mein jalta darr bhi tha",
+      "Thandi chattanon ke beecho beech",
+      "Raasta apna dhoondhta tha",
+      "",
+      "[Chorus]",
+      "Main paani ka badshah hoon",
+      "Dhaar munh khole, main muskaata",
+      "Jo doobe, doobe, main to tairun",
+      "Patthar cheer ke rasta paata",
+    ],
+  },
+  {
+    title: "Oonchai Pe Thandi Hawa",
+    period: "3 months, 1 week ago",
+    duration: "5:09",
+    model: "v4.5-all",
+    genre: "Heavy metal with Indian classical vocals",
+    language: "Hinglish",
+    slug: "oonchai-pe-thandi-hawa",
+    evolution:
+      "The writing grows more cinematic here. The model is no longer just generating a song; it is helping shape character psychology, symbolism, and emotional contradiction.",
+    summary:
+      "A lonely sky-king narrative about power, hunger, altitude, and the unseen suffering beneath visible majesty.",
+    motif: "Altitude, loneliness, power that still hurts.",
+    files: [
+      {
+        label: "Primary",
+        fileName: "oonchai-pe-thandi-hawa.mp3",
+        note: "Suno export",
+      },
+    ],
+    lyrics: [
+      "[Verse]",
+      "Oonchai pe thandi hawa",
+      "Neeche har saans hai saza",
+      "Patthar jaise ye par, lekin",
+      "Andar kaampati si dua",
+      "",
+      "[Chorus]",
+      "Raja hoon aasman ka",
+      "Par neend hai be-awaaz",
+      "Tu dekhe shaan, main dekhun bas agla aaj",
+      "Ye baaz ki rajgaddi, aag pe chalta har pankh har dam",
+    ],
+  },
+  {
+    title: "Floors of the Same Church",
+    period: "1 month, 3 weeks ago",
+    duration: "3:53",
+    model: "v4.5-all",
+    genre: "Folk / indie folk / ambient",
+    language: "English",
+    slug: "floors-of-the-same-church",
+    evolution:
+      "A mature stage in the journey. The model now supports subtler imagery, restraint, and literary structure, making the collaboration feel closer to co-writing than prompting.",
+    summary:
+      "A tender misalignment ballad about two lovers haunting the same sacred structure while never quite reaching one another.",
+    motif: "Sacred distance, architectural longing, misaligned timing.",
+    files: [
+      {
+        label: "Primary",
+        fileName: "floors-of-the-same-church.mp3",
+        note: "Suno export",
+      },
+    ],
+    lyrics: [
+      "[Verse]",
+      "He kneels where the candles bruise the stone",
+      "You stand where the faded frescoes glow",
+      "You hear his name in the creak of the pews",
+      "He feels your breath in the dust on his shoes",
+      "",
+      "[Chorus]",
+      "Two lovers on different floors of the same church",
+      "Close as a heartbeat, far as the sky",
+      "Your footsteps echo right over his sorrow",
+      "But the stairs never meet your eyes",
+    ],
+  },
 ];
 
 // Detailed Apps data with Modal Details
@@ -258,6 +463,9 @@ const techStack = {
 
 const ControlDeck = () => {
   const [activeTab, setActiveTab] = useState("blogs");
+  const [selectedAiSongSlug, setSelectedAiSongSlug] = useState(aiMusicTracks[0]?.slug ?? "");
+  const [activeSongView, setActiveSongView] = useState<"overview" | "lyrics">("overview");
+  const [selectedAudioFileName, setSelectedAudioFileName] = useState(aiMusicTracks[0]?.files[0]?.fileName ?? "");
   
   // Retro 8-bit cognitive pipeline phase state
   const [retroPhase, setRetroPhase] = useState<"thinking" | "building" | "orchestrating">("thinking");
@@ -275,12 +483,6 @@ const ControlDeck = () => {
     return () => clearInterval(interval);
   }, [isAutoCycle]);
 
-  // Music Player Simulation
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [playProgress, setPlayProgress] = useState(35);
-  const audioPlayerRef = useRef<HTMLAudioElement | null>(null);
-
   // App Modal State
   const [activeApp, setActiveApp] = useState<AppSpec | null>(null);
   const [isAppModalOpen, setIsAppModalOpen] = useState(false);
@@ -294,70 +496,14 @@ const ControlDeck = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Sync state with HTML5 audio player
-  useEffect(() => {
-    if (audioPlayerRef.current) {
-      if (isPlaying) {
-        audioPlayerRef.current.play().catch(() => {
-          // Fallback if browser blocks autoplay
-          setIsPlaying(false);
-        });
-      } else {
-        audioPlayerRef.current.pause();
-      }
-    }
-  }, [isPlaying, currentTrackIndex]);
-
-  // Simulate progress bar when track is playing
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        if (audioPlayerRef.current) {
-          const duration = audioPlayerRef.current.duration || 180;
-          const current = audioPlayerRef.current.currentTime || 0;
-          setPlayProgress((current / duration) * 100);
-        } else {
-          setPlayProgress((prev) => (prev >= 100 ? 0 : prev + 0.5));
-        }
-      }, 500);
-    }
-    return () => clearInterval(interval);
-  }, [isPlaying]);
-
-  const handleNextTrack = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % tracks.length);
-    setPlayProgress(0);
-    if (audioPlayerRef.current) {
-      audioPlayerRef.current.currentTime = 0;
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (audioPlayerRef.current) {
-      const duration = audioPlayerRef.current.duration || 180;
-      const current = audioPlayerRef.current.currentTime || 0;
-      setPlayProgress((current / duration) * 100);
-      if (audioPlayerRef.current.ended) {
-        handleNextTrack();
-      }
-    }
-  };
-
-  const currentTrack = tracks[currentTrackIndex];
+  const selectedAiSong =
+    aiMusicTracks.find((track) => track.slug === selectedAiSongSlug) ?? aiMusicTracks[0];
+  const selectedAudioFile =
+    selectedAiSong.files.find((file) => file.fileName === selectedAudioFileName) ?? selectedAiSong.files[0];
 
   return (
     <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <Navigation />
-
-      {/* Simulated Audio Tag for real file uploads later */}
-      <audio 
-        ref={audioPlayerRef}
-        src="" // User can upload / assets / local music here
-        onTimeUpdate={handleTimeUpdate}
-        className="hidden"
-        preload="auto"
-      />
 
       {/* Background system decoration */}
       <div className="absolute inset-0">
@@ -375,7 +521,7 @@ const ControlDeck = () => {
           Back to Terminal
         </Link>
 
-        {/* Header Block — Two-column hero with portrait */}
+        {/* Header Block - Two-column hero with portrait */}
         <header className="mb-12 border border-border bg-card/60 backdrop-blur-md panel-edge scan-sweep overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             {/* Left: Text Content */}
@@ -394,7 +540,7 @@ const ControlDeck = () => {
                 The Control Deck
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground md:text-xl">
-                Gurman Singh — A founder, operations specialist, and AI orchestration architect. This is the centralized system control center mapping active software products, tactical writings, focus frequencies, and advanced agent frameworks.
+                Gurman Singh - A founder, operations specialist, and AI orchestration architect. This is the centralized system control center mapping active software products, tactical writings, focus frequencies, and advanced agent frameworks.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-4 border-t border-border pt-6">
@@ -422,7 +568,7 @@ const ControlDeck = () => {
               <div className="absolute bottom-3 right-3 z-20 h-px w-12 bg-gradient-cyber opacity-60" aria-hidden="true" />
               <img
                 src={founderPortrait}
-                alt="Gurman Singh — Founder, Anti Matrix Project"
+                alt="Gurman Singh - Founder, Anti Matrix Project"
                 className="w-full h-48 sm:h-64 lg:h-full object-cover object-top"
                 loading="eager"
               />
@@ -487,7 +633,7 @@ const ControlDeck = () => {
                     <ul className="space-y-1">
                       {blog.points.map((pt, pidx) => (
                         <li key={pidx} className="text-xs text-foreground/80 flex items-start gap-2">
-                          <span className="text-primary mt-0.5">•</span>
+                          <span className="text-primary mt-0.5">+</span>
                           <span>{pt}</span>
                         </li>
                       ))}
@@ -507,118 +653,291 @@ const ControlDeck = () => {
           )}
 
           {activeTab === "music" && (
-            <div className="max-w-2xl mx-auto">
-              <div className="panel-edge border border-border bg-card/85 backdrop-blur-md p-6 md:p-8 scan-sweep">
-                <div className="flex justify-between items-center border-b border-border pb-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <Music className="h-5 w-5 text-primary" />
-                    <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Music Station Playlist</span>
+            <div className="mx-auto max-w-6xl space-y-6">
+              <div className="panel-edge border border-border bg-card/85 p-6 md:p-8 backdrop-blur-md scan-sweep">
+                <div className="flex flex-col gap-4 border-b border-border pb-5 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <Music className="h-5 w-5 text-primary" />
+                      <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Music Station Archive</span>
+                    </div>
+                    <h3 className="mt-3 font-display text-3xl font-semibold text-foreground">
+                      Two shelves: one for instrument-first work, one for AI collaboration.
+                    </h3>
+                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                      The original-compositions shelf stays empty by design. The AI shelf becomes a living archive of the songs, the model generations behind them, and the way the collaboration matured over time.
+                    </p>
                   </div>
-                  <span className="font-mono text-[10px] text-[var(--data)]">SYS/AUDIO-DECK</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--data)]">
+                    SYS/AUDIO-DECK
+                  </span>
                 </div>
 
-                <div className="border border-border bg-background/80 p-5 rounded font-mono mb-6 relative overflow-hidden">
-                  <div className="absolute right-4 top-4 flex gap-1 animate-pulse">
-                    <span className="h-2 w-2 rounded-full bg-primary" />
-                    <span className="h-2 w-2 rounded-full bg-primary" style={{ animationDelay: "0.2s" }} />
-                    <span className="h-2 w-2 rounded-full bg-primary" style={{ animationDelay: "0.4s" }} />
-                  </div>
+                <div className="mt-6 grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+                  <article className="panel-edge border border-border bg-background/60 p-5">
+                    <div className="flex items-center justify-between border-b border-border pb-3">
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Shelf A</p>
+                        <h4 className="mt-2 font-display text-2xl font-semibold text-foreground">
+                          {originalCompositionNote.title}
+                        </h4>
+                      </div>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                        {originalCompositionNote.status}
+                      </span>
+                    </div>
 
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Active Track:</div>
-                  <div className="text-xl font-medium text-foreground tracking-wide mb-1 flex items-center gap-2">
-                    {currentTrack.title}
-                    {isPlaying && <span className="text-xs text-primary animate-pulse">[PLAYING]</span>}
-                  </div>
-                  <div className="text-xs text-[var(--data)] flex justify-between border-t border-border/40 pt-2 mt-2">
-                    <span>{currentTrack.type}</span>
-                    <span>{currentTrack.bpm}</span>
-                  </div>
+                    <div className="mt-5 border border-dashed border-border bg-card/50 p-6 text-center">
+                      <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                        Intentionally Empty
+                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        {originalCompositionNote.copy}
+                      </p>
+                    </div>
+                  </article>
 
-                  {/* Equalizer animation simulation */}
-                  <div className="h-10 flex items-end gap-1 mt-4">
-                    {Array.from({ length: 24 }).map((_, i) => {
-                      const height = isPlaying 
-                        ? [20, 35, 10, 40, 15, 30, 25, 12, 38, 22, 18, 32, 28, 14, 36, 16, 26, 30, 8, 34, 18, 24, 12, 22][(i + currentTrackIndex * 4) % 24]
-                        : 4;
-                      return (
-                        <div
-                          key={i}
-                          className="w-full bg-primary transition-all duration-300"
-                          style={{
-                            height: `${height}px`,
-                            opacity: isPlaying ? 0.8 : 0.2,
-                            background: i % 2 === 0 ? 'var(--signal)' : 'var(--data)'
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
+                  <article className="panel-edge border border-border bg-background/60 p-5">
+                    <div className="flex items-center justify-between border-b border-border pb-3">
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Shelf B</p>
+                        <h4 className="mt-2 font-display text-2xl font-semibold text-foreground">
+                          Music With AI
+                        </h4>
+                      </div>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--data)]">
+                        {aiMusicTracks.length} releases logged
+                      </span>
+                    </div>
 
-                {/* Audio Progress Slider */}
-                <div className="mb-6">
-                  <div className="h-1 w-full bg-border rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-amber transition-all duration-1000 ease-linear"
-                      style={{ width: `${playProgress}%` }}
-                    />
-                  </div>
-                  <div className="flex justify-between text-[10px] font-mono text-muted-foreground mt-2">
-                    <span>{isPlaying ? `0:${Math.floor(playProgress * 0.03).toString().padStart(2, '0')}` : '0:00'}</span>
-                    <span>3:00</span>
-                  </div>
-                </div>
-
-                {/* Audio Control Panel */}
-                <div className="flex items-center justify-between border-t border-border pt-6">
-                  <div className="flex items-center gap-2">
-                    <button 
-                      onClick={() => setIsPlaying(!isPlaying)}
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/95 transition-all duration-300 glow-cyber"
-                    >
-                      {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-1" />}
-                    </button>
-                    <button 
-                      onClick={handleNextTrack}
-                      className="flex h-10 w-10 items-center justify-center border border-border bg-card/60 text-muted-foreground hover:text-foreground hover:border-border-strong transition-all duration-300"
-                    >
-                      <SkipForward size={16} />
-                    </button>
-                  </div>
-
-                  <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
-                    <Volume2 size={16} className="text-primary" />
-                    <span>AUDIO STATION INTAKE READY</span>
-                  </div>
+                    <div className="mt-5 border border-border bg-card/55 p-4">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                        Evolution Note
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                        The arc starts with early v3.5-era nostalgia work and sharpens into v4.5-era songs with stronger genre control, deeper imagery, and cleaner emotional tension. The page should feel like a creative timeline, not just a playlist.
+                      </p>
+                    </div>
+                  </article>
                 </div>
               </div>
 
-              {/* Tracks List */}
-              <div className="mt-6 border border-border bg-card/45 p-4 rounded">
-                <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground mb-3">Soundtrack Queue (User MP3 Files Loadable):</p>
-                <div className="space-y-1">
-                  {tracks.map((t, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        setCurrentTrackIndex(idx);
-                        setIsPlaying(true);
-                        setPlayProgress(0);
-                      }}
-                      className={`w-full flex items-center justify-between p-3 text-left transition-all duration-300 font-mono text-xs ${
-                        currentTrackIndex === idx 
-                          ? "border border-primary/50 bg-primary-soft text-primary" 
-                          : "border border-transparent text-muted-foreground hover:text-foreground hover:bg-card/40"
-                      }`}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="text-primary">{currentTrackIndex === idx && isPlaying ? "▊" : `${idx + 1}.`}</span>
-                        <span>{t.title}</span>
+              <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
+                <section className="space-y-4">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Chronological AI Timeline</p>
+                    <h4 className="mt-2 font-display text-2xl font-semibold text-foreground">
+                      From first experiments to co-written worlds
+                    </h4>
+                  </div>
+
+                  <div className="space-y-4">
+                    {aiMusicTracks.map((track, idx) => (
+                      <button
+                        key={track.slug}
+                        onClick={() => {
+                          setSelectedAiSongSlug(track.slug);
+                          setSelectedAudioFileName(track.files[0]?.fileName ?? "");
+                          setActiveSongView("overview");
+                        }}
+                        className={`panel-edge w-full overflow-hidden border p-5 text-left transition-all duration-300 ${
+                          selectedAiSong.slug === track.slug
+                            ? "border-primary bg-primary-soft/40"
+                            : "border-border bg-card/65 hover:border-primary/40"
+                        }`}
+                      >
+                        <div className="grid gap-4 md:grid-cols-[120px_1fr]">
+                          <div className="border border-border bg-background/55 p-3">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                              Step {idx + 1}
+                            </p>
+                            <p className="mt-2 font-display text-base font-semibold text-foreground">
+                              {track.period}
+                            </p>
+                            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
+                              {track.model}
+                            </p>
+                          </div>
+
+                          <div>
+                            <div className="flex flex-col gap-3 border-b border-border pb-3 md:flex-row md:items-start md:justify-between">
+                              <div>
+                                <h5 className="font-display text-2xl font-semibold leading-tight text-foreground">
+                                  {track.title}
+                                </h5>
+                                <p className="mt-2 text-sm text-muted-foreground">
+                                  {track.genre}
+                                </p>
+                              </div>
+                              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--data)]">
+                                {track.duration}
+                              </span>
+                            </div>
+
+                            <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                              {track.summary}
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="panel-edge border border-border bg-card/75 p-5 md:p-6">
+                  <div className="grid gap-5 border-b border-border pb-5 md:grid-cols-[150px_1fr]">
+                    <div className="relative aspect-square overflow-hidden border border-border bg-background/70">
+                      <div className="absolute inset-0 surface-grid opacity-80" aria-hidden="true" />
+                      <div className="absolute inset-0 scanline-mask opacity-30" aria-hidden="true" />
+                      <div className="absolute left-4 top-4 h-10 w-10 border-l border-t border-primary" aria-hidden="true" />
+                      <div className="absolute bottom-4 right-4 h-10 w-10 border-b border-r border-[var(--data)]" aria-hidden="true" />
+                      <div className="relative z-10 flex h-full flex-col justify-between p-4">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--data)]">
+                          {selectedAiSong.model}
+                        </span>
+                        <div>
+                          <Music className="mb-3 h-7 w-7 text-primary" aria-hidden="true" />
+                          <p className="font-display text-lg font-semibold leading-tight text-foreground">
+                            {selectedAiSong.title}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col justify-between gap-4">
+                      <div>
+                        <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                          <div>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Selected Song</p>
+                            <h4 className="mt-2 font-display text-3xl font-semibold text-foreground">
+                              {selectedAiSong.title}
+                            </h4>
+                          </div>
+                          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--data)]">
+                            /assets/music/ai/{selectedAudioFile.fileName}
+                          </span>
+                        </div>
+                        <p className="mt-3 text-sm text-muted-foreground">
+                          {selectedAiSong.genre} // {selectedAiSong.language} // {selectedAiSong.duration}
+                        </p>
+                        <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                          {selectedAiSong.motif}
+                        </p>
+                      </div>
+
+                      {selectedAiSong.files.length > 1 && (
+                        <div className="flex flex-wrap gap-2">
+                          {selectedAiSong.files.map((file) => (
+                            <button
+                              key={file.fileName}
+                              onClick={() => setSelectedAudioFileName(file.fileName)}
+                              className={`border px-3 py-2 text-left font-mono text-[10px] uppercase tracking-[0.14em] transition-all duration-300 ${
+                                selectedAudioFile.fileName === file.fileName
+                                  ? "border-primary bg-primary-soft text-primary"
+                                  : "border-border bg-background/40 text-muted-foreground hover:text-foreground"
+                              }`}
+                            >
+                              {file.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-2 border-b border-border pb-4">
+                    {[
+                      { id: "overview", label: "Song Story" },
+                      { id: "lyrics", label: "Lyrics" },
+                    ].map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveSongView(tab.id as "overview" | "lyrics")}
+                        className={`border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-all duration-300 ${
+                          activeSongView === tab.id
+                            ? "border-primary bg-primary-soft text-primary"
+                            : "border-border bg-background/40 text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 border border-border bg-background/55 p-4">
+                    <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                        Listening Console
+                      </p>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                        Suno source synced
                       </span>
-                      <span className="text-[10px] text-muted-foreground/80">{t.bpm} // {t.type}</span>
-                    </button>
-                  ))}
-                </div>
+                    </div>
+                    <audio
+                      key={selectedAudioFile.fileName}
+                      controls
+                      preload="none"
+                      className="mt-4 w-full"
+                      src={`/assets/music/ai/${selectedAudioFile.fileName}`}
+                    >
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+
+                  {activeSongView === "overview" && (
+                    <div className="mt-5 space-y-4">
+                      <div className="border border-border bg-background/55 p-4">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                          Song Summary
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                          {selectedAiSong.summary}
+                        </p>
+                      </div>
+
+                      <div className="border border-border bg-background/55 p-4">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                          How the collaboration evolved here
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {selectedAiSong.evolution}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeSongView === "lyrics" && (
+                    <div className="mt-5 border border-border bg-background/65 p-4">
+                      <div className="flex items-center justify-between border-b border-border pb-3">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                          Lyrics Deck
+                        </p>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                          Hinglish display where applicable
+                        </span>
+                      </div>
+                      <div className="mt-4 space-y-1 font-mono text-sm leading-7 text-foreground/90">
+                        {selectedAiSong.lyrics.map((line, idx) => (
+                          <p
+                            key={`${selectedAiSong.slug}-${idx}`}
+                            className={line.startsWith("[") ? "pt-3 text-xs uppercase tracking-[0.16em] text-[var(--data)]" : ""}
+                          >
+                            {line || "\u00A0"}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="mt-5 border border-border bg-card/45 p-4">
+                    <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                      File intake path
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Save AI music files in `public/assets/music/ai/` using the filename shown above, for example `public/assets/music/ai/{selectedAudioFile.fileName}`. Keep live-played original compositions in `public/assets/music/original/`. Both folders will sync cleanly with GitHub.
+                    </p>
+                  </div>
+                </section>
               </div>
             </div>
           )}
@@ -716,7 +1035,7 @@ const ControlDeck = () => {
                     Gurman's Sovereign AI Stack
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    This is my day-to-day stack. I operate across three cognitive tiers—Thinking deeply with reasoning models, Building agentic pipelines, and Orchestrating robust systems at scale.
+                    This is my day-to-day stack. I operate across three cognitive tiers - Thinking deeply with reasoning models, Building agentic pipelines, and Orchestrating robust systems at scale.
                   </p>
                 </div>
               </div>
@@ -1144,7 +1463,7 @@ const ControlDeck = () => {
               ].map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveAppTab(tab.id as any)}
+                  onClick={() => setActiveAppTab(tab.id as "overview" | "stack" | "infra" | "architecture")}
                   className={`border px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider transition-all duration-300 rounded-sm ${
                     activeAppTab === tab.id
                       ? "border-primary bg-primary-soft text-primary font-medium"
@@ -1173,7 +1492,7 @@ const ControlDeck = () => {
                   <ul className="space-y-2">
                     {activeApp.specs.techStack.map((item, index) => (
                       <li key={index} className="text-xs text-foreground/80 flex items-start gap-2">
-                        <span className="text-primary font-bold mt-0.5">•</span>
+                        <span className="text-primary font-bold mt-0.5">+</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -1241,3 +1560,4 @@ const ControlDeck = () => {
 };
 
 export default ControlDeck;
+
