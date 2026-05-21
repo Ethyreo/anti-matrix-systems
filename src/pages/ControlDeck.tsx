@@ -929,14 +929,6 @@ const ControlDeck = () => {
                     </div>
                   )}
 
-                  <div className="mt-5 border border-border bg-card/45 p-4">
-                    <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                      File intake path
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Save AI music files in `public/assets/music/ai/` using the filename shown above, for example `public/assets/music/ai/{selectedAudioFile.fileName}`. Keep live-played original compositions in `public/assets/music/original/`. Both folders will sync cleanly with GitHub.
-                    </p>
-                  </div>
                 </section>
               </div>
             </div>
