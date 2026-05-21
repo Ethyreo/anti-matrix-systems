@@ -30,53 +30,33 @@ import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    icon: <Target size={36} />,
-    title: "Startup Growth Systems",
-    description: "Internal processes, documentation, operating rhythms, and team flows built to scale sustainably.",
+    icon: <Brain size={36} />,
+    title: "Rapid AI Prototyping",
+    description: "Turn messy startup ideas, complex workflows, and half-formed founder PRDs into functional, client-ready MVPs at lightspeed.",
+  },
+  {
+    icon: <CircuitBoard size={36} />,
+    title: "Systems Architecture",
+    description: "Stitch together frontends, localized databases, secure APIs, and intelligent AI models into robust, resilient systems that scale.",
   },
   {
     icon: <TrendingUp size={36} />,
-    title: "Investor Strategy & Fundraising",
-    description: "Pitch decks, financial models, investor dashboards, and reporting systems founders can trust.",
-  },
-  {
-    icon: <Briefcase size={36} />,
-    title: "Business & Revenue Operations",
-    description: "Performance dashboards, pricing models, revenue logic, and decision systems for clearer execution.",
-  },
-  {
-    icon: <Users size={36} />,
-    title: "Hiring & Team Expansion",
-    description: "Org plans, hiring pipelines, onboarding documentation, and OKR systems for growing teams.",
+    title: "Biz Ops & Revenue Logic",
+    description: "Create a single source of truth with high-fidelity performance dashboards, automated payouts, and custom operational data structures.",
   },
   {
     icon: <Zap size={36} />,
-    title: "Product & Process Alignment",
-    description: "A practical bridge between strategy, product, operations, and growth so work moves cleanly.",
-  },
-  {
-    icon: <Brain size={36} />,
-    title: "Automation & AI Stack Integration",
-    description: "No-code and AI-assisted workflows that remove repeated manual work without adding complexity.",
-  },
-  {
-    icon: <Shield size={36} />,
-    title: "Post-Investment Scaling",
-    description: "Department structure, board reporting, operating metrics, and efficiency systems after funding.",
-  },
-  {
-    icon: <Sparkles size={36} />,
-    title: "AI Evangelism & Intelligence",
-    description: "Strategic AI adoption across operational, creative, and decision-making layers.",
+    title: "Agentic Workflows & Stacks",
+    description: "Build custom multi-agent pipelines and background automations that solve real-world bottlenecks and eliminate manual operational overhead.",
   },
 ];
 
 const processSteps = [
-  ["01", "Discovery & Diagnosis", "Map the team, tools, bottlenecks, investor expectations, and recurring decisions."],
-  ["02", "System Design", "Create the operating blueprint for workflows, automation, ownership, and data flow."],
-  ["03", "Implementation", "Build the dashboards, docs, cadences, and handoffs with your team in the loop."],
-  ["04", "Integration & Training", "Equip the team to run the system independently instead of depending on constant founder intervention."],
-  ["05", "Review & Scale", "Tune the system as the company grows, new departments form, and priorities change."],
+  ["01", "PRD Scoping & Context", "Extract the exact problem statement, walk through real-life bottleneck examples, and isolate the core business logic."],
+  ["02", "Systems Architecture", "Map out the technical blueprint, matching frontends, databases, APIs, and AI agent logic for robust connectivity."],
+  ["03", "Rapid Prototyping", "Move from layout concepts to a functional MVP, vibe coding the operational parts in close, continuous feedback loops."],
+  ["04", "Troubleshooting & Tuning", "Relentlessly chomp down on edge cases, polish the interface, optimize prompt reliability, and fix integration friction."],
+  ["05", "Launch & Handover", "Deploy the compiled code to high-speed global edge networks and hand over an independent system you own completely."],
 ];
 
 const industries = ["SaaS", "Cybersecurity", "Creator Economy", "D2C & E-commerce", "Hospitality", "Lifestyle"];
@@ -142,9 +122,8 @@ const Index = () => {
             <h1 className="font-display text-5xl font-semibold leading-[1.02] text-foreground md:text-7xl">
               The Anti Matrix Project
             </h1>
-            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
-              Startup consulting for founders who need the operating system behind growth: strategy, structure,
-              investor readiness, automation, and team clarity.
+            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl animate-text-gradient bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
+              I build the tech your strategy needs and strategies your tech needs. AI-driven prototyping and systems architecture for modern startups.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button
@@ -152,7 +131,7 @@ const Index = () => {
                 size="lg"
                 className="h-14 bg-primary px-7 text-base text-primary-foreground glow-cyber hover:bg-primary/90"
               >
-                Build Your Growth System
+                Launch Your AI MVP
                 <ArrowRight className="h-5 w-5" />
               </Button>
               <Button
@@ -165,7 +144,7 @@ const Index = () => {
               </Button>
             </div>
             <div className="mt-10 grid max-w-2xl grid-cols-3 border border-border bg-card/50 backdrop-blur-sm">
-              {["Ops", "Capital", "AI Stack"].map((item) => (
+              {["AI Stack", "Biz Ops", "Prototypes"].map((item) => (
                 <div key={item} className="border-r border-border px-4 py-4 last:border-r-0">
                   <p className="font-mono text-xs uppercase tracking-[0.14em] text-[var(--data)]">{item}</p>
                   <p className="mt-1 text-sm text-muted-foreground">System layer</p>
@@ -178,15 +157,15 @@ const Index = () => {
             <div className="flex items-center justify-between border-b border-border pb-4">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">Anti Matrix scan</p>
-                <h2 className="mt-2 text-2xl font-semibold text-foreground">Turn founder chaos into an operating system.</h2>
+                <h2 className="mt-2 text-2xl font-semibold text-foreground">Turn messy problem statements into code.</h2>
               </div>
               <CircuitBoard className="h-9 w-9 text-primary" aria-hidden="true" />
             </div>
             <div className="space-y-4 py-6">
               {[
-                ["Founder bottleneck", "Decisions, approvals, and context still live in your head."],
-                ["Investor signal", "Progress exists, but the story is not packaged for confidence."],
-                ["Team drift", "People are moving, but ownership, cadence, and visibility are blurry."],
+                ["Messy PRD", "Half-formed ideas, workflows, and operational context trapped in your head."],
+                ["Product Friction", "Need custom AI tools and rapid software prototypes but don't want to hire a bloated dev team."],
+                ["Systems Drift", "Manual processes and disconnected tools draining team energy without scalable automation."],
               ].map(([label, description]) => (
                 <div key={label} className="border border-border bg-background/55 p-4">
                   <div className="mb-2 flex items-center gap-3">
@@ -200,7 +179,7 @@ const Index = () => {
             <div className="border-t border-border pt-5">
               <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">What gets built</p>
               <div className="grid gap-3 sm:grid-cols-3">
-                {["Operating map", "Automation backlog", "90-day execution rhythm"].map((item) => (
+                {["Functional AI MVP", "Automated Workflows", "Scalable System Architecture"].map((item) => (
                   <div key={item} className="border border-border bg-card/70 p-3">
                     <Activity className="mb-3 h-4 w-4 text-[var(--data)]" aria-hidden="true" />
                     <p className="text-sm font-medium leading-snug text-foreground">{item}</p>
@@ -217,8 +196,8 @@ const Index = () => {
         <div className="container relative z-10 mx-auto px-6">
           <SectionHeader
             eyebrow="System modules"
-            title="From funding to function, build what founders need to grow."
-            copy="Each engagement turns messy growth into visible workflows, measurable ownership, and repeatable execution."
+            title="I build the tech your strategy needs and strategies your tech needs."
+            copy="Bypass traditional development bottlenecks. Turn your ideas into functional, edge-deployed software models built for execution."
           />
           <div className="grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => (
@@ -235,8 +214,8 @@ const Index = () => {
         <div className="container relative z-10 mx-auto px-6">
           <SectionHeader
             eyebrow="Operating protocol"
-            title="Clarity in every layer."
-            copy="A practical sequence from diagnosis to implementation, designed so the system survives after the project ends."
+            title="From PRD to Edge Deployment."
+            copy="A rigorous step-by-step sequence built to turn abstract operational concepts into working system architectures."
           />
           <div className="mx-auto max-w-3xl">
             {processSteps.map(([number, title, description], index) => (
@@ -254,7 +233,7 @@ const Index = () => {
           <SectionHeader
             eyebrow="Founder pattern"
             title="The mind behind the systems."
-            copy="Gurman Singh's path across brands, hospitality, creator operations, and high-growth tech shapes how Anti Matrix designs practical systems."
+            copy="Gurman Singh's path as an AI Prototyper and Biz Ops Analyst across startups, boutique hospitality, and marketing operations shapes how Anti Matrix designs high-velocity systems."
           />
           <JourneyCards />
           <div className="mt-12 flex justify-center animate-fade-in">
@@ -311,36 +290,36 @@ const Index = () => {
           />
           <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
             <CaseStudyCard
-              title="SaaS Startup"
-              preview="A fast-growing SaaS company needed to connect operations with investor updates. Automated reporting dashboards reduced weekly chaos by 70%."
-              challenge="The company had rapid growth but lacked structured communication between operations teams and investors. Weekly reports were manual, time-consuming, and inconsistent."
-              approach="We audited the data sources, stakeholder needs, and reporting requirements, then designed an automated dashboard system for internal and investor use."
-              system="A centralized reporting dashboard with automated data pipelines, standardized KPI definitions, weekly investor update templates, and internal alignment tools."
-              impact="Reduced report preparation time by 70%, improved data accuracy, increased investor confidence, and helped leadership make faster decisions."
+              title="Tenant Management System"
+              preview="A building-centric visual operating system that replaced manual registers and fragmented sheets with real-time property mapping."
+              challenge="Managing a physical building with paper logs for rent, utility updates, and tenant movement created constant back-and-forth and billing errors."
+              approach="Designed a structural interface where the physical building itself becomes the navigation map, displaying status and history in a single view."
+              system="A unified building dashboard tracking utility logs, historical payouts, and localized receipt generation synced dynamically to occupancy units."
+              impact="Completely eliminated sheet-jumping and second-guessing numbers, providing property owners with instant operating clarity."
             />
             <CaseStudyCard
-              title="Cybersecurity Startup"
-              preview="A cybersecurity firm entering a growth phase needed structure across hiring and operations. We built pipelines, OKRs, and onboarding."
-              challenge="The company was scaling rapidly with no formal hiring process, inconsistent onboarding, and unclear performance metrics."
-              approach="We created a talent operations framework covering role definitions, interview scorecards, onboarding paths, and OKR alignment."
-              system="Complete hiring pipelines, automated workflows, onboarding documentation, and OKR systems aligned across departments."
-              impact="Doubled team size while maintaining quality, reduced time-to-productivity by 40%, and clarified performance expectations."
+              title="MAOS & Dev Squad"
+              preview="A robust multi-agent orchestration framework coordinating local and cloud LLM nodes to automate complex developer tasks."
+              challenge="Single-prompt AI generation scales poorly for complex operational loops that require continuous file edits, tests, and debugging."
+              approach="Built a nested developer agent ecosystem where specialized LLM roles write, review, compile, and troubleshoot workspace code autonomously."
+              system="An air-gapped agent environment managing system diagnostics, task tracking logs, and localized model execution queues."
+              impact="Developed a self-healing pipeline that completes complex file systems edits with zero manual code manipulation."
             />
             <CaseStudyCard
-              title="Lifestyle Brand"
-              preview="A D2C brand post-funding was losing operational and creative alignment. A tiered operations framework improved decision turnaround by 40%."
-              challenge="Post-funding growth created operational chaos, slow decisions, and unclear accountability across creative and operations teams."
-              approach="We separated strategic, tactical, and operational decisions, then created review cadences and decision authorities."
-              system="Weekly operational reviews, monthly strategic planning, decision frameworks, process docs, and cross-functional alignment tools."
-              impact="Improved decision turnaround by 40%, reduced creative-operations conflict, and created a scalable foundation for growth."
+              title="Offline-Resilient Restaurant POS"
+              preview="A high-concurrency order logging and checkout interface designed for localized business syncing."
+              challenge="Cloud-dependent restaurant management tools fail completely during network blackouts, freezing operational POS cash counters."
+              approach="Engineered a localized data-sync layer that registers and buffers high-speed transactional logs offline and merges back to cloud."
+              system="An offline-first billing app, immediate inventory status triggers, and local printing hardware integrations."
+              impact="Guaranteed 100% kitchen and billing uptime, preventing transaction dropouts and server connection delays."
             />
             <CaseStudyCard
-              title="Consumer Platform"
-              preview="A regional platform faced fragmented data and unclear metrics. We built a unified data wheel and operating structure."
-              challenge="Expansion created fragmented data, inconsistent metrics, and no centralized view of performance across markets."
-              approach="We standardized metrics across regions, built centralized dashboards, and established operational processes for multi-market teams."
-              system="A unified data platform with standardized KPIs, regional dashboards, automated reporting, and operational playbooks."
-              impact="Created market-wide visibility, improved strategic decisions, and built a foundation for sustainable expansion."
+              title="Pine & Thatch Hotels"
+              preview="A creator-powered boutique hotel chain in Himachal Pradesh powered by localized operating systems."
+              challenge="Scaling a boutique hospitality brand across distributed mountain properties requires tight operational rhythms and aesthetic consistency."
+              approach="Established a unified hospitality operating model, linking digital guest booking systems with localized on-premise execution."
+              system="Integrated bookings framework, real-time local occupancy registers, interior design templates, and influencer collaboration pipelines."
+              impact="Scaled successfully from a single property into a curated Himachali hotel chain, running smoothly without constant intervention."
             />
           </div>
         </div>
@@ -385,8 +364,8 @@ const Index = () => {
         <div className="container relative z-10 mx-auto px-6">
           <SectionHeader
             eyebrow="Initiate diagnostic"
-            title="Design your growth system."
-            copy="Share where the chaos is showing up. The first step is mapping what needs structure."
+            title="Submit Your Problem Statement."
+            copy="Share where the bottleneck is showing up. Provide your context, a real-life example, and how you are solving it today."
           />
           <ContactForm />
         </div>
@@ -405,7 +384,7 @@ const Index = () => {
         <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <p className="font-display text-lg font-semibold text-foreground">The Anti Matrix Project</p>
-            <p className="mt-1 text-sm text-muted-foreground">Startup consulting by Gurman Singh. All rights reserved.</p>
+            <p className="mt-1 text-sm text-muted-foreground">AI Prototyping & Systems Architecture by Gurman Singh. All rights reserved.</p>
           </div>
           <div className="flex gap-6">
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">

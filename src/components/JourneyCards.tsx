@@ -54,7 +54,7 @@ const journeyData = [
   {
     icon: <Target className="h-8 w-8" />,
     title: "The Anti Matrix Project",
-    description: "Founded a consulting practice helping startups bridge the gap between ideas, investment, and intelligent execution.",
+    description: "Founded a systems-building studio helping founders bridge the gap between messy business ideas and functional, AI-driven software prototypes.",
     year: "Present",
   },
 ];
