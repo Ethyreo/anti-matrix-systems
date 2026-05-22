@@ -59,6 +59,12 @@ const processSteps = [
 ];
 
 const industries = ["SaaS", "Cybersecurity", "Creator Economy", "D2C & E-commerce", "Hospitality", "Lifestyle"];
+const directArticleIds = new Set([
+  "hiring-frameworks",
+  "reporting-systems",
+  "pine-thatch-hospitality",
+  "knowledge-bases",
+]);
 
 const Index = () => {
   const parallaxOffset = useParallax(0.3);
@@ -68,6 +74,13 @@ const Index = () => {
   const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
 
   useEffect(() => {
+    const articleId = new URLSearchParams(location.search).get("article");
+    if (articleId && directArticleIds.has(articleId)) {
+      setSelectedArticleId(articleId);
+      setIsBlogModalOpen(true);
+      return;
+    }
+
     if (location.hash) {
       const id = location.hash.replace("#", "");
       const element = document.getElementById(id);
@@ -330,7 +343,7 @@ const Index = () => {
               }}
             />
             <ResourceCard 
-              title="Pine & Thatch: Building Hospitality Demand in a Seasonal Hill Market" 
+              title="Pine & Thatch: Turning an 18-Room Hill Hotel Into a Profitable Operating System"
               onClick={() => {
                 setSelectedArticleId("pine-thatch-hospitality");
                 setIsBlogModalOpen(true);

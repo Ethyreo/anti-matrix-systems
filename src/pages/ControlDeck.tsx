@@ -66,16 +66,16 @@ const blogs = [
     ],
   },
   {
-    title: "Pine & Thatch: Building Hospitality Demand in a Seasonal Hill Market",
-    description: "A founder-grade breakdown of market research, seasonal demand mapping, renovation choices, launch events, booking operations, and SOP design in a Shimla tourism market.",
-    readTime: "7 min read",
+    title: "Pine & Thatch: Turning an 18-Room Hill Hotel Into a Profitable Operating System",
+    description: "A founder-grade breakdown of how traditional Shimla sales, OTA cleanup, creator marketing, hiring, renovations, and SOPs moved an 18-room Mashobra property from loss-making to profitable in five months.",
+    readTime: "9 min read",
     systemTag: "SYS/HOSP-04",
     date: "May 2026",
     points: [
-      "Local market research across seasonal tourist cycles",
-      "Marketing budgets, launch events, and booking channel logic",
-      "Hiring and internal SOPs inspired by 5-star hotel chains",
-      "Renovation priorities tied to guest experience and revenue timing",
+      "1200% booking-platform impression growth and 50% conversion lift",
+      "130% revenue uplift with 33% average occupancy improvement",
+      "Traditional on-ground Shimla sales fused with digital performance marketing",
+      "Hiring, SOPs, freelancers, creators, events, and booking control led by one operator",
     ],
   },
 ];

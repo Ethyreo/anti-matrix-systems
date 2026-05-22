@@ -209,74 +209,106 @@ const articlesData: Record<string, BlogArticle> = {
   },
   "pine-thatch-hospitality": {
     id: "pine-thatch-hospitality",
-    title: "Pine & Thatch: Building Hospitality Demand in a Seasonal Hill Market",
+    title: "Pine & Thatch: Turning an 18-Room Hill Hotel Into a Profitable Operating System",
     tag: "SYS/HOSP-04",
     date: "May 2026",
-    readTime: "7 min read",
-    eyebrow: "HOSPITALITY OPERATIONS",
+    readTime: "9 min read",
+    eyebrow: "TRADITIONAL BUSINESS + TECH OPS",
     content: (
       <div className="space-y-6 text-foreground/90 leading-relaxed font-body">
         <p className="lede text-lg text-muted-foreground font-light">
-          Pine & Thatch started with a simple but demanding question: how do you create reliable hospitality demand in a small, tourism-driven town where the market changes dramatically by season, weather, road conditions, holidays, and local event cycles?
+          Pine & Thatch was not a clean software problem. It was an 18-room hospitality asset in Mashobra, Shimla, sitting inside a seasonal, road-sensitive, highly local market where revenue could swing because of weather, holidays, school calendars, wedding movement, road closures, and how fast the booking desk responded to one guest on WhatsApp.
         </p>
         <p>
-          The work was not only about rooms, decor, or social media. It was about understanding the operating rhythm of Shimla: when people travel, why they book, what they expect at different price points, and how a local property can feel boutique without running like an improvised guest house.
+          The assignment was simple to say and hard to execute: take a loss-making property, rebuild its demand engine, tighten the daily operations, hire and train the team, launch the brand in-market, and create enough structure that the hotel could be handed over as a profitable business. Five months later, that is what happened.
         </p>
 
         <hr className="border-border/40 my-6" />
 
-        <h3 className="text-xl font-display font-medium text-primary">1. Reading a Tourism Market Before Spending on It</h3>
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="border border-border/80 bg-background/55 p-4 rounded-sm">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-primary">Booking Visibility</p>
+            <p className="mt-2 font-display text-3xl font-semibold text-foreground">+1200%</p>
+            <p className="mt-1 text-xs text-muted-foreground">Increase in booking-platform impressions after listing, content, and pricing corrections.</p>
+          </div>
+          <div className="border border-border/80 bg-background/55 p-4 rounded-sm">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-primary">Conversion</p>
+            <p className="mt-2 font-display text-3xl font-semibold text-foreground">+50%</p>
+            <p className="mt-1 text-xs text-muted-foreground">Improvement in booking conversion after offer, response, and channel hygiene fixes.</p>
+          </div>
+          <div className="border border-border/80 bg-background/55 p-4 rounded-sm">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-primary">Revenue</p>
+            <p className="mt-2 font-display text-3xl font-semibold text-foreground">+130%</p>
+            <p className="mt-1 text-xs text-muted-foreground">Revenue uplift across the operating window as occupancy and rate discipline improved.</p>
+          </div>
+          <div className="border border-border/80 bg-background/55 p-4 rounded-sm">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-primary">Occupancy</p>
+            <p className="mt-2 font-display text-3xl font-semibold text-foreground">+33%</p>
+            <p className="mt-1 text-xs text-muted-foreground">Average occupancy lift by aligning seasonality, local sales, and booking operations.</p>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-display font-medium text-primary">1. The Market Was Small. The System Was Not.</h3>
         <p>
-          The first layer was market research. We studied the difference between high-season family travel, winter demand, long-weekend surges, and quieter shoulder periods where every booking had to be earned more deliberately.
+          Shimla is not one market. It is a set of micro-markets that behave differently by month, road condition, budget segment, and guest intent. A Delhi family planning a school-holiday trip, a Chandigarh couple booking late on a Friday, a corporate offsite, a wedding overflow guest, and a local party organizer all need different proof before they trust a property.
         </p>
         <p>
-          That changed how budgets were defined. Instead of treating marketing spend as a flat monthly expense, the spend had to follow intent: discovery content before peak windows, offer-led pushes when occupancy softened, and sharper local distribution during event-heavy periods.
+          So the first job was not running ads. It was decoding demand. We mapped weekends, long weekends, shoulder periods, school holidays, wedding windows, event movement, OTA behavior, local taxi/referral loops, and the specific price bands where an 18-room Mashobra property could win without pretending to be a 5-star resort.
         </p>
 
         <div className="border border-border/80 bg-background/55 p-4 rounded-sm font-mono text-xs space-y-2">
-          <div className="text-primary font-bold">// MARKET SIGNALS TRACKED:</div>
-          <div>+ Weekend and holiday booking spikes</div>
-          <div>+ Family, couple, and group travel patterns</div>
-          <div>+ Weather and road-condition sensitivity</div>
-          <div>+ OTA visibility, direct inquiries, and referral loops</div>
+          <div className="text-primary font-bold">// DEMAND SIGNALS TRACKED:</div>
+          <div>+ OTA impressions, click-through, conversion, and ranking movement</div>
+          <div>+ WhatsApp and call inquiry quality by weekday and source</div>
+          <div>+ Weekend vs weekday occupancy and room-rate elasticity</div>
+          <div>+ Local travel agents, taxi operators, creators, party leads, and referral loops</div>
+          <div>+ Weather, road condition, holiday, and wedding-season volatility</div>
         </div>
 
-        <h3 className="text-xl font-display font-medium text-primary">2. Renovation as Positioning, Not Decoration</h3>
+        <h3 className="text-xl font-display font-medium text-primary">2. Back to Traditional, With a Digital Spine</h3>
         <p>
-          In boutique hospitality, renovation choices are strategic. Every upgrade has to answer a commercial question: does this improve trust, justify price, reduce guest friction, create better photos, or make operations easier for staff?
+          The mistake in many local hospitality projects is choosing one religion: only digital ads, or only traditional relationships. Pine & Thatch needed both. Digital created visibility and measurable demand. Traditional sales created trust, repeat movement, and local distribution that no dashboard can manufacture from scratch.
         </p>
         <p>
-          The strongest work happened where design and operations met. Guest-facing improvements were paired with backend clarity: check-in flows, cleaning expectations, kitchen coordination, vendor handling, and escalation paths for common guest issues.
-        </p>
-
-        <h3 className="text-xl font-display font-medium text-primary">3. Hiring for Warmth, Then Training for Consistency</h3>
-        <p>
-          Small-town hospitality cannot copy a corporate hotel structure, but it can borrow the discipline. The hiring lens was simple: find people with warmth and local reliability, then use SOPs to create consistency around guest experience.
-        </p>
-        <p>
-          The SOP layer drew from 5-star hotel chains without becoming overbuilt. The goal was not luxury theatre. It was dependable hospitality: how calls are answered, how rooms are checked, how complaints are handled, how guest requests are logged, and how handovers happen between shifts.
+          The digital stack included OTA cleanup, pricing hygiene, photo and description improvements, performance marketing tests, creator-led content, and inquiry tracking. The traditional stack included local agents, taxi networks, party planners, nearby institutions, and on-ground relationship building across Shimla and Mashobra.
         </p>
 
-        <h3 className="text-xl font-display font-medium text-primary">4. Launch Moments, Parties, and Local Proof</h3>
+        <h3 className="text-xl font-display font-medium text-primary">3. Renovation as Positioning, Not Decoration</h3>
         <p>
-          The launch strategy used local energy as proof. Parties, creator visits, soft launches, and community moments were not treated as vanity events. They were distribution assets: ways to create memory, content, trust, and early word-of-mouth.
+          Renovation was treated as a revenue decision, not a vanity exercise. Every upgrade had to answer a commercial question: will this improve trust, raise perceived value, create better listing photos, reduce complaints, support events, or make the team faster?
         </p>
         <p>
-          The important distinction was operational readiness. A launch can generate attention, but if booking management, staff coordination, room readiness, and follow-up are weak, attention becomes pressure. The operating system had to be ready before the noise.
+          The goal was to make the property feel boutique without building a fragile, founder-dependent machine. Guest-facing improvements were paired with backend clarity: room-readiness checks, housekeeping handovers, kitchen coordination, vendor management, complaint paths, and daily operating rituals.
         </p>
 
-        <h3 className="text-xl font-display font-medium text-primary">5. Booking Management as the Real Control Room</h3>
+        <h3 className="text-xl font-display font-medium text-primary">4. One Person at the Center, Many Specialists Around the Edges</h3>
         <p>
-          The booking layer tied everything together. Pricing, availability, guest communication, cleaning schedules, and channel coordination all had to stay aligned. Even a small property can lose margin quickly when bookings are scattered across calls, messages, OTAs, and informal notes.
+          This was not a bloated turnaround team. One operating owner sat at the center: planning, hiring, vendor coordination, budget logic, marketing, creator coordination, local sales, booking hygiene, staff training, and daily problem-solving. Freelancers and specialists were pulled in only where they created leverage.
         </p>
         <p>
-          The lesson for founders is direct: hospitality is not just a lifestyle business. It is an operating system with demand generation on one side and service reliability on the other. If those two sides do not talk to each other, the brand leaks trust.
+          That meant doing the unglamorous work: walking the property, checking rooms, chasing creative assets, reviewing OTA data, speaking to vendors, correcting listings, negotiating with local partners, hiring staff, training responses, planning events, fixing handovers, and making sure the guest promise matched the actual operating capacity.
+        </p>
+
+        <h3 className="text-xl font-display font-medium text-primary">5. Hospitality SOPs Borrowed From 5-Star Chains, Shrunk for Reality</h3>
+        <p>
+          Small-town hospitality cannot copy a corporate hotel structure, but it can borrow the discipline. The SOP layer drew from 5-star chains and then got stripped down for a lean local team: how calls are answered, how rooms are inspected, how guest requests are logged, how complaints escalate, and how handovers happen between shifts.
+        </p>
+        <p>
+          The point was not luxury theatre. It was dependable hospitality. In an 18-room property, one missed call, one room-readiness gap, or one unclear handover can erase the margin created by good marketing.
+        </p>
+
+        <h3 className="text-xl font-display font-medium text-primary">6. Booking Management Became the Control Room</h3>
+        <p>
+          Booking operations tied everything together: pricing, availability, guest communication, cleaning schedules, channel coordination, and follow-up. The property moved from scattered calls and informal notes toward a clearer rhythm of inquiry tracking, response discipline, and channel control.
+        </p>
+        <p>
+          That is where the numbers started compounding. Better visibility created more demand. Faster responses improved conversion. Local relationships filled gaps that online channels missed. SOPs reduced leakage. Events and creators created proof. The property moved from loss-making to profitable inside five months, then was delivered to another leaser as an operating business rather than a loose collection of rooms.
         </p>
 
         <div className="border-l-2 border-primary bg-primary-soft p-4 mt-6">
           <p className="font-mono text-xs text-primary font-semibold mb-1">THE FOUNDER TAKEAWAY:</p>
           <p className="text-sm text-foreground/80 font-light">
-            A small market does not mean a simple business. Pine & Thatch showed that even a local hospitality project needs market intelligence, budget discipline, SOPs, hiring systems, launch design, and booking control if it wants to feel premium without becoming chaotic behind the scenes.
+            Pine & Thatch worked because it respected both worlds: the traditional trust networks of Shimla hospitality and the digital operating stack needed to measure, market, and control demand. The lesson is not only for hotel owners. Any founder building in a real-world market needs this blend: local context, hard execution, clean data, and an operating system strong enough to survive after the founder steps away.
           </p>
         </div>
       </div>
