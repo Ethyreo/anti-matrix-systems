@@ -410,8 +410,8 @@ const appsData: AppSpec[] = [
       overview: "The primary orchestrator and router governing your multi-agent company. Optimizes token spend and execution speed by intercepting assistant prompts and routing them dynamically between local models and advanced cloud APIs.",
       techStack: [
         "Core: Python FastAPI server interface.",
-        "Local Models: Ollama API runner loading Qwen3-Coder, DeepSeek-R1, and gpt-oss models.",
-        "Cloud APIs: OpenAI GPT-5.5, GPT-5.2-Codex, Anthropic Claude Opus 4.7 / Sonnet 4.6, and Google Gemini 3.1 Pro Preview.",
+        "Local Models: Ollama API runner loading coding and reasoning models for private fallback execution.",
+        "Cloud APIs: OpenAI Codex, Anthropic Claude, Google Gemini, and local hosted model endpoints routed by task complexity.",
         "Storage: Local Redis cache database to store prompt embeddings and redundant replies.",
       ],
       infrastructure: "Deploys as a local Docker container cluster utilizing GPU hardware acceleration inside the workstation workspace.",
@@ -451,11 +451,11 @@ const appsData: AppSpec[] = [
 // Expanded AI Tech Stack data - Organized for futuristic high-fidelity neural visualizer
 const techStack = {
   brain: [
-    { name: "OpenAI GPT-5.5", role: "Frontier reasoning, coding, and agentic planning", status: "PRIMARY" },
-    { name: "Claude Opus 4.7", role: "Complex strategy, review, and coding judgment", status: "ONLINE" },
-    { name: "Gemini 3.1 Pro Preview", role: "Large-context multimodal audits and research", status: "ONLINE" },
-    { name: "Qwen3-Coder", role: "Local/offline repository-scale coding inference", status: "ONLINE" },
-    { name: "DeepSeek-R1", role: "Local reasoning and logic stress tests", status: "STANDBY" },
+    { name: "OpenAI Codex", role: "Agentic coding, refactors, and workspace execution", status: "PRIMARY" },
+    { name: "Anthropic Claude", role: "Complex strategy, review, and coding judgment", status: "ONLINE" },
+    { name: "Google Gemini", role: "Large-context multimodal audits and research", status: "ONLINE" },
+    { name: "Ollama Local Models", role: "Private/offline repository-scale inference", status: "ONLINE" },
+    { name: "Open-Weight Reasoners", role: "Local logic stress tests and fallback routing", status: "STANDBY" },
   ],
   spine: [
     { name: "LangGraph", role: "Stateful swarms & cyclical agent loops", status: "ACTIVE" },
@@ -1297,7 +1297,7 @@ const ControlDeck = () => {
                       >
                         <Brain size={14} className="mb-0.5" />
                         <span>Thinking</span>
-                        <span className="text-[8px] opacity-75 font-normal">GPT-5.5 / Gemini 3.1 / Claude 4.7</span>
+                        <span className="text-[8px] opacity-75 font-normal">OpenAI / Gemini / Claude</span>
                       </button>
                       <button
                         onClick={() => {
@@ -1339,7 +1339,7 @@ const ControlDeck = () => {
                             <Brain size={14} /> Tier 1: Deep Thinking & Reasoning
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. OpenAI GPT-5.5, Anthropic Claude Opus 4.7 / Sonnet 4.6, and Gemini 3.1 Pro Preview handle frontier reasoning, long-context analysis, and complete specifications, assisted by local hosted Qwen3-Coder and DeepSeek-R1 swarms.
+                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. OpenAI, Anthropic Claude, and Google Gemini handle frontier reasoning, long-context analysis, and complete specifications, assisted by local hosted coding and reasoning models.
                           </p>
                         </div>
                       )}
@@ -1381,7 +1381,7 @@ const ControlDeck = () => {
                     </div>
 
                     <p className="text-xs text-muted-foreground leading-relaxed mb-6">
-                      My personal everyday model and tool deck, categorized by cognitive layer. Gated with active pinging indicators.
+                      My personal everyday AI tool deck, categorized by cognitive layer. Gated with active pinging indicators.
                     </p>
 
                     <div className="space-y-4">
@@ -1393,20 +1393,20 @@ const ControlDeck = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">OpenAI GPT-5.5</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Frontier Strategy Logic</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">OpenAI</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Reasoning & Strategy</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Claude Opus 4.7 / Sonnet 4.6</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Complex Judgment Layer</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Anthropic Claude</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Complex Judgment</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Gemini 3.1 Pro Preview</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Google Gemini</p>
                             <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Long Context Research</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Qwen3-Coder / DeepSeek-R1</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Local Hosted Models</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Local Hosted Models</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Private Reasoning Fallback</p>
                           </div>
                         </div>
                       </div>
@@ -1419,15 +1419,15 @@ const ControlDeck = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Antigravity + Gemini 3.1</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Antigravity</p>
                             <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Agentic IDE Layer</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Codex CLI + GPT-5.2-Codex</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">OpenAI Codex</p>
                             <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Workspace Orchestrator</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Claude Code + Opus/Sonnet</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Claude Code</p>
                             <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Command Line Agent</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
