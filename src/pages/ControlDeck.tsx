@@ -1613,10 +1613,10 @@ const ControlDeck = () => {
             <p className="mt-1 text-sm text-muted-foreground">Startup consulting by Gurman Singh. All rights reserved.</p>
           </div>
           <div className="flex gap-6">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+            <a href="https://www.linkedin.com/in/gs2799/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
               LinkedIn
             </a>
-            <a href="mailto:contact@antimatrixproject.com" className="text-muted-foreground hover:text-primary">
+            <a href="mailto:admin@theantimatrixproject.com" className="text-muted-foreground hover:text-primary">
               Email
             </a>
           </div>
