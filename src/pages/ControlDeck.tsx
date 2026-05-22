@@ -83,6 +83,7 @@ const blogs = [
 interface AiMusicTrack {
   title: string;
   period: string;
+  releaseLabel: string;
   duration: string;
   model: string;
   genre: string;
@@ -110,6 +111,7 @@ const aiMusicTracks: AiMusicTrack[] = [
   {
     title: "Pahaadon Ki Yaadein",
     period: "1 year, 8 months ago",
+    releaseLabel: "Sep 2024",
     duration: "2:59 / 2:40 variants",
     model: "v3.5",
     genre: "Acoustic Hindi / Himachali folk",
@@ -155,6 +157,7 @@ const aiMusicTracks: AiMusicTrack[] = [
   {
     title: "The Light",
     period: "6 months ago",
+    releaseLabel: "Nov 2025",
     duration: "2:32",
     model: "v4.5-all",
     genre: "Nu metal / rap / soft chorus rock",
@@ -194,6 +197,7 @@ const aiMusicTracks: AiMusicTrack[] = [
   {
     title: "Chhota Sa Tan",
     period: "3 months, 3 weeks ago",
+    releaseLabel: "Feb 2026",
     duration: "4:50",
     model: "v4.5-all",
     genre: "Heavy metal with Indian classical vocals",
@@ -232,6 +236,7 @@ const aiMusicTracks: AiMusicTrack[] = [
   {
     title: "Oonchai Pe Thandi Hawa",
     period: "3 months, 1 week ago",
+    releaseLabel: "Feb 2026",
     duration: "5:09",
     model: "v4.5-all",
     genre: "Heavy metal with Indian classical vocals",
@@ -266,6 +271,7 @@ const aiMusicTracks: AiMusicTrack[] = [
   {
     title: "Floors of the Same Church",
     period: "1 month, 3 weeks ago",
+    releaseLabel: "Apr 2026",
     duration: "3:53",
     model: "v4.5-all",
     genre: "Folk / indie folk / ambient",
@@ -744,8 +750,52 @@ const ControlDeck = () => {
                 </div>
               </div>
 
+              <div className="xl:hidden">
+                <div className="mb-4">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Mobile Archive Index</p>
+                  <h4 className="mt-2 font-display text-2xl font-semibold text-foreground">
+                    Pick a song
+                  </h4>
+                </div>
+                <div
+                  className="-mx-6 flex snap-x gap-3 overflow-x-auto px-6 pb-3"
+                  aria-label="Select an AI music track"
+                >
+                  {aiMusicTracks.map((track, idx) => (
+                    <button
+                      key={track.slug}
+                      onClick={() => {
+                        setSelectedAiSongSlug(track.slug);
+                        setSelectedAudioFileName(track.files[0]?.fileName ?? "");
+                        setActiveSongView("overview");
+                      }}
+                      className={`panel-edge min-w-[220px] snap-start border p-4 text-left transition-all duration-300 ${
+                        selectedAiSong.slug === track.slug
+                          ? "border-primary bg-primary-soft/50"
+                          : "border-border bg-card/70"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--data)]">
+                          {track.releaseLabel}
+                        </span>
+                      </div>
+                      <p className="mt-3 font-display text-lg font-semibold leading-tight text-foreground">
+                        {track.title}
+                      </p>
+                      <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+                        {track.genre}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-                <section className="space-y-4">
+                <section className="hidden space-y-4 xl:block">
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">Chronological AI Timeline</p>
                     <h4 className="mt-2 font-display text-2xl font-semibold text-foreground">
@@ -775,6 +825,9 @@ const ControlDeck = () => {
                             </p>
                             <p className="mt-2 font-display text-base font-semibold text-foreground">
                               {track.period}
+                            </p>
+                            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--data)]">
+                              {track.releaseLabel}
                             </p>
                             <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
                               {track.model}
@@ -836,7 +889,7 @@ const ControlDeck = () => {
                             </h4>
                           </div>
                           <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--data)]">
-                            /assets/music/ai/{selectedAudioFile.fileName}
+                            {selectedAiSong.releaseLabel}
                           </span>
                         </div>
                         <p className="mt-3 text-sm text-muted-foreground">
