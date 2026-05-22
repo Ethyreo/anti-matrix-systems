@@ -410,8 +410,8 @@ const appsData: AppSpec[] = [
       overview: "The primary orchestrator and router governing your multi-agent company. Optimizes token spend and execution speed by intercepting assistant prompts and routing them dynamically between local models and advanced cloud APIs.",
       techStack: [
         "Core: Python FastAPI server interface.",
-        "Local Models: Ollama API runner loading DeepSeek Coder and Gemma 2 models.",
-        "Cloud APIs: Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Pro, OpenAI GPT-4o.",
+        "Local Models: Ollama API runner loading Qwen3-Coder, DeepSeek-R1, and gpt-oss models.",
+        "Cloud APIs: OpenAI GPT-5.5, GPT-5.2-Codex, Anthropic Claude Opus 4.7 / Sonnet 4.6, and Google Gemini 3.1 Pro Preview.",
         "Storage: Local Redis cache database to store prompt embeddings and redundant replies.",
       ],
       infrastructure: "Deploys as a local Docker container cluster utilizing GPU hardware acceleration inside the workstation workspace.",
@@ -451,11 +451,11 @@ const appsData: AppSpec[] = [
 // Expanded AI Tech Stack data - Organized for futuristic high-fidelity neural visualizer
 const techStack = {
   brain: [
-    { name: "Claude 3.5 Sonnet", role: "Agentic reasoning & multi-step coding", status: "PRIMARY" },
-    { name: "DeepSeek R1", role: "Deep logic & complex reasoning swarms", status: "ONLINE" },
-    { name: "Gemini 1.5 Pro", role: "2M Context ingestion & complete audits", status: "ONLINE" },
-    { name: "OpenAI o1-pro", role: "Strategic GTM & enterprise logic maps", status: "STANDBY" },
-    { name: "Qwen 2.5 Coder", role: "Local offline autocomplete & inference", status: "ONLINE" },
+    { name: "OpenAI GPT-5.5", role: "Frontier reasoning, coding, and agentic planning", status: "PRIMARY" },
+    { name: "Claude Opus 4.7", role: "Complex strategy, review, and coding judgment", status: "ONLINE" },
+    { name: "Gemini 3.1 Pro Preview", role: "Large-context multimodal audits and research", status: "ONLINE" },
+    { name: "Qwen3-Coder", role: "Local/offline repository-scale coding inference", status: "ONLINE" },
+    { name: "DeepSeek-R1", role: "Local reasoning and logic stress tests", status: "STANDBY" },
   ],
   spine: [
     { name: "LangGraph", role: "Stateful swarms & cyclical agent loops", status: "ACTIVE" },
@@ -1297,7 +1297,7 @@ const ControlDeck = () => {
                       >
                         <Brain size={14} className="mb-0.5" />
                         <span>Thinking</span>
-                        <span className="text-[8px] opacity-75 font-normal">OpenAI / Gemini / Anthropic</span>
+                        <span className="text-[8px] opacity-75 font-normal">GPT-5.5 / Gemini 3.1 / Claude 4.7</span>
                       </button>
                       <button
                         onClick={() => {
@@ -1312,7 +1312,7 @@ const ControlDeck = () => {
                       >
                         <Hammer size={14} className="mb-0.5" />
                         <span>Building</span>
-                        <span className="text-[8px] opacity-75 font-normal">Antigravity / Codex / Claude</span>
+                        <span className="text-[8px] opacity-75 font-normal">Codex / Claude Code / Antigravity</span>
                       </button>
                       <button
                         onClick={() => {
@@ -1339,7 +1339,7 @@ const ControlDeck = () => {
                             <Brain size={14} /> Tier 1: Deep Thinking & Reasoning
                           </h4>
                           <p className="text-xs text-muted-foreground leading-relaxed">
-                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. OpenAI (o1/o3-mini), Anthropic Claude 3.5, and Gemini 1.5 Pro analyze context windows and structure complete, bug-free specifications, assisted by local swarms.
+                            Before writing any code, I coordinate deep-reasoning layers to sketch architecture logic. OpenAI GPT-5.5, Anthropic Claude Opus 4.7 / Sonnet 4.6, and Gemini 3.1 Pro Preview handle frontier reasoning, long-context analysis, and complete specifications, assisted by local hosted Qwen3-Coder and DeepSeek-R1 swarms.
                           </p>
                         </div>
                       )}
@@ -1381,7 +1381,7 @@ const ControlDeck = () => {
                     </div>
 
                     <p className="text-xs text-muted-foreground leading-relaxed mb-6">
-                      My personal everyday tool deck, categorized by cognitive layer. Gated with active pinging indicators.
+                      My personal everyday model and tool deck, categorized by cognitive layer. Gated with active pinging indicators.
                     </p>
 
                     <div className="space-y-4">
@@ -1393,20 +1393,20 @@ const ControlDeck = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">OpenAI o1 / o3-pro</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">GTM & Strategic Logic</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">OpenAI GPT-5.5</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Frontier Strategy Logic</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Anthropic Claude</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Complex Prompt Design</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Claude Opus 4.7 / Sonnet 4.6</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Complex Judgment Layer</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Gemini 1.5 Pro</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">2M Context Ingestion</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Gemini 3.1 Pro Preview</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Long Context Research</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-amber-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">DeepSeek R1 (Local)</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Offline Logic Cycles</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Qwen3-Coder / DeepSeek-R1</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Local Hosted Models</p>
                           </div>
                         </div>
                       </div>
@@ -1419,20 +1419,20 @@ const ControlDeck = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Antigravity CLI</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Pair-Programming Coder</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Antigravity + Gemini 3.1</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Agentic IDE Layer</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Codex CLI</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Workspace Orchestrator</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Codex CLI + GPT-5.2-Codex</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Workspace Orchestrator</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Claude Code</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Command Line Agent</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Claude Code + Opus/Sonnet</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Command Line Agent</p>
                           </div>
                           <div className="bg-background/40 border border-border/40 hover:border-purple-500/20 p-2 rounded-sm transition-colors duration-300">
-                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight truncate">Cursor / Windsurf</p>
-                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">Agent-in-Loop IDEs</p>
+                            <p className="font-display font-semibold text-foreground text-[11px] leading-tight break-words">Cursor / Windsurf</p>
+                            <p className="text-[9px] text-muted-foreground leading-tight mt-0.5">Agent-in-Loop IDEs</p>
                           </div>
                         </div>
                       </div>
