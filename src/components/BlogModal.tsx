@@ -207,6 +207,81 @@ const articlesData: Record<string, BlogArticle> = {
       </div>
     ),
   },
+  "pine-thatch-hospitality": {
+    id: "pine-thatch-hospitality",
+    title: "Pine & Thatch: Building Hospitality Demand in a Seasonal Hill Market",
+    tag: "SYS/HOSP-04",
+    date: "May 2026",
+    readTime: "7 min read",
+    eyebrow: "HOSPITALITY OPERATIONS",
+    content: (
+      <div className="space-y-6 text-foreground/90 leading-relaxed font-body">
+        <p className="lede text-lg text-muted-foreground font-light">
+          Pine & Thatch started with a simple but demanding question: how do you create reliable hospitality demand in a small, tourism-driven town where the market changes dramatically by season, weather, road conditions, holidays, and local event cycles?
+        </p>
+        <p>
+          The work was not only about rooms, decor, or social media. It was about understanding the operating rhythm of Shimla: when people travel, why they book, what they expect at different price points, and how a local property can feel boutique without running like an improvised guest house.
+        </p>
+
+        <hr className="border-border/40 my-6" />
+
+        <h3 className="text-xl font-display font-medium text-primary">1. Reading a Tourism Market Before Spending on It</h3>
+        <p>
+          The first layer was market research. We studied the difference between high-season family travel, winter demand, long-weekend surges, and quieter shoulder periods where every booking had to be earned more deliberately.
+        </p>
+        <p>
+          That changed how budgets were defined. Instead of treating marketing spend as a flat monthly expense, the spend had to follow intent: discovery content before peak windows, offer-led pushes when occupancy softened, and sharper local distribution during event-heavy periods.
+        </p>
+
+        <div className="border border-border/80 bg-background/55 p-4 rounded-sm font-mono text-xs space-y-2">
+          <div className="text-primary font-bold">// MARKET SIGNALS TRACKED:</div>
+          <div>+ Weekend and holiday booking spikes</div>
+          <div>+ Family, couple, and group travel patterns</div>
+          <div>+ Weather and road-condition sensitivity</div>
+          <div>+ OTA visibility, direct inquiries, and referral loops</div>
+        </div>
+
+        <h3 className="text-xl font-display font-medium text-primary">2. Renovation as Positioning, Not Decoration</h3>
+        <p>
+          In boutique hospitality, renovation choices are strategic. Every upgrade has to answer a commercial question: does this improve trust, justify price, reduce guest friction, create better photos, or make operations easier for staff?
+        </p>
+        <p>
+          The strongest work happened where design and operations met. Guest-facing improvements were paired with backend clarity: check-in flows, cleaning expectations, kitchen coordination, vendor handling, and escalation paths for common guest issues.
+        </p>
+
+        <h3 className="text-xl font-display font-medium text-primary">3. Hiring for Warmth, Then Training for Consistency</h3>
+        <p>
+          Small-town hospitality cannot copy a corporate hotel structure, but it can borrow the discipline. The hiring lens was simple: find people with warmth and local reliability, then use SOPs to create consistency around guest experience.
+        </p>
+        <p>
+          The SOP layer drew from 5-star hotel chains without becoming overbuilt. The goal was not luxury theatre. It was dependable hospitality: how calls are answered, how rooms are checked, how complaints are handled, how guest requests are logged, and how handovers happen between shifts.
+        </p>
+
+        <h3 className="text-xl font-display font-medium text-primary">4. Launch Moments, Parties, and Local Proof</h3>
+        <p>
+          The launch strategy used local energy as proof. Parties, creator visits, soft launches, and community moments were not treated as vanity events. They were distribution assets: ways to create memory, content, trust, and early word-of-mouth.
+        </p>
+        <p>
+          The important distinction was operational readiness. A launch can generate attention, but if booking management, staff coordination, room readiness, and follow-up are weak, attention becomes pressure. The operating system had to be ready before the noise.
+        </p>
+
+        <h3 className="text-xl font-display font-medium text-primary">5. Booking Management as the Real Control Room</h3>
+        <p>
+          The booking layer tied everything together. Pricing, availability, guest communication, cleaning schedules, and channel coordination all had to stay aligned. Even a small property can lose margin quickly when bookings are scattered across calls, messages, OTAs, and informal notes.
+        </p>
+        <p>
+          The lesson for founders is direct: hospitality is not just a lifestyle business. It is an operating system with demand generation on one side and service reliability on the other. If those two sides do not talk to each other, the brand leaks trust.
+        </p>
+
+        <div className="border-l-2 border-primary bg-primary-soft p-4 mt-6">
+          <p className="font-mono text-xs text-primary font-semibold mb-1">THE FOUNDER TAKEAWAY:</p>
+          <p className="text-sm text-foreground/80 font-light">
+            A small market does not mean a simple business. Pine & Thatch showed that even a local hospitality project needs market intelligence, budget discipline, SOPs, hiring systems, launch design, and booking control if it wants to feel premium without becoming chaotic behind the scenes.
+          </p>
+        </div>
+      </div>
+    ),
+  },
 };
 
 interface BlogModalProps {
@@ -315,6 +390,7 @@ export const mapTitleToId = (title: string): string => {
   if (t.includes("hiring") || t.includes("frameworks")) return "hiring-frameworks";
   if (t.includes("reporting") || t.includes("investment")) return "reporting-systems";
   if (t.includes("knowledge") || t.includes("internal")) return "knowledge-bases";
+  if (t.includes("pine") || t.includes("thatch") || t.includes("hospitality")) return "pine-thatch-hospitality";
   return "";
 };
 

@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { Button } from "@/components/ui/button";
@@ -63,6 +63,19 @@ const blogs = [
       "Bi-directional wiki links connecting strategies to execution code",
       "Standard Operating Procedures (SOPs) for key client loops",
       "Continuous automated syncing protocols between team repos",
+    ],
+  },
+  {
+    title: "Pine & Thatch: Building Hospitality Demand in a Seasonal Hill Market",
+    description: "A founder-grade breakdown of market research, seasonal demand mapping, renovation choices, launch events, booking operations, and SOP design in a Shimla tourism market.",
+    readTime: "7 min read",
+    systemTag: "SYS/HOSP-04",
+    date: "May 2026",
+    points: [
+      "Local market research across seasonal tourist cycles",
+      "Marketing budgets, launch events, and booking channel logic",
+      "Hiring and internal SOPs inspired by 5-star hotel chains",
+      "Renovation priorities tied to guest experience and revenue timing",
     ],
   },
 ];
@@ -462,6 +475,7 @@ const techStack = {
 };
 
 const ControlDeck = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("blogs");
   const [selectedAiSongSlug, setSelectedAiSongSlug] = useState(aiMusicTracks[0]?.slug ?? "");
   const [activeSongView, setActiveSongView] = useState<"overview" | "lyrics">("overview");
@@ -495,6 +509,14 @@ const ControlDeck = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    const hash = location.hash.replace("#", "");
+    if (["blogs", "music", "apps", "stack"].includes(hash)) {
+      setActiveTab(hash);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.hash]);
 
   const selectedAiSong =
     aiMusicTracks.find((track) => track.slug === selectedAiSongSlug) ?? aiMusicTracks[0];
@@ -546,7 +568,7 @@ const ControlDeck = () => {
               <div className="mt-6 flex flex-wrap gap-4 border-t border-border pt-6">
                 <div className="flex items-center gap-2 border border-border bg-background/50 px-3 py-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-[var(--data)]" />
-                  <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Focus: Startup Systems Architecture</span>
+                  <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Focus: Startup Systems & Business Ops</span>
                 </div>
                 <div className="flex items-center gap-2 border border-border bg-background/50 px-3 py-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-primary" />

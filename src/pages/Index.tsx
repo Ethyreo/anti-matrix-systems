@@ -6,7 +6,6 @@ import DiagonalFlowBackground from "@/components/DiagonalFlowBackground";
 import { useParallax } from "@/hooks/use-parallax";
 import ServiceCard from "@/components/ServiceCard";
 import ProcessStep from "@/components/ProcessStep";
-import CaseStudyCard from "@/components/CaseStudyCard";
 import ResourceCard from "@/components/ResourceCard";
 import ContactForm from "@/components/ContactForm";
 import JourneyCards from "@/components/JourneyCards";
@@ -36,8 +35,8 @@ const services = [
   },
   {
     icon: <CircuitBoard size={36} />,
-    title: "Systems Architecture",
-    description: "Stitch together frontends, localized databases, secure APIs, and intelligent AI models into robust, resilient systems that scale.",
+    title: "System and Business Ops Architecture",
+    description: "Stitch together frontends, localized databases, secure APIs, workflows, budgets, hiring rhythms, and operating logic into resilient systems that scale.",
   },
   {
     icon: <TrendingUp size={36} />,
@@ -53,7 +52,7 @@ const services = [
 
 const processSteps = [
   ["01", "PRD Scoping & Context", "Extract the exact problem statement, walk through real-life bottleneck examples, and isolate the core business logic."],
-  ["02", "Systems Architecture", "Map out the technical blueprint, matching frontends, databases, APIs, and AI agent logic for robust connectivity."],
+  ["02", "System and Business Ops Architecture", "Map out the technical and operating blueprint, matching frontends, databases, workflows, budgets, and AI agent logic for robust connectivity."],
   ["03", "Rapid Prototyping", "Move from layout concepts to a functional MVP, vibe coding the operational parts in close, continuous feedback loops."],
   ["04", "Troubleshooting & Tuning", "Relentlessly chomp down on edge cases, polish the interface, optimize prompt reliability, and fix integration friction."],
   ["05", "Launch & Handover", "Deploy the compiled code to high-speed global edge networks and hand over an independent system you own completely."],
@@ -123,7 +122,7 @@ const Index = () => {
               The Anti Matrix Project
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl animate-text-gradient bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
-              I build the tech your strategy needs and strategies your tech needs. AI-driven prototyping and systems architecture for modern startups.
+              I build the tech your strategy needs and strategies your tech needs. AI-driven prototyping, system design, and business ops architecture for modern startups.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button
@@ -179,7 +178,7 @@ const Index = () => {
             <div className="border-t border-border pt-5">
               <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">What gets built</p>
               <div className="grid gap-3 sm:grid-cols-3">
-                {["Functional AI MVP", "Automated Workflows", "Scalable System Architecture"].map((item) => (
+                {["Functional AI MVP", "Automated Workflows", "System and Business Ops Architecture"].map((item) => (
                   <div key={item} className="border border-border bg-card/70 p-3">
                     <Activity className="mb-3 h-4 w-4 text-[var(--data)]" aria-hidden="true" />
                     <p className="text-sm font-medium leading-snug text-foreground">{item}</p>
@@ -284,43 +283,25 @@ const Index = () => {
         <DiagonalFlowBackground />
         <div className="container relative z-10 mx-auto px-6">
           <SectionHeader
-            eyebrow="Field reports"
-            title="Stories of systems that scaled."
-            copy="Representative transformations across reporting, hiring, data visibility, and operating cadence."
+            eyebrow="Personal project vault"
+            title="Explore the systems I have built, tested, and learned from."
+            copy="The deeper app archive lives inside the Control Deck: experiments, internal tools, operating systems, and technical builds that shaped the way I think about execution."
           />
-          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
-            <CaseStudyCard
-              title="Tenant Management System"
-              preview="A building-centric visual operating system that replaced manual registers and fragmented sheets with real-time property mapping."
-              challenge="Managing a physical building with paper logs for rent, utility updates, and tenant movement created constant back-and-forth and billing errors."
-              approach="Designed a structural interface where the physical building itself becomes the navigation map, displaying status and history in a single view."
-              system="A unified building dashboard tracking utility logs, historical payouts, and localized receipt generation synced dynamically to occupancy units."
-              impact="Completely eliminated sheet-jumping and second-guessing numbers, providing property owners with instant operating clarity."
-            />
-            <CaseStudyCard
-              title="MAOS & Dev Squad"
-              preview="A robust multi-agent orchestration framework coordinating local and cloud LLM nodes to automate complex developer tasks."
-              challenge="Single-prompt AI generation scales poorly for complex operational loops that require continuous file edits, tests, and debugging."
-              approach="Built a nested developer agent ecosystem where specialized LLM roles write, review, compile, and troubleshoot workspace code autonomously."
-              system="An air-gapped agent environment managing system diagnostics, task tracking logs, and localized model execution queues."
-              impact="Developed a self-healing pipeline that completes complex file systems edits with zero manual code manipulation."
-            />
-            <CaseStudyCard
-              title="Offline-Resilient Restaurant POS"
-              preview="A high-concurrency order logging and checkout interface designed for localized business syncing."
-              challenge="Cloud-dependent restaurant management tools fail completely during network blackouts, freezing operational POS cash counters."
-              approach="Engineered a localized data-sync layer that registers and buffers high-speed transactional logs offline and merges back to cloud."
-              system="An offline-first billing app, immediate inventory status triggers, and local printing hardware integrations."
-              impact="Guaranteed 100% kitchen and billing uptime, preventing transaction dropouts and server connection delays."
-            />
-            <CaseStudyCard
-              title="Pine & Thatch Hotels"
-              preview="A creator-powered boutique hotel chain in Himachal Pradesh powered by localized operating systems."
-              challenge="Scaling a boutique hospitality brand across distributed mountain properties requires tight operational rhythms and aesthetic consistency."
-              approach="Established a unified hospitality operating model, linking digital guest booking systems with localized on-premise execution."
-              system="Integrated bookings framework, real-time local occupancy registers, interior design templates, and influencer collaboration pipelines."
-              impact="Scaled successfully from a single property into a curated Himachali hotel chain, running smoothly without constant intervention."
-            />
+          <div className="panel-edge surface-grid mx-auto max-w-4xl border border-border p-6 text-center shadow-2xl md:p-10">
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              I do not want to overstate these as scaled client case studies. They are personal builds and operating experiments: useful, real, and honest about the stage they reached.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <Link to="/control-deck#apps">
+                <Button
+                  size="lg"
+                  className="h-14 bg-primary px-7 text-base text-primary-foreground glow-cyber hover:bg-primary/90"
+                >
+                  Explore Personal Projects
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -333,7 +314,7 @@ const Index = () => {
             title="Frameworks, systems, and playbooks."
             copy="Founder-ready writing on dashboards, investor reporting, knowledge bases, and practical operating design."
           />
-          <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 lg:grid-cols-4">
             <ResourceCard 
               title="The 4 Frameworks Every Startup Should Build Before Hiring" 
               onClick={() => {
@@ -345,6 +326,13 @@ const Index = () => {
               title="How Post-Investment Founders Can Build Reporting Systems Investors Love" 
               onClick={() => {
                 setSelectedArticleId("reporting-systems");
+                setIsBlogModalOpen(true);
+              }}
+            />
+            <ResourceCard 
+              title="Pine & Thatch: Building Hospitality Demand in a Seasonal Hill Market" 
+              onClick={() => {
+                setSelectedArticleId("pine-thatch-hospitality");
                 setIsBlogModalOpen(true);
               }}
             />
@@ -384,7 +372,7 @@ const Index = () => {
         <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <p className="font-display text-lg font-semibold text-foreground">The Anti Matrix Project</p>
-            <p className="mt-1 text-sm text-muted-foreground">AI Prototyping & Systems Architecture by Gurman Singh. All rights reserved.</p>
+            <p className="mt-1 text-sm text-muted-foreground">AI Prototyping, Systems, and Business Ops Architecture by Gurman Singh. All rights reserved.</p>
           </div>
           <div className="flex gap-6">
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
