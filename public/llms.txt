@@ -1,0 +1,8 @@
+# The Anti-Matrix Project
+
+## Core Overview
+The Anti-Matrix Project is a comprehensive control deck and dashboard for managing advanced AI agent systems, tracking missions, and monitoring infrastructure. It serves as a unified portal for operational intelligence, threat monitoring, and system diagnostics.
+
+## Key Pages
+- [Home](https://theantimatrixproject.com/): Primary dashboard and project portal.
+- [Control Deck](https://theantimatrixproject.com/control-deck): Advanced mission control interface for managing agents, databases, and system infrastructure.

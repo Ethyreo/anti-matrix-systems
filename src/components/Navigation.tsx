@@ -80,15 +80,19 @@ const Navigation = () => {
 
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                href={`/#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
                 className="group relative font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground transition-all duration-300 hover:text-foreground animate-fade-in"
                 style={{ animationDelay: `${index * 0.08}s` }}
               >
                 {item.label}
                 <span className="absolute -bottom-2 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-              </button>
+              </a>
             ))}
 
             {/* Custom Link: Control Deck */}
@@ -107,13 +111,17 @@ const Navigation = () => {
               }`} />
             </Link>
 
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 animate-fade-in"
+            <a
+              href="/#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 animate-fade-in"
               style={{ animationDelay: `${(navItems.length + 1) * 0.08}s` }}
             >
               Start Diagnostic
-            </Button>
+            </a>
           </div>
 
           <button
@@ -128,14 +136,18 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="mt-4 border border-border bg-card/95 p-4 shadow-xl animate-fade-in md:hidden">
             {navItems.map((item, index) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                href={`/#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
                 className="block w-full border-b border-border py-3 text-left font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground transition-all duration-300 last:border-b-0 hover:text-foreground animate-fade-in"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
 
             <Link
@@ -151,13 +163,17 @@ const Navigation = () => {
               Control Deck
             </Link>
 
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="mt-4 w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 animate-fade-in"
+            <a
+              href="/#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 mt-4 w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 animate-fade-in"
               style={{ animationDelay: `${(navItems.length + 1) * 0.05}s` }}
             >
               Start Diagnostic
-            </Button>
+            </a>
           </div>
         )}
       </div>
