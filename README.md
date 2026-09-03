@@ -1,4 +1,4 @@
-# The Anti Matrix Project — Startup Consultant
+# The Anti Matrix Project: Startup Consultant
 
 > Building systems that help startups scale with clarity
 
@@ -384,7 +384,7 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/c
 **Founder:** Gurman Singh  
 **Company:** The Anti Matrix Project  
 
-© Gurman Singh — All Rights Reserved
+© Gurman Singh. All Rights Reserved.
 
 ---
 
