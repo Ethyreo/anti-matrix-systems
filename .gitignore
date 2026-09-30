@@ -8,6 +8,10 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.npm-cache
+.wrangler-config
+.wrangler
+artifacts
 dist
 dist-ssr
 *.local

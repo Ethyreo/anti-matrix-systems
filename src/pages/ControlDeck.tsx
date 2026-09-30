@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { Button } from "@/components/ui/button";
@@ -541,13 +541,13 @@ const ControlDeck = () => {
 
       <main className="container relative z-10 mx-auto px-6 py-24 md:py-32">
         {/* Breadcrumb back navigation */}
-        <Link
-          to="/"
+        <a
+          href="/"
           className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground transition-all duration-300 hover:text-primary mb-8"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
           Back to Terminal
-        </Link>
+        </a>
 
         {/* Header Block - Two-column hero with portrait */}
         <header className="mb-12 border border-border bg-card/60 backdrop-blur-md panel-edge scan-sweep overflow-hidden">

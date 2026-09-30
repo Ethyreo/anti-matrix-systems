@@ -1,125 +1,164 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.png" type="image/png">
-    
-    <!-- Preload LCP image (fixes lcp-discovery-insight) -->
-    <link rel="preload" as="image" href="/amp-logo-white.png" fetchpriority="high">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Design System Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Primary Meta Tags -->
-    <title>Startup Consultant | The Anti Matrix Project</title>
-    <meta name="title" content="Startup Consultant | The Anti Matrix Project">
-    <meta name="description" content="Building systems that help startups scale with clarity. Expert consulting in operations, strategy, and intelligent automation.">
-    <meta name="abstract" content="The Anti Matrix Project by Gurman Singh provides fractional COO and business operations consulting to help startups scale systems before and after funding.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="google-site-verification" content="INSERT_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
-    <meta name="author" content="Gurman Singh" />
-    <link rel="canonical" href="https://theantimatrixproject.com/">
-
-    <!-- Open Graph / Facebook (fixes structured-data) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://theantimatrixproject.com/">
-    <meta property="og:title" content="Startup Consultant | The Anti Matrix Project">
-    <meta property="og:description" content="Building systems that help startups scale with clarity. Expert consulting in operations, strategy, and intelligent automation.">
-    <meta property="og:image" content="https://theantimatrixproject.com/og-image.png" />
-
-    <!-- Twitter (fixes structured-data) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://theantimatrixproject.com/">
-    <meta name="twitter:title" content="Startup Consultant | The Anti Matrix Project">
-    <meta name="twitter:description" content="Building systems that help startups scale with clarity. Expert consulting in operations, strategy, and intelligent automation.">
-    <meta name="twitter:image" content="https://theantimatrixproject.com/og-image.png" />
-    
-    <!-- Structured Data / JSON-LD (fixes structured-data) -->
-    <script type="application/ld+json">
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <title>The Anti-Matrix Project | Founder’s Office, BizOps & AI Strategy</title>
+  <meta name="description" content="Gurman Singh helps founder-led startups build the operating systems behind their momentum: Fractional Founder’s Office, business operations, GTM, practical AI workflows, and execution." />
+  <meta name="author" content="Gurman Singh" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://theantimatrixproject.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Anti-Matrix Project" />
+  <meta property="og:url" content="https://theantimatrixproject.com/" />
+  <meta property="og:title" content="Build the dream | The Anti-Matrix Project" />
+  <meta property="og:description" content="Founder’s Office, business systems, GTM, and practical AI workflows for startups with momentum." />
+  <meta property="og:image" content="https://theantimatrixproject.com/assets/threshold.webp" />
+  <meta property="og:image:alt" content="Amber-lit path leading toward a monumental threshold in a mountain landscape" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Build the dream | The Anti-Matrix Project" />
+  <meta name="twitter:description" content="Founder’s Office, business systems, GTM, and practical AI workflows for startups with momentum." />
+  <meta name="twitter:image" content="https://theantimatrixproject.com/assets/threshold.webp" />
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "Organization",
           "@id": "https://theantimatrixproject.com/#organization",
-          "name": "The Anti Matrix Project",
-          "alternateName": "AMP Startup Consultant",
+          "name": "The Anti-Matrix Project",
           "url": "https://theantimatrixproject.com/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://theantimatrixproject.com/amp-logo.png"
-          },
-          "description": "Building systems that help startups scale with clarity",
-          "founder": {
-            "@type": "Person",
-            "name": "Gurman Singh",
-            "jobTitle": "Startup Consultant"
-          },
-          "sameAs": [
-            "https://www.linkedin.com/in/gs2799/"
-          ]
+          "logo": "https://theantimatrixproject.com/mark.svg",
+          "founder": { "@id": "https://theantimatrixproject.com/#gurman" },
+          "sameAs": ["https://www.linkedin.com/in/gs2799/"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://theantimatrixproject.com/#gurman",
+          "name": "Gurman Singh",
+          "url": "https://theantimatrixproject.com/",
+          "jobTitle": "Startup Operator and Business Operations & AI Strategy Consultant",
+          "worksFor": { "@id": "https://theantimatrixproject.com/#organization" },
+          "sameAs": ["https://www.linkedin.com/in/gs2799/"]
         },
         {
           "@type": "WebSite",
           "@id": "https://theantimatrixproject.com/#website",
           "url": "https://theantimatrixproject.com/",
-          "name": "The Anti Matrix Project - Startup Consultant",
-          "description": "Expert consulting in operations, strategy, and intelligent automation for startups",
-          "publisher": {
-            "@id": "https://theantimatrixproject.com/#organization"
-          }
-        },
-        {
-          "@type": "ProfessionalService",
-          "name": "The Anti Matrix Project Startup Consulting",
-          "image": "https://theantimatrixproject.com/amp-logo.png",
-          "description": "Expert consulting services for startups including growth systems, investor strategy, business operations, hiring, automation, and AI integration",
-          "priceRange": "Contact for pricing",
-          "areaServed": "Worldwide",
-          "serviceType": [
-            "Startup Growth Systems",
-            "Investor Strategy & Fundraising",
-            "Business & Revenue Operations",
-            "Hiring & Team Expansion",
-            "Product & Process Alignment",
-            "Automation & AI Stack Integration",
-            "Post-Investment Scaling",
-            "AI Evangelism & Intelligence"
-          ]
+          "name": "The Anti-Matrix Project",
+          "publisher": { "@id": "https://theantimatrixproject.com/#organization" }
         }
       ]
     }
-    </script>
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="/assets/threshold.webp" />
 </head>
+<body>
+  <a class="skip" href="#story">Skip opening</a>
+  <header class="masthead">
+    <a class="brand" href="#home" aria-label="The Anti Matrix Project, beginning"><span class="brand-mark">≠</span><span>THE ANTI<br>MATRIX PROJECT</span></a>
+    <span class="edition">GURMAN SINGH <span>STARTUP OPERATOR</span></span>
+    <div class="header-actions"><button class="index-button" data-open-index aria-haspopup="dialog">INDEX <span>+</span></button><a class="contact-short" href="mailto:admin@theantimatrixproject.com" aria-label="Email Gurman">LET’S TALK <span>↗</span></a></div>
+  </header>
 
-  <body>
-    <div id="root">
-      <!-- Fallback Content for AI Crawlers and non-JS clients -->
-      <div style="padding: 2rem; font-family: sans-serif;">
-        <h1>The Anti-Matrix Project</h1>
-        <p>Building systems that help startups scale with clarity. Expert consulting in operations, strategy, and intelligent automation.</p>
-        
-        <h2>Core Services</h2>
-        <ul>
-          <li>Startup Growth Systems</li>
-          <li>Investor Strategy & Fundraising</li>
-          <li>Business & Revenue Operations</li>
-          <li>Hiring & Team Expansion</li>
-          <li>Automation & AI Stack Integration</li>
-        </ul>
-
-        <h2>Key Pages</h2>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/control-deck">Control Deck</a></li>
-        </ul>
-        <p>Please enable JavaScript to view the full interactive application.</p>
+  <main>
+    <section id="home" class="opening" data-chapter="The threshold">
+      <div class="opening-pin">
+        <div class="hero-art"><img src="/assets/threshold.webp" alt="An imagined mountain landscape with a monumental circular threshold and an amber-lit path" width="1942" height="809" fetchpriority="high" /><button class="companion" aria-label="Pet the dog"><canvas width="104" height="80"></canvas><span class="pet-heart" aria-hidden="true">♥</span></button></div>
+        <div class="hero-shade"></div>
+        <div class="hero-topline mono"><span>FOUNDER’S OFFICE × BUSINESS OPS × AI STRATEGY</span></div>
+        <h1 class="hero-title"><span>BUILD THE</span><span class="title-second"><em>DREAM.</em></span></h1><div class="hero-proof"><b>5+</b><div><span class="mono">INDUSTRIES. SAME OPERATOR INSTINCT.</span><p>AdTech & SaaS · Hospitality<br>Creator economy · D2C</p></div></div>
+        <div class="hero-bottom"><p>I’m Gurman. I help founders turn<br>big ideas into businesses that work.</p><a class="scroll-invite" href="#story"><span class="scroll-line" aria-hidden="true"></span><span>SCROLL TO GO SOMEWHERE</span><b aria-hidden="true">↓</b></a><span class="hero-caption mono">STRATEGY. SYSTEMS.<br>AND THE WORK TO MAKE THEM HAPPEN.</span></div>
+        <div class="threshold-copy" aria-hidden="true"><span class="mono">LEAVE THE FAMILIAR BEHIND</span><p>The idea works.<br><em>Now build<br>the company.</em></p></div>
+        <div class="iris"></div>
       </div>
-    </div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    </section>
+
+    <section id="story" class="story" data-chapter="Out in the field">
+      <div class="story-pin">
+        <div class="chapter-kicker mono"><span>01 / OUT IN THE FIELD</span><span class="lateral-hint">THE STORY MOVES SIDEWAYS <b>→</b></span></div>
+        <div class="story-track">
+          <article class="story-panel introduction">
+            <div class="intro-copy"><span class="eyebrow mono">GURMAN SINGH / STARTUP OPERATOR</span><h2>Strategy.<br><em>Then execution.</em></h2><p>Founder’s Office discipline. Hands-on business building. AI where it saves real work. I build the layer between founder intent and team execution.</p><button class="text-link" data-detail="about">THE PERSON BEHIND THE PROJECT <span>↗</span></button></div>
+            <figure class="portrait"><img src="/assets/gurman.jpg" alt="Pixel-art portrait of Gurman Singh" width="800" height="1000" /><figcaption class="mono">GURMAN SINGH / THE PERSON BEHIND THE PROJECT</figcaption></figure><span class="giant-index" aria-hidden="true">01</span>
+          </article>
+          <article class="story-panel ventures">
+            <span class="eyebrow mono">LEARNING FROM THE GROUND UP</span><h2>Real businesses.<br><em>Real moving parts.</em></h2>
+            <div class="venture-list"><button data-detail="adops"><span>01</span><span>adops.space<small>Business & AI strategy · publisher operations</small></span><b>↗</b></button><button data-detail="rogue"><span>02</span><span>Rogue Liberation<small>Clothing · design · production</small></span><b>↗</b></button><button data-detail="pine"><span>03</span><span>Pine & Thatch<small>Hospitality · demand · operations</small></span><b>↗</b></button><button data-detail="influcreate"><span>04</span><span>Influcreate<small>Creator marketing · collaboration</small></span><b>↗</b></button></div>
+            <p class="venture-note">Different ventures. The same instinct to build.</p><div class="orbit-stamp" aria-hidden="true"><span>PEOPLE<br>PROCESS<br>POSSIBILITY</span></div>
+          </article>
+          <article class="story-panel hospitality">
+            <figure class="hotel-scene"><img src="/assets/fieldwork.webp" alt="Illustrative hospitality scene: a booking ledger, brass keys, and a mountain view" width="1672" height="941" loading="lazy" /><figcaption class="mono">HOSPITALITY / AN ILLUSTRATIVE SCENE</figcaption></figure>
+            <div class="hotel-copy"><span class="eyebrow mono">PINE & THATCH</span><h2>From loss-making<br>to <em>profitable.</em></h2><p>An 18-room hotel. Five months. Sales, OTA workflows, creator campaigns, and operations, rebuilt together.</p><div class="hotel-proof"><b>+130%</b><span class="mono">REVENUE IMPROVEMENT</span></div><button class="text-link" data-detail="pine">OPEN THE FIELD NOTE <span>↗</span></button></div>
+          </article>
+          <article class="story-panel operations">
+            <span class="eyebrow mono">ADPUSHUP / ZELTO · CEO’S OFFICE · 2022–2024</span><h2>See the<br><em>whole thing.</em></h2><p>Senior Business Operations & Strategy Analyst. Revenue, payouts, costs, reporting, and execution across teams. Workflow redesign reduced SLA turnaround by up to 40%.</p>
+            <div class="system-orbit" aria-hidden="true"><div class="orbit-ring r1"></div><div class="orbit-ring r2"></div><div class="orbit-core">THE<br>BUSINESS</div><span class="orbit-label o1">PEOPLE</span><span class="orbit-label o2">KNOWLEDGE</span><span class="orbit-label o3">DECISIONS</span><span class="orbit-label o4">OPERATIONS</span></div><button class="text-link" data-detail="operations">EXPLORE THE WORK <span>↗</span></button>
+          </article>
+        </div>
+        <div class="story-bottom mono"><span>DIFFERENT WORLDS. CONNECTED THINKING.</span><span class="story-counter">01 / 04</span></div>
+      </div>
+    </section>
+
+    <section id="systems" class="systems" data-chapter="Build the operating layer">
+      <div class="systems-pin">
+        <div class="system-atmosphere" aria-hidden="true"></div>
+        <div class="chapter-kicker mono"><span>02 / THE OPERATING LAYER</span><span>SCATTERED WORK → SHARED DIRECTION</span></div>
+        <div class="systems-intro"><span class="eyebrow mono">SOUND FAMILIAR?</span><h2>Everything<br>comes back<br><em>to you.</em></h2><p>Decisions in chat. Numbers in sheets.<br>Processes in someone’s head.<br>The founder connecting it all.</p></div>
+        <div class="systems-resolved"><span class="eyebrow mono">BUILD THE LAYER THAT IS MISSING</span><h2>Less chasing.<br><em>More moving.</em></h2><p>Fractional Founder’s Office, business systems, and practical execution for teams that have momentum and need structure.</p><p class="fit-note mono">BOOTSTRAPPED · SEED · SERIES A<br>SAAS / ADTECH / AI / CONSUMER</p><button class="text-link" data-open-index="services">FIND YOUR STARTING POINT <span>↗</span></button></div>
+        <div class="system-map">
+          <svg class="system-connections" viewBox="0 0 600 500" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M300 250L112 62M300 250L488 62M300 250L88 250M300 250L512 250M300 250L112 438M300 250L488 438"/><circle cx="300" cy="250" r="90"/></svg>
+          <div class="system-heart" aria-hidden="true"><span>≠</span><small>FOUNDER INTENT<br>↓<br>TEAM EXECUTION</small></div>
+          <button class="system-node n1" data-detail="service-founder"><span class="mono">01 / OWN THE FOLLOW-THROUGH</span><strong>Founder’s<br>Office</strong><b>↗</b></button>
+          <button class="system-node n2" data-detail="service-ops"><span class="mono">02 / FIX HOW WORK MOVES</span><strong>Business<br>systems</strong><b>↗</b></button>
+          <button class="system-node n3" data-detail="service-ai"><span class="mono">03 / REDUCE THE REPETITION</span><strong>AI<br>workflows</strong><b>↗</b></button>
+          <button class="system-node n4" data-detail="service-gtm"><span class="mono">04 / MAKE THE PIPELINE MOVE</span><strong>GTM &<br>revenue</strong><b>↗</b></button>
+          <button class="system-node n5" data-detail="service-funding"><span class="mono">05 / BUILD THE EVIDENCE</span><strong>Investor<br>readiness</strong><b>↗</b></button>
+          <button class="system-node n6" data-detail="service-team"><span class="mono">06 / GIVE THE TEAM CLARITY</span><strong>Hiring &<br>visibility</strong><b>↗</b></button>
+        </div>
+        <div class="working-method"><span class="mono">HOW WE GET THERE</span><ol><li>Diagnose</li><li>Design</li><li>Build</li><li>Execute</li><li>Handover</li></ol></div>
+      </div>
+    </section>
+
+    <section id="lab" class="lab" data-chapter="The possibility engine">
+      <div class="lab-pin">
+        <div class="lab-glow"></div><canvas id="sculpture" aria-label="An interactive particle sculpture: a loose field becomes a coherent structure as you scroll" role="img"></canvas><div class="sculpture-fallback" aria-hidden="true">✳</div>
+        <div class="chapter-kicker mono"><span>03 / THE POSSIBILITY ENGINE</span><span>AI WHERE IT SAVES REAL WORK</span></div>
+        <div class="lab-opening"><span class="eyebrow mono">A TOOLKIT WITH A JOB TO DO.</span><h2>AI.<br>With a job<br><em>to do.</em></h2><p>Research. Reporting. Documentation.<br>Less repeated work. More founder bandwidth.</p></div>
+        <div class="lab-reading"><span class="eyebrow mono">WORKFLOWS FIRST. THE TOOLS FOLLOW.</span><h2>Less chasing.<br><em>More doing.</em></h2><p>I build AI workflows for research, reporting, documentation, and execution planning. Human review stays where decisions matter.</p><p>MAOS connects models and reusable workflows. The operating problem decides the stack.</p><a class="text-link" href="#builds">EXPLORE THE EXPERIMENTS <span>↗</span></a></div>
+        <div class="code-cloud" aria-hidden="true"></div>
+        <div class="prototype-window" aria-label="Illustrative meeting-to-action workflow, not a live application"><div class="window-bar mono"><span>FOUNDER BRIEF / WORKFLOW STUDY</span><i></i><i></i><i></i></div><div class="prototype-body"><span class="mono">CONTEXT → REVIEW → ACTION</span><h3>From a meeting<br>to the next move.</h3><div class="ledger-layout"><div class="ledger-unit"><b>01</b><span>Capture</span></div><div class="ledger-unit"><b>02</b><span>Review</span></div><div class="ledger-unit"><b>03</b><span>Assign</span></div><div class="ledger-unit"><b>04</b><span>Follow up</span></div></div><div class="mock-line"></div><div class="mock-line short"></div><button class="text-link" data-detail="service-ai">BUILD AN AI OPERATING LAYER <span>↗</span></button></div></div>
+        <div class="lab-bottom mono"><span class="lab-status">01 / QUESTION</span><span>MOVE YOUR POINTER THROUGH THE FIELD</span></div>
+      </div>
+    </section>
+
+    <section id="builds" class="builds" data-chapter="Made to find out">
+      <div class="builds-pin"><div class="chapter-kicker mono"><span>04 / MADE TO FIND OUT</span><span>PERSONAL BUILDS & OPERATING EXPERIMENTS</span></div><div class="builds-heading"><h2>Ideas, with<br> <em>fingerprints.</em></h2><p>Personal builds, operating experiments,<br>and questions worth making tangible.</p></div>
+        <div class="build-track">
+          <button class="build-piece ledger-piece" data-detail="tenant"><span class="piece-index mono"><span>01 / PROPERTY OPERATIONS</span><span>FIELD BUILD</span></span><div class="piece-art ledger-art" aria-hidden="true"><span class="art-caption mono">THE EVERYDAY, RECONSIDERED.</span><div class="paper-page"><span>TENANT / RECORD</span><b>ROOM FOR<br>CLARITY.</b><i></i><i></i><i></i><span>PEOPLE · UTILITIES · RECEIPTS</span></div><span class="artifact-id mono">TM / 001</span></div><div class="piece-label"><span>Tenant Management<small>One place for records, utilities, and receipts.</small></span><b>↗</b></div><span class="piece-footer mono">PROPERTY SYSTEMS <span>EXPLORE THE BUILD ↗</span></span></button>
+          <button class="build-piece maos-piece" data-detail="maos"><span class="piece-index mono"><span>02 / AI ORCHESTRATION</span><span>IN DEVELOPMENT</span></span><div class="piece-art maos-art" aria-hidden="true"><span class="art-caption mono">MANY MODELS. SHARED CONTEXT.</span><div class="maos-ring ring-one"></div><div class="maos-ring ring-two"></div><div class="maos-ring ring-three"></div><span class="maos-core">M.</span><span class="maos-word mono">RESEARCH ↔ STRATEGY ↔ EXECUTION</span><span class="artifact-id mono">MA / 002</span></div><div class="piece-label"><span>MAOS<small>Giving different models a shared workflow.</small></span><b>↗</b></div><span class="piece-footer mono">MULTI-AGENT SYSTEM <span>EXPLORE THE BUILD ↗</span></span></button>
+          <button class="build-piece pdf-piece" data-detail="pdf"><span class="piece-index mono"><span>03 / DOCUMENT INTELLIGENCE</span><span>FIELD BUILD</span></span><div class="piece-art pdf-art" aria-hidden="true"><span class="art-caption mono">FROM A DOCUMENT TO A DECISION.</span><span class="pdf-letter">Aa</span><span class="scan-bar"></span><div class="pdf-stamp mono">FIND THE<br>INFORMATION.</div><span class="artifact-id mono">DI / 003</span></div><div class="piece-label"><span>Document Intelligence<small>Making the information inside records useful.</small></span><b>↗</b></div><span class="piece-footer mono">LOCAL DOCUMENT PROCESSING <span>EXPLORE THE BUILD ↗</span></span></button>
+          <button class="build-piece pos-piece" data-detail="pos"><span class="piece-index mono"><span>04 / RESTAURANT OPERATIONS</span><span>FIELD BUILD</span></span><div class="piece-art pos-art" aria-hidden="true"><span class="art-caption mono">BUILT AROUND A BUSY FLOOR.</span><div class="pos-tablet"><div class="pos-top mono">FLOOR / SERVICE <span>●</span></div><div class="pos-grid"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i></div><div class="pos-ticket mono"><span>TABLE 03</span><b>Order.<br>Serve.<br>Settle.</b><i></i><i></i><span>BILLING → RECEIPT</span></div></div><span class="artifact-id mono">POS / 004</span></div><div class="piece-label"><span>Restaurant POS<small>From table layout to the final receipt.</small></span><b>↗</b></div><span class="piece-footer mono">ANDROID · BILLING · FLOOR WORKFLOWS <span>EXPLORE THE BUILD ↗</span></span></button>
+          <button class="build-piece revlift-piece" data-detail="revlift"><span class="piece-index mono"><span>05 / PUBLISHER MONETIZATION</span><span>IN DEVELOPMENT</span></span><div class="piece-art revlift-art" aria-hidden="true"><span class="art-caption mono">THE SYSTEM BEHIND THE AD.</span><div class="revlift-phone"><span class="mono">REVLIFT</span><div class="phone-lines"><i></i><i></i><i></i></div><div class="ad-slot mono">AD SLOT<br><b>↗</b></div></div><div class="bid-stack mono"><span>01 / REQUEST</span><span>02 / AUCTION</span><span>03 / REPORT</span></div><span class="artifact-id mono">RL / 005</span></div><div class="piece-label"><span>Revlift<small>Mobile header bidding, with an operating layer.</small></span><b>↗</b></div><span class="piece-footer mono">ANDROID SDK · HEADER BIDDING <span>EXPLORE THE BUILD ↗</span></span></button>
+          <button class="build-piece archive-piece" data-open-index="builds"><span class="piece-index mono"><span>THE EXPERIMENTS CONTINUE</span><span>↗</span></span><div class="piece-art archive-art"><span aria-hidden="true">↗</span><h3>More in<br>the Control<br><em>Deck.</em></h3></div><div class="piece-label"><span>Open the archive<small>Projects, writing, tools, and music.</small></span><b>+</b></div><span class="piece-footer mono">A WORKING COLLECTION <span>KEEP EXPLORING ↗</span></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="invitation" data-chapter="The next beginning"><div class="contact-landscape" aria-hidden="true"></div><div class="invitation-inner"><span class="eyebrow mono">05 / FOR FOUNDER-LED TEAMS</span><h2>Let’s diagnose<br><em>the chaos.</em></h2><div class="contact-row"><p>What keeps coming back to you?<br>Start there. We’ll map the bottleneck,<br>the missing system, and the next move.</p><a class="text-link contact-cta" href="mailto:admin@theantimatrixproject.com">LET’S TALK ABOUT YOUR BUSINESS <span aria-hidden="true">↗</span></a></div><div class="contact-links"><a href="mailto:admin@theantimatrixproject.com">admin@theantimatrixproject.com</a><a href="https://www.linkedin.com/in/gs2799/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><button data-open-index>THE CONTROL DECK ↗</button><a href="/control-deck">FULL ARCHIVE ↗</a></div><footer class="footer mono"><span>THE ANTI MATRIX PROJECT · GURMAN SINGH</span><a href="#home">BACK TO THE BEGINNING ↑</a><span>2026</span></footer></div></section>
+  </main>
+  <nav class="journey-nav" aria-label="Journey chapters"><a href="#home" aria-label="The threshold" class="active"><span>00</span></a><a href="#story" aria-label="Out in the field"><span>01</span></a><a href="#systems" aria-label="Build the operating layer"><span>02</span></a><a href="#lab" aria-label="The possibility engine"><span>03</span></a><a href="#builds" aria-label="Made to find out"><span>04</span></a><a href="#contact" aria-label="The next beginning"><span>05</span></a></nav>
+  <button class="trail-companion" aria-label="Pet your travelling companion" hidden><canvas width="104" height="80"></canvas><span class="pet-heart" aria-hidden="true">♥</span><span class="companion-note mono">STILL EXPLORING.</span></button>
+  <div class="reading-progress" aria-hidden="true"><i></i></div>
+  <div id="cursor" aria-hidden="true"><svg viewBox="0 0 32 38"><path class="cursor-face" d="M2 2 28 21 16 24 11 35Z"/><path d="M2 2 16 24 11 35M2 2 28 21 16 24Z"/></svg><span></span></div>
+  <dialog id="index-dialog" aria-labelledby="index-title"><div class="dialog-top"><span class="mono">THE ANTI MATRIX PROJECT</span><button data-close-dialog aria-label="Close Control Deck">CLOSE ×</button></div><div class="index-intro"><span class="mono">EXPLORE AT YOUR OWN PACE</span><h2 id="index-title">The Control <em>Deck.</em></h2><p>The work, the ways to work together, and the things I make along the way.</p></div><div class="index-tabs" role="tablist" aria-label="Control Deck categories"><button role="tab" aria-selected="true" id="tab-journey" aria-controls="archive-panel" data-tab="journey">The journey</button><button role="tab" aria-selected="false" id="tab-services" aria-controls="archive-panel" data-tab="services">Work together</button><button role="tab" aria-selected="false" id="tab-builds" aria-controls="archive-panel" data-tab="builds">The builds</button><button role="tab" aria-selected="false" id="tab-notes" aria-controls="archive-panel" data-tab="notes">Field notes</button><button role="tab" aria-selected="false" id="tab-tools" aria-controls="archive-panel" data-tab="tools">The toolkit</button><button role="tab" aria-selected="false" id="tab-music" aria-controls="archive-panel" data-tab="music">Music</button></div><div id="archive-panel" role="tabpanel" aria-labelledby="tab-journey"></div><div class="index-foot mono"><button id="motion-toggle" aria-pressed="false">REDUCED MOTION: OFF</button><a href="mailto:admin@theantimatrixproject.com">START A CONVERSATION ↗</a></div></dialog>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span class="mono">A CLOSER LOOK</span><button data-close-dialog aria-label="Close detail">BACK TO THE JOURNEY ×</button></div><div id="detail-content"></div></dialog>
+  <noscript><div class="noscript-note">You can read the journey without animation. For project details, visit <a href="/control-deck">the full Control Deck</a>.</div></noscript>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>

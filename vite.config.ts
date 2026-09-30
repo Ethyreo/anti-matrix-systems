@@ -20,10 +20,13 @@ export default defineConfig(({ mode }) => ({
     minify: 'esbuild', // Use esbuild (default, faster than terser)
     // Code splitting for better caching (fixes: uses-long-cache-ttl)
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        controlDeck: path.resolve(__dirname, "control-deck/index.html"),
+      },
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-slot', 'class-variance-authority'],
         },
       },
     },

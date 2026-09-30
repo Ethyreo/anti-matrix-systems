@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ampLogo from "@/assets/amp-logo-white.png";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const Navigation = () => {
 
   const scrollToSection = (id: string) => {
     if (location.pathname !== "/") {
-      navigate(`/#${id}`);
+      window.location.assign(`/#${id}`);
       setIsMobileMenuOpen(false);
     } else {
       const element = document.getElementById(id);
@@ -36,10 +35,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { label: "Services", id: "services" },
-    { label: "Process", id: "process" },
-    { label: "About", id: "about" },
-    { label: "Stories", id: "stories" },
+    { label: "Services", id: "systems" },
+    { label: "AI workflows", id: "lab" },
+    { label: "About", id: "story" },
+    { label: "Builds", id: "builds" },
     { label: "Contact", id: "contact" },
   ];
 
@@ -54,8 +53,8 @@ const Navigation = () => {
 
       <div className="container mx-auto px-6 py-4 relative z-10">
         <div className="flex items-center justify-between">
-          <Link
-            to="/"
+          <a
+            href="/"
             onClick={(e) => {
               if (location.pathname === "/") {
                 e.preventDefault();
@@ -76,7 +75,7 @@ const Navigation = () => {
                 Startup systems
               </span>
             </span>
-          </Link>
+          </a>
 
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
