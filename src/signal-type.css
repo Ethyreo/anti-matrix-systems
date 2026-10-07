@@ -1,0 +1,53 @@
+/* A restrained signal break on a few display words. The real text remains intact. */
+.signal-type {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  text-shadow: .012em 0 var(--signal-fringe, #86dcd655);
+}
+
+.signal-type::before,
+.signal-type::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: max(1px, .018em);
+  pointer-events: none;
+}
+
+.signal-type::before {
+  top: 30%;
+  left: 16%;
+  right: 72%;
+  background: var(--signal-ghost, #86dcd6);
+  transform: translateX(-.025em);
+  opacity: .55;
+}
+
+.signal-type::after {
+  top: 62%;
+  left: 63%;
+  right: 20%;
+  background: var(--signal-ghost, #86dcd6);
+  transform: translateX(.032em);
+  opacity: .7;
+}
+
+.story .signal-type,
+.proof-band .signal-type {
+  --signal-ghost: #277c7f;
+  --signal-fringe: #277c7f55;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.reduced-motion) .signal-type::after {
+    animation: signal-slip 11s steps(1, end) infinite;
+  }
+}
+
+@keyframes signal-slip {
+  0%, 91%, 93%, 100% { transform: translateX(.032em); opacity: .7; }
+  91.3% { transform: translateX(-.045em); opacity: .9; }
+  92% { transform: translateX(.06em); opacity: .45; }
+}

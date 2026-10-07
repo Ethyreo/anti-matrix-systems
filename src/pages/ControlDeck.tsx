@@ -565,7 +565,7 @@ const ControlDeck = () => {
               </div>
               
               <h1 className="font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl lg:text-6xl">
-                The Control Deck
+                The Control <span className="signal-type">Deck</span>
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground md:text-xl">
                 Gurman Singh - A founder, operations specialist, and AI orchestration architect. This is the centralized system control center mapping active software products, tactical writings, focus frequencies, and advanced agent frameworks.

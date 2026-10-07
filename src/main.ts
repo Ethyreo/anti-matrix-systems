@@ -3,6 +3,7 @@ import './style.css';
 import './operating-layer.css';
 import './refinements.css';
 import './identity-theme.css';
+import './signal-type.css';
 import { createCompanion } from './companion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -61,8 +62,8 @@ function createMotion() {
       .to('.hero-shade',{opacity:.28,duration:.4},0)
       .to('.companion',{left:'64%',top:'55%',scale:.32,opacity:.7,duration:.7},0)
       .to('.threshold-copy',{opacity:1,y:0,duration:.2},.35)
-      .to('.threshold-copy',{color:'#29261f',duration:.08},.9)
-      .to('.threshold-copy em',{color:'#a45427',duration:.08},.9)
+      .to('.threshold-copy',{color:'#10242b',duration:.08},.9)
+      .to('.threshold-copy em',{color:'#286b61',duration:.08},.9)
       .to('.iris',{clipPath:'circle(130% at 67% 46%)',duration:.16},.84);
     gsap.to('.story-track',{x:()=>-($('.story-track').scrollWidth-innerWidth),ease:'none',scrollTrigger:{trigger:'.story',start:'top top',end:'bottom bottom',scrub:.18,invalidateOnRefresh:true,onUpdate:self=>{ $('.story-counter').textContent=`${String(Math.min(4,Math.floor(self.progress*4)+1)).padStart(2,'0')} / 04`; }}});
     gsap.to('.system-orbit',{rotation:40,ease:'none',scrollTrigger:{trigger:'.story',start:'top top',end:'bottom bottom',scrub:true}});
