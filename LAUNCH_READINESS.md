@@ -35,3 +35,11 @@ The cinematic journey is live at `https://theantimatrixproject.com/`. The origin
 - Added `/work` with static service descriptions, selected proof, a canonical URL, social metadata, and WebPage/Person structured data. Updated internal links, `sitemap.xml`, `llms.txt`, and `SEARCH_VISIBILITY.md`.
 - The live browser checks passed at 1440px and 390px with no console errors. Live interaction checks passed for the gallery, six music players, Index, companion routes, motion preferences, and resize. The new `/work` route, crawl files, and HTTP-to-HTTPS `301` were checked on the public domain.
 - Search Console and Bing account submission, indexing, real user performance, and search ranking remain unverified. See `SEARCH_VISIBILITY.md` for the follow-up plan.
+
+## 7 October 2026 visual identity update
+
+- Published `1da0204` to GitHub `main` and confirmed the Git-linked Cloudflare Worker serves it on the custom domain.
+- Replaced the warm cream, orange, and serif UI palette with petrol-black, cool fog, signal green, and glacial teal. The warm portal artwork remains a narrative image rather than the interface color system.
+- Self-hosted Syne for display, Manrope for body text, and IBM Plex Mono for system labels. The font licenses ship with the assets. The homepage, `/work`, Control Deck, and 404 page share the new identity.
+- The live font asset returned `200` as `font/woff2`. A live browser confirmed loaded fonts, computed colors, no horizontal overflow on `/work` or Control Deck, and no page errors at 390px and 1440px.
+- Live `check:launch` and `check:interactions` passed at 390px and 1440px. The mobile responsive sweep passed at 320px, 360px, and 430px after a short-height lab spacing fix.
