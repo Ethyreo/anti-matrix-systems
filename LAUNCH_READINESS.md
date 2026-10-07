@@ -24,5 +24,14 @@ The cinematic journey is live at `https://theantimatrixproject.com/`. The origin
 
 ## Follow-up outside the build
 
-- Confirm ownership of the DNS-verified property in Google Search Console, submit `https://theantimatrixproject.com/sitemap.xml`, and inspect both canonical URLs. The DNS TXT record alone does not prove Search Console access or indexing.
+- Confirm ownership of the DNS-verified property in Google Search Console, submit `https://theantimatrixproject.com/sitemap.xml`, and inspect the homepage, `/work`, and `/control-deck` canonical URLs. The DNS TXT record alone does not prove Search Console access or indexing.
 - Monitor real user Core Web Vitals, crawl coverage, and search queries after launch. Local and synthetic checks do not establish rankings or field performance.
+
+## 7 October 2026 content and search update
+
+- Published `61b2a0f5bc1614504635388ecbaa479a951efb8f` to GitHub `main`; Cloudflare's Git-linked Worker served the update on the custom domain.
+- Added a visible music entry to the cinematic builds gallery. All five songs and the alternate take are available through six labelled audio players. The six original MP3 URLs each returned `200` with `audio/mpeg` on the live domain.
+- Replaced Index row arrow glyphs with a drawn SVG arrow, increased supporting mobile text, and moved the hero dog clear of the introduction copy.
+- Added `/work` with static service descriptions, selected proof, a canonical URL, social metadata, and WebPage/Person structured data. Updated internal links, `sitemap.xml`, `llms.txt`, and `SEARCH_VISIBILITY.md`.
+- The live browser checks passed at 1440px and 390px with no console errors. Live interaction checks passed for the gallery, six music players, Index, companion routes, motion preferences, and resize. The new `/work` route, crawl files, and HTTP-to-HTTPS `301` were checked on the public domain.
+- Search Console and Bing account submission, indexing, real user performance, and search ranking remain unverified. See `SEARCH_VISIBILITY.md` for the follow-up plan.
