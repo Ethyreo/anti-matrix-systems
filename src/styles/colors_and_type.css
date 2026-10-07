@@ -1,40 +1,40 @@
 /* =========================================================================
    ANTI MATRIX — Design Tokens & Base Type Styles
-   Dark-first. Warm blacks, bone whites, one signal hue.
+   Dark-first. Mineral blacks, cool whites, one signal hue.
    ========================================================================= */
 
-/* ---------- Fonts (Google CDN — flagged in README for self-hosting) ----- */
+/* ---------- Self-hosted fonts are registered in brand-fonts.css ---------- */
 :root {
   /* ============================ COLOR =================================== */
 
-  /* Surfaces — warm, never pure black */
-  --bg-void:       #0A0B0F;   /* base canvas */
-  --bg-surface:    #14161C;   /* cards, panels */
-  --bg-raised:     #1C1F27;   /* hover state, raised panels */
-  --bg-overlay:    #242833;   /* modals, popovers */
+  /* Mineral dark surfaces */
+  --bg-void:       #0A151B;   /* base canvas */
+  --bg-surface:    #12242C;   /* cards, panels */
+  --bg-raised:     #1B333B;   /* hover state, raised panels */
+  --bg-overlay:    #25414A;   /* modals, popovers */
 
-  /* Ink — warm, never pure white */
-  --fg-primary:    #F4EFE6;   /* body, headlines */
-  --fg-secondary:  #A8A399;   /* metadata, captions, secondary copy */
-  --fg-muted:      #6B6760;   /* placeholders, disabled */
-  --fg-dim:        #45433E;   /* dividers-as-text, very subtle labels */
+  /* Cool light text */
+  --fg-primary:    #E7F0EF;   /* body, headlines */
+  --fg-secondary:  #AAC4C4;   /* metadata, captions, secondary copy */
+  --fg-muted:      #77969A;   /* placeholders, disabled */
+  --fg-dim:        #55737A;   /* dividers-as-text, very subtle labels */
 
   /* Borders */
-  --border:        #2A2E3A;   /* default 1px structural border */
-  --border-strong: #3A4050;   /* hover / focused container border */
-  --border-faint:  #1F232C;   /* internal subdivision */
+  --border:        #29434A;   /* default 1px structural border */
+  --border-strong: #42646B;   /* hover / focused container border */
+  --border-faint:  #1B3139;   /* internal subdivision */
 
   /* Signal — the only saturated brand color */
-  --signal:        #FF7A1A;   /* anti-matter amber */
-  --signal-hot:    #FF935A;   /* hover */
-  --signal-soft:   rgba(255, 122, 26, 0.12);  /* tinted backgrounds */
-  --signal-line:   rgba(255, 122, 26, 0.32);  /* focus glow */
+  --signal:        #C6F57C;   /* action and wayfinding */
+  --signal-hot:    #DDFFA4;   /* hover */
+  --signal-soft:   rgba(198, 245, 124, 0.12);  /* tinted backgrounds */
+  --signal-line:   rgba(198, 245, 124, 0.32);  /* focus glow */
 
   /* Data — for charts, code, dev surfaces. Never CTAs. */
-  --data:          #6BCBE6;
-  --data-soft:     rgba(107, 203, 230, 0.12);
-  --pulse:         #C86BFF;
-  --pulse-soft:    rgba(200, 107, 255, 0.12);
+  --data:          #86DCD6;
+  --data-soft:     rgba(134, 220, 214, 0.12);
+  --pulse:         #A6B9FF;
+  --pulse-soft:    rgba(166, 185, 255, 0.12);
 
   /* Status — desaturated, never neon */
   --ok:            #6BE6A8;
@@ -45,13 +45,13 @@
   --danger-soft:   rgba(255, 90, 90, 0.12);
 
   /* Inverse — for the rare light surface (printed deck, light-mode email) */
-  --bg-paper:      #F4EFE6;
-  --fg-ink:        #14161C;
+  --bg-paper:      #DCE8E7;
+  --fg-ink:        #10242B;
 
   /* ============================ TYPE ==================================== */
 
-  --font-display:  'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-body:     'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display:  'Syne', ui-sans-serif, system-ui, sans-serif;
+  --font-body:     'Manrope', ui-sans-serif, system-ui, sans-serif;
   --font-mono:     'IBM Plex Mono', ui-monospace, 'Menlo', monospace;
 
   /* Modular scale, ratio 1.25, anchored at 16px */
@@ -324,9 +324,9 @@ hr {
   position: absolute; inset: 0;
   background: linear-gradient(to bottom,
     transparent 0%,
-    rgba(255, 122, 26, 0.0) 45%,
-    rgba(255, 122, 26, 0.5) 50%,
-    rgba(255, 122, 26, 0.0) 55%,
+    rgba(198, 245, 124, 0.0) 45%,
+    rgba(198, 245, 124, 0.5) 50%,
+    rgba(198, 245, 124, 0.0) 55%,
     transparent 100%);
   pointer-events: none;
   animation: amx-scan 6s linear infinite;

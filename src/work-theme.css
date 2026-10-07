@@ -1,0 +1,41 @@
+:root {
+  color: #e7f0ef;
+  background: #0a151b;
+  font-family: 'Manrope', Arial, sans-serif;
+}
+h1,h2,h3 { font-family: 'Syne', Arial, sans-serif; }
+em { color: #c6f57c; font-weight: 600; }
+a:focus-visible { outline-color: #c6f57c; }
+.skip-link { background: #c6f57c; color: #10242b; }
+.site-header { border-color: #b0d4d126; }
+.brand { font-family: 'Syne', Arial, sans-serif; }
+.brand>span:first-child { font-family: 'Syne', Arial, sans-serif; color: #c6f57c; }
+.site-header nav, .eyebrow, .section-id, .hero-edge, .service-num, .footer,
+.button, .quiet-link { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+.site-header nav a:hover, .footer a:hover { color: #c6f57c; }
+.header-contact { border-color: #c6f57c99; }
+.hero-image { opacity: .63; }
+.hero:after { background: linear-gradient(90deg,#0a151bec 3%,#0a151bb3 44%,#0a151b1c 82%),linear-gradient(0deg,#0a151be6,transparent 48%); }
+.eyebrow, .section-id, .service-num { color: #c6f57c; }
+.hero-lead { color: #d4e4e1; }
+.button { background: #c6f57c; color: #10242b; }
+.button:hover { background: #dcffa3; }
+.quiet-link { border-color: #d0e5de8f; }
+.hero-edge { color: #c0d8d8; }
+.premise p:not(.section-id), .section-heading>p:last-child, .specialist-note { color: #b0c7c7; }
+.service-grid { border-color: #a4c7c14d; }
+.service-grid article { border-color: #a4c7c14d; }
+.service-grid article:hover { background: #152b33; }
+.service-grid p, .service-grid li, .method li { color: #b6cdcb; }
+.service-grid ul, .method li { border-color: #a4c7c138; }
+.specialist-note strong { color: #e7f0ef; }
+.proof-band { background: #dce8e7; color: #10242b; }
+.proof-band .section-id, .proof-band em { color: #286b61; }
+.proof-grid { border-color: #32615e6b; }
+.proof-grid strong, .method b { font-family: 'Syne', Arial, sans-serif; }
+.proof-grid p { color: #36575b; }
+.proof-context { color: #4b6b6d; }
+.method b { color: #e7f0ef; }
+.closing { background: radial-gradient(ellipse at 77% 60%,#366b66 0,#18353c 34%,#0a151b 70%); }
+.closing p:not(.section-id) { color: #c4dbd8; }
+.footer { color: #9ebbbb; }

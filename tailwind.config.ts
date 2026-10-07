@@ -50,8 +50,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["IBM Plex Sans", "sans-serif"],
-        display: ["Space Grotesk", "sans-serif"],
+        sans: ["Manrope", "sans-serif"],
+        display: ["Syne", "sans-serif"],
         mono: ["IBM Plex Mono", "monospace"],
       },
       backgroundImage: {

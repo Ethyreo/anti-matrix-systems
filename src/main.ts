@@ -1,6 +1,8 @@
+import './brand-fonts.css';
 import './style.css';
 import './operating-layer.css';
 import './refinements.css';
+import './identity-theme.css';
 import { createCompanion } from './companion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
