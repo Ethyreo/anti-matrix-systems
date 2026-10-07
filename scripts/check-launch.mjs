@@ -10,7 +10,7 @@ try {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
-    for (const [path, heading] of [['/', 'BUILD THE'], ['/control-deck', 'The Control Deck']]) {
+    for (const [path, heading] of [['/', 'BUILD THE'], ['/work', 'Build the'], ['/control-deck', 'The Control Deck']]) {
       const response = await page.goto(`${base}${path}`, { waitUntil: 'networkidle' });
       assert.equal(response.status(), 200, `${path} should load`);
       assert(await page.getByRole('heading', { level: 1 }).first().isVisible(), `${path} needs a visible primary heading`);
@@ -21,6 +21,11 @@ try {
     await page.getByRole('link', { name: 'Back to Terminal' }).click();
     await page.waitForURL(`${base}/`);
     assert((await page.getByRole('heading', { level: 1 }).first().innerText()).includes('BUILD THE'));
+    await page.goto(`${base}/work`, { waitUntil: 'networkidle' });
+    assert(await page.getByRole('heading', { name: 'Fractional Founder’s Office' }).isVisible());
+    assert(await page.getByRole('heading', { name: 'AI Workflows & Automation' }).isVisible());
+    await page.getByRole('link', { name: 'THE CINEMATIC JOURNEY' }).click();
+    await page.waitForURL(`${base}/`);
     await page.goto(`${base}/control-deck`, { waitUntil: 'networkidle' });
     if (viewport.width < 768) await page.getByRole('button', { name: 'Open menu' }).click();
     await page.getByRole('link', { name: 'Services' }).first().click();
@@ -35,6 +40,9 @@ try {
   const trailing = await fetch(`${base}/control-deck/`, { redirect: 'manual' });
   assert.equal(trailing.status, 307);
   assert.equal(trailing.headers.get('location'), '/control-deck');
+  const workTrailing = await fetch(`${base}/work/`, { redirect: 'manual' });
+  assert.equal(workTrailing.status, 307);
+  assert.equal(workTrailing.headers.get('location'), '/work');
   console.log(`PASS: ${results.join('; ')}; true 404 and canonical archive redirect.`);
 } finally {
   await browser.close();

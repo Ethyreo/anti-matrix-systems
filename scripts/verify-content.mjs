@@ -15,7 +15,12 @@ try {
   for(const [key] of [...projects,...notes,...services])assert(details[key],`Missing archive entry: ${key}`);
   assert.equal(services.length,6);
   assert.equal(music.length,5);
+  assert(html.includes('data-open-index="music"'),'Music needs a visible journey entry');
+  const recordings=music.flatMap(song=>song.recordings);
+  assert.equal(recordings.length,6,'The five songs include one alternate recording');
+  assert.equal(new Set(recordings.map(recording=>recording.file)).size,recordings.length,'Music files must be unique');
+  for(const recording of recordings)await fs.access(new URL(`../public/assets/music/ai/${recording.file}`,import.meta.url));
   for(const item of Object.values(details))assert(item.title&&item.lead&&item.paragraphs.length,`Incomplete detail: ${item.title}`);
   for(const asset of ['threshold.webp','fieldwork.webp','gurman.jpg'])await fs.access(new URL(`../public/assets/${asset}`,import.meta.url));
-  console.log(`PASS: ${ids.length} unique IDs; chapter links and detail actions resolve; 6 services, ${projects.length} projects, ${notes.length} notes, 5 music tracks.`);
+  console.log(`PASS: ${ids.length} unique IDs; chapter links and detail actions resolve; 6 services, ${projects.length} projects, ${notes.length} notes, 5 songs and ${recordings.length} playable recordings.`);
 } finally {await server.close();}

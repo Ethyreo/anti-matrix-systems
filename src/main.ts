@@ -14,6 +14,7 @@ document.documentElement.classList.remove('no-js');
 const $ = <T extends Element = HTMLElement>(selector: string) => document.querySelector<T>(selector)!;
 const $$ = <T extends Element = HTMLElement>(selector: string) => [...document.querySelectorAll<T>(selector)];
 const escape = (value: string) => value.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
+const archiveArrow = '<svg class="archive-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg>';
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 let reduced = preference.matches;
 try { const saved = localStorage.getItem('am-reduced-motion'); if (saved !== null) reduced = saved === 'true'; } catch { /* Storage is optional. */ }
@@ -107,6 +108,7 @@ function openDialog(dialog: HTMLDialogElement) {
   lenis?.stop(); document.body.style.overflow='hidden';
   const position = scrollY;
   dialog.showModal(); dialog.scrollTop=0;
+  if(dialog===indexDialog)dialog.querySelector('[role="tab"][aria-selected="true"]')?.scrollIntoView({block:'nearest',inline:'nearest'});
   dialog.querySelector<HTMLButtonElement>('[data-close-dialog]')?.focus({preventScroll:true});
   window.scrollTo({top:position,behavior:'instant'});
 }
@@ -125,17 +127,18 @@ function showDetail(key: string) {
 function showTab(tab: string) {
   pauseAudio();
   $$('[data-tab]').forEach(button=>{const active=button.dataset.tab===tab;button.setAttribute('aria-selected',String(active));button.setAttribute('tabindex',active?'0':'-1');});
+  if(indexDialog.open)indexDialog.querySelector('[role="tab"][aria-selected="true"]')?.scrollIntoView({block:'nearest',inline:'nearest'});
   const panel=$('#archive-panel');panel.setAttribute('aria-labelledby',`tab-${tab}`);
   if(tab==='journey') {
-    panel.innerHTML=[['home','Build the dream','Founder’s Office · Business Ops · AI Strategy'],['story','Out in the field','The experience behind the work'],['systems','The operating layer','Six ways to work together'],['lab','The possibility engine','AI workflows with a practical purpose'],['builds','Made to find out','Internal tools and experiments'],['contact','The next beginning','Let’s diagnose the chaos']].map(([id,title,note],i)=>`<a href="#${id}" class="archive-row" data-index-jump><span class="mono">0${i}</span><span><strong>${title}</strong><small>${note}</small></span><b>↗</b></a>`).join('')+'<button class="archive-row" data-detail="about"><span class="mono">GS</span><span><strong>The person behind the project</strong><small>Gurman Singh · experience and background</small></span><b>↗</b></button>';
+    panel.innerHTML=[['home','Build the dream','Founder’s Office · Business Ops · AI Strategy'],['story','Out in the field','The experience behind the work'],['systems','The operating layer','Six ways to work together'],['lab','The possibility engine','AI workflows with a practical purpose'],['builds','Made to find out','Internal tools and experiments'],['contact','The next beginning','Let’s diagnose the chaos']].map(([id,title,note],i)=>`<a href="#${id}" class="archive-row" data-index-jump><span class="mono">0${i}</span><span><strong>${title}</strong><small>${note}</small></span><b aria-hidden="true">${archiveArrow}</b></a>`).join('')+`<button class="archive-row" data-open-index="music"><span class="mono">♫</span><span><strong>Music from the margins</strong><small>Five songs and an alternate take</small></span><b aria-hidden="true">${archiveArrow}</b></button><button class="archive-row" data-detail="about"><span class="mono">GS</span><span><strong>The person behind the project</strong><small>Gurman Singh · experience and background</small></span><b aria-hidden="true">${archiveArrow}</b></button>`;
   } else if (tab==='builds'||tab==='notes'||tab==='services') {
     const rows=tab==='builds'?projects:tab==='services'?services:notes;
     const intro=tab==='builds'?'Personal builds and operating experiments, each at its own stage.':tab==='services'?'For founder-led teams with momentum and not enough structure. Start with the problem; choose the shape of support around it.':'Ideas about the work behind a business. Open a short introduction.';
-    panel.innerHTML=`<p class="archive-note">${intro}</p>`+rows.map(([id,title,note],i)=>`<button class="archive-row" data-detail="${id}"><span class="mono">0${i+1}</span><span><strong>${title}</strong><small>${note}</small></span><b>↗</b></button>`).join('');
+    panel.innerHTML=`<p class="archive-note">${intro}</p>`+rows.map(([id,title,note],i)=>`<button class="archive-row" data-detail="${id}"><span class="mono">0${i+1}</span><span><strong>${title}</strong><small>${note}</small></span><b aria-hidden="true">${archiveArrow}</b></button>`).join('')+(tab==='services'?`<a class="archive-row" href="/work"><span class="mono">↳</span><span><strong>All the ways to work together</strong><small>Services, approach, and selected proof</small></span><b aria-hidden="true">${archiveArrow}</b></a>`:'');
   } else if(tab==='tools') {
     panel.innerHTML='<p class="archive-note">A changing toolkit for thinking, building, and connecting the work.</p><div class="toolkit-grid">'+toolkit.map(group=>`<article><span class="mono">${escape(group.label)}</span><h3>${escape(group.title)}</h3><ul>${group.tools.map(tool=>`<li>${escape(tool)}</li>`).join('')}</ul></article>`).join('')+'</div>';
   } else if(tab==='music') {
-    panel.innerHTML='<p class="archive-note">Another kind of experiment: music made in collaboration with AI, using Suno.</p>'+music.map(([title,date,genre,file])=>`<article class="music-item"><h3>${escape(title)}</h3><p>${date} / ${escape(genre)}</p><audio controls preload="none" aria-label="Play ${escape(title)}" src="/assets/music/ai/${file}"></audio></article>`).join('');
+    panel.innerHTML='<p class="archive-note">Five songs, six recordings. Music made in collaboration with AI using Suno.</p>'+music.map((song,i)=>`<article class="music-item"><div class="music-item-heading"><span class="mono">0${i+1} / 05</span><div><h3>${escape(song.title)}</h3><p>${escape(song.date)} / ${escape(song.genre)}</p></div></div><div class="music-recordings">${song.recordings.map(recording=>`<div class="music-recording"><span class="mono">${escape(recording.label)}</span><audio controls preload="metadata" aria-label="Play ${escape(song.title)}, ${escape(recording.label)}" src="/assets/music/ai/${escape(recording.file)}"></audio></div>`).join('')}</div></article>`).join('');
     $$<HTMLAudioElement>('audio').forEach(audio=>audio.addEventListener('play',()=>{$$<HTMLAudioElement>('audio').forEach(other=>{if(other!==audio)other.pause();});}));
   }
 }

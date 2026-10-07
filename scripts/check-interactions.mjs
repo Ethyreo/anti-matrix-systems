@@ -8,6 +8,11 @@ try {
   for(const viewport of [{width:1440,height:900},{width:390,height:844}]) {
     const page=await browser.newPage({viewport,hasTouch:viewport.width<600});
     await page.goto(`${siteBaseUrl}/`,{waitUntil:'networkidle'});
+    if(viewport.width<600)assert(await page.evaluate(()=>{
+      const dog=document.querySelector('.companion').getBoundingClientRect();
+      const copy=document.querySelector('.hero-bottom p').getBoundingClientRect();
+      return dog.right<=copy.left||copy.right<=dog.left||dog.bottom<=copy.top||copy.bottom<=dog.top;
+    }),'Hero companion should not cover the mobile introduction');
     async function go(id,phase){
       await page.evaluate(({id,phase})=>{const el=document.getElementById(id);window.scrollTo({top:el.offsetTop+(el.offsetHeight-innerHeight)*phase,behavior:'instant'});},{id,phase});
       await page.waitForTimeout(600);
@@ -28,6 +33,33 @@ try {
       const after=await page.evaluate(()=>scrollY);
       assert(Math.abs(before-after)<3,`Scroll changed after ${key}: ${before} -> ${after}`);
     }
+    const musicPhase=await page.evaluate(()=>{
+      const piece=document.querySelector('.music-piece'),track=document.querySelector('.build-track');
+      const travel=track.scrollWidth-innerWidth+innerWidth*.07;
+      return Math.max(0,Math.min(1,(piece.offsetLeft+piece.offsetWidth/2-innerWidth/2)/travel));
+    });
+    await go('builds',musicPhase);
+    await page.locator('.music-piece').click();
+    assert(await page.locator('#index-dialog').evaluate(el=>el.open));
+    assert.equal(await page.getByRole('tab',{name:'Music'}).getAttribute('aria-selected'),'true');
+    assert(await page.getByRole('tab',{name:'Music'}).evaluate(el=>{
+      const tab=el.getBoundingClientRect(),strip=el.parentElement.getBoundingClientRect();
+      return tab.left>=strip.left-1&&tab.right<=strip.right+1;
+    }),'Selected music tab should be visible in the category strip');
+    const players=page.locator('#archive-panel audio');
+    assert.equal(await players.count(),6,'All six original recordings must be playable');
+    assert((await players.nth(1).getAttribute('src')).endsWith('/pahaadon-ki-yaadein-alt.mp3'));
+    await players.first().evaluate(audio=>new Promise((resolve,reject)=>{
+      audio.addEventListener('loadedmetadata',resolve,{once:true});
+      audio.addEventListener('error',()=>reject(new Error('Music metadata did not load')),{once:true});
+      audio.preload='metadata';audio.load();
+    }));
+    await page.screenshot({path:`artifacts/responsive/${viewport.width}-music.png`});
+    await page.keyboard.press('Escape');
+    await page.locator('.index-button').click();
+    await page.locator('.archive-row[data-open-index="music"]').click();
+    assert.equal(await page.getByRole('tab',{name:'Music'}).getAttribute('aria-selected'),'true');
+    await page.keyboard.press('Escape');
     // The dog travels in every chapter; reversing over the same route reverses it.
     const routes=[];
     for(const id of ['story','systems','lab','builds']){
@@ -61,7 +93,7 @@ try {
     assert(await page.locator('.prototype-window').isVisible());
     await page.screenshot({path:`artifacts/responsive/${viewport.width}-reduced-lab.png`});
     results.push({viewport,passed:true,routes});
-    console.log(`PASS ${viewport.width}: 5 gallery dialogs and scroll return, 4 dog routes, reverse, pet, keyboard tabs, reduced motion and reload`);
+    console.log(`PASS ${viewport.width}: gallery, 6 music recordings, companion routes, keyboard tabs, reduced motion and reload`);
     await page.close();
   }
   const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});

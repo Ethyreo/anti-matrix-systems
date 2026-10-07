@@ -4,6 +4,7 @@ The Anti-Matrix Project is Gurman Singh's startup systems and execution practice
 
 ## Primary pages
 - [The story and services](https://theantimatrixproject.com/): An interactive introduction to Gurman's work, experience, services, and selected builds.
+- [Ways to work together](https://theantimatrixproject.com/work): Plain-language services, method, and selected proof for founder-led startups.
 - [Control Deck](https://theantimatrixproject.com/control-deck): Field notes, independent builds, tools, and music.
 
 ## How Gurman works

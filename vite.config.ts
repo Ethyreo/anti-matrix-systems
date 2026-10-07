@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "index.html"),
+        work: path.resolve(__dirname, "work/index.html"),
         controlDeck: path.resolve(__dirname, "control-deck/index.html"),
       },
       output: {

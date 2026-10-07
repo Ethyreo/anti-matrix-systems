@@ -19,12 +19,15 @@ export const projects = [ ['tenant','Tenant Management','Ledgers, utilities, and
 export const notes = [ ['hiring','Before the next hire','Role clarity, cadence, and handoffs'], ['reporting','A clearer reporting system','Business information and investor communication'], ['knowledge','Knowledge that stays connected','Documentation, SOPs, and team habits'], ['pine','The work behind the stay','The Pine & Thatch operating story'] ];
 export const details: Record<string, Detail> = {...archiveDetails, ...identityDetails};
 export const music = [
- ['Pahaadon Ki Yaadein','Sep 2024','Acoustic Hindi / Himachali folk','pahaadon-ki-yaadein.mp3'],
- ['The Light','Nov 2025','Nu metal / rap / soft chorus rock','the-light.mp3'],
- ['Chhota Sa Tan','Feb 2026','Heavy metal with Indian classical vocals','chhota-sa-tan.mp3'],
- ['Oonchai Pe Thandi Hawa','Feb 2026','Heavy metal with Indian classical vocals','oonchai-pe-thandi-hawa.mp3'],
- ['Floors of the Same Church','Apr 2026','Folk / indie folk / ambient','floors-of-the-same-church.mp3']
-];
+ {title:'Pahaadon Ki Yaadein',date:'Sep 2024',genre:'Acoustic Hindi / Himachali folk',recordings:[
+  {label:'Original',file:'pahaadon-ki-yaadein.mp3'},
+  {label:'Alternate take',file:'pahaadon-ki-yaadein-alt.mp3'}
+ ]},
+ {title:'The Light',date:'Nov 2025',genre:'Nu metal / rap / soft chorus rock',recordings:[{label:'Listen',file:'the-light.mp3'}]},
+ {title:'Chhota Sa Tan',date:'Feb 2026',genre:'Heavy metal with Indian classical vocals',recordings:[{label:'Listen',file:'chhota-sa-tan.mp3'}]},
+ {title:'Oonchai Pe Thandi Hawa',date:'Feb 2026',genre:'Heavy metal with Indian classical vocals',recordings:[{label:'Listen',file:'oonchai-pe-thandi-hawa.mp3'}]},
+ {title:'Floors of the Same Church',date:'Apr 2026',genre:'Folk / indie folk / ambient',recordings:[{label:'Listen',file:'floors-of-the-same-church.mp3'}]}
+] as const;
 export const toolkit = [
   {label:'01 / THINK',title:'Explore a question.',tools:['OpenAI','Claude','Gemini','Local models']},
   {label:'02 / BUILD',title:'Give it a form.',tools:['Antigravity','Codex','Claude Code','Cursor / Windsurf']},
